@@ -1,0 +1,39 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  intro: MyText
+  bg: MyString
+  poster: MyString
+  slide1: MyString
+  slide2: MyString
+  slide3: MyString
+  videourl1: MyString
+  videourl2: MyString
+  videourl3: MyString
+  videocomment1: MyText
+  videocomment2: MyText
+  videocomment3: MyText
+  feedback1: MyString
+  feedback2: MyString
+  feedback3: MyString
+  signup: 2014-02-11 15:02:34
+
+two:
+  title: MyString
+  intro: MyText
+  bg: MyString
+  poster: MyString
+  slide1: MyString
+  slide2: MyString
+  slide3: MyString
+  videourl1: MyString
+  videourl2: MyString
+  videourl3: MyString
+  videocomment1: MyText
+  videocomment2: MyText
+  videocomment3: MyText
+  feedback1: MyString
+  feedback2: MyString
+  feedback3: MyString
+  signup: 2014-02-11 15:02:34

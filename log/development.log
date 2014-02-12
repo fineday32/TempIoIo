@@ -1,0 +1,438 @@
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-11 13:01:51 +0800
+
+PG::ConnectionBad (FATAL:  database "IOH-back_development" does not exist
+):
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+  activerecord (4.0.2) lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+  activerecord (4.0.2) lib/active_record/connection_handling.rb:53:in `connection'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:51:in `restore_query_cache_settings'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:43:in `rescue in call'
+  activerecord (4.0.2) lib/active_record/query_cache.rb:32:in `call'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in `call'
+  activerecord (4.0.2) lib/active_record/migration.rb:369:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__3410679612049074503__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.5ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.4ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (0.8ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (15.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-11 13:02:21 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (1.4ms)
+Completed 200 OK in 20ms (Views: 5.5ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-11 13:02:23 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.0ms)
+  [1m[36m (85.3ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying(255) NOT NULL) [0m
+  [1m[35m (5.1ms)[0m  CREATE UNIQUE INDEX "unique_schema_migrations" ON "schema_migrations" ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to DeviseCreateUsers (20140211062520)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (15.5ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "email" character varying(255) DEFAULT '' NOT NULL, "encrypted_password" character varying(255) DEFAULT '' NOT NULL, "reset_password_token" character varying(255), "reset_password_sent_at" timestamp, "remember_created_at" timestamp, "sign_in_count" integer DEFAULT 0 NOT NULL, "current_sign_in_at" timestamp, "last_sign_in_at" timestamp, "current_sign_in_ip" character varying(255), "last_sign_in_ip" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35m (1.2ms)[0m  CREATE UNIQUE INDEX "index_users_on_email" ON "users" ("email")
+  [1m[36m (1.0ms)[0m  [1mCREATE UNIQUE INDEX "index_users_on_reset_password_token" ON "users" ("reset_password_token")[0m
+  [1m[35mSQL (2.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211062520"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211062653)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211062653"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTalks (20140211070234)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "talks" ("id" serial primary key, "title" character varying(255), "intro" text, "bg" character varying(255), "poster" character varying(255), "slide1" character varying(255), "slide2" character varying(255), "slide3" character varying(255), "videourl1" character varying(255), "videourl2" character varying(255), "videourl3" character varying(255), "videocomment1" text, "videocomment2" text, "videocomment3" text, "feedback1" character varying(255), "feedback2" character varying(255), "feedback3" character varying(255), "signup" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211070234"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20140211070613)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.9ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211070613"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.4ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211070828)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.2ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211070828)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211070925)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211070925)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.4ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211070925)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.7ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211071100)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211071100)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateComments (20140211070613)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (6.2ms)[0m  DROP TABLE "comments"
+  [1m[36mSQL (1.9ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140211070613'[0m
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateTalks (20140211070234)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (3.5ms)[0m  DROP TABLE "talks"
+  [1m[36mSQL (0.9ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140211070234'[0m
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateTalks (20140211070234)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (13.9ms)[0m  [1mCREATE TABLE "talks" ("id" serial primary key, "title" character varying(255), "intro" text, "bg" character varying(255), "poster" character varying(255), "slide1" character varying(255), "slide2" character varying(255), "slide3" character varying(255), "videourl1" character varying(255), "videourl2" character varying(255), "videourl3" character varying(255), "videocomment1" text, "videocomment2" text, "videocomment3" text, "feedback1" character varying(255), "feedback2" character varying(255), "feedback3" character varying(255), "signup" timestamp, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211070234"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20140211070613)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (3.9ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211070613"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsertalks (20140211071100)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.8ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211071100)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+Migrating to CreateComments (20140211070613)
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (1.9ms)[0m  DROP TABLE "comments"
+  [1m[36mSQL (1.0ms)[0m  [1mDELETE FROM "schema_migrations" WHERE "schema_migrations"."version" = '20140211070613'[0m
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20140211070613)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (4.9ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211070613"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsertalks (20140211071100)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (2.2ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20140211070614)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.6ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "comments" already exists
+: CREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateComments (20140211071644)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.3ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "comments" already exists
+: CREATE TABLE "comments" ("id" serial primary key, "content" text, "type" character varying(255), "importance" character varying(255), "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsercomments (20140211071831)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.0ms)[0m  [1mCREATE TABLE "usercomments" ("id" serial primary key, "user_id" integer, "comment_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211071831"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211071935)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.1ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211072030)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (2.5ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateUsertalks (20140211072030)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.5ms)[0m  [1mCREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+PG::DuplicateTable: ERROR:  relation "usertalks" already exists
+: CREATE TABLE "usertalks" ("id" serial primary key, "user_id" integer, "talk_id" integer, "created_at" timestamp, "updated_at" timestamp) 
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateSpeakerProfiles (20140211072311)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (6.7ms)[0m  [1mCREATE TABLE "speaker_profiles" ("id" serial primary key, "user_id" integer, "bio" text, "photo" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211072311"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateAcadamicHistories (20140211072456)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (5.8ms)[0m  [1mCREATE TABLE "acadamic_histories" ("id" serial primary key, "user_id" integer, "school" character varying(255), "department" character varying(255), "year" character varying(255), "degree" character varying(255), "nation" character varying(255), "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211072456"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateProcessLists (20140211074844)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (10.3ms)[0m  [1mCREATE TABLE "process_lists" ("id" serial primary key, "title" character varying(255), "type" character varying(255), "sequence" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211074844"]]
+  [1m[36m (64.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateTalkProcessLists (20140211074918)
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36m (8.2ms)[0m  [1mCREATE TABLE "talk_process_lists" ("id" serial primary key, "talk_id" integer, "process_id" integer, "created_at" timestamp, "updated_at" timestamp) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211074918"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRoleToUser (20140211075954)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.8ms)[0m  [1mALTER TABLE "user" ADD COLUMN "role" character varying(255)[0m
+PG::UndefinedTable: ERROR:  relation "user" does not exist
+: ALTER TABLE "user" ADD COLUMN "role" character varying(255)
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddRoleToUser (20140211075954)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (3.0ms)[0m  [1mALTER TABLE "users" ADD COLUMN "role" character varying(255)[0m
+  [1m[35mSQL (0.7ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211075954"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddNameToUser (20140211083329)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mALTER TABLE "users" ADD COLUMN "name" character varying(255)[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20140211083329"]]
+  [1m[36m (64.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.2ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (3.6ms)[0m  SELECT 1 AS one FROM "users" WHERE "users"."email" = 'silnavia@gmail.com' LIMIT 1
+  [1m[36mSQL (13.1ms)[0m  [1mINSERT INTO "users" ("created_at", "email", "encrypted_password", "name", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["created_at", Tue, 11 Feb 2014 08:35:02 UTC +00:00], ["email", "silnavia@gmail.com"], ["encrypted_password", "$2a$10$Gg1bRAWYORBdEb/2JfyN0u1ux9e0dPtdcelCM0R3c4AZH9Kj6V2hq"], ["name", "Claude"], ["updated_at", Tue, 11 Feb 2014 08:35:02 UTC +00:00]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (3.9ms)[0m  INSERT INTO "talks" ("created_at", "title", "updated_at") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Tue, 11 Feb 2014 08:35:38 UTC +00:00], ["title", "Event1"], ["updated_at", Tue, 11 Feb 2014 08:35:38 UTC +00:00]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserTalkIdToUsertalk (20140211083929)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "usestalk" ADD COLUMN "user_id" integer[0m
+PG::UndefinedTable: ERROR:  relation "usestalk" does not exist
+: ALTER TABLE "usestalk" ADD COLUMN "user_id" integer
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserTalkIdToUsertalk (20140211083929)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.4ms)[0m  [1mALTER TABLE "usestalks" ADD COLUMN "user_id" integer[0m
+PG::UndefinedTable: ERROR:  relation "usestalks" does not exist
+: ALTER TABLE "usestalks" ADD COLUMN "user_id" integer
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to AddUserTalkIdToUsertalk (20140211083929)
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.1ms)[0m  [1mALTER TABLE "usertalks" ADD COLUMN "user_id" integer[0m
+  [1m[35m (0.3ms)[0m  ALTER TABLE "usertalks" ADD COLUMN "talk_id" integer
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "schema_migrations" ("version") VALUES ($1)[0m  [["version", "20140211083929"]]
+  [1m[35m (1.1ms)[0m  COMMIT
+  [1m[36mActiveRecord::SchemaMigration Load (0.2ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
+  [1m[35mTalk Load (0.9ms)[0m  SELECT "talks".* FROM "talks" ORDER BY "talks"."id" ASC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (6.5ms)[0m  INSERT INTO "usertalks" ("created_at", "updated_at", "user_id") VALUES ($1, $2, $3) RETURNING "id"  [["created_at", Tue, 11 Feb 2014 08:42:12 UTC +00:00], ["updated_at", Tue, 11 Feb 2014 08:42:12 UTC +00:00], ["user_id", 1]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mTalk Load (1.5ms)[0m  SELECT "talks".* FROM "talks" INNER JOIN "usertalks" ON "talks"."id" = "usertalks"."talk_id" WHERE "usertalks"."user_id" = $1  [["user_id", 1]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  UPDATE "usertalks" SET "talk_id" = $1, "updated_at" = $2 WHERE "usertalks"."id" = 1  [["talk_id", 1], ["updated_at", Tue, 11 Feb 2014 08:42:57 UTC +00:00]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT "users".* FROM "users" INNER JOIN "usertalks" ON "users"."id" = "usertalks"."user_id" WHERE "usertalks"."talk_id" = $1  [["talk_id", 1]]
+  [1m[36mUsertalk Load (0.9ms)[0m  [1mSELECT "usertalks".* FROM "usertalks" WHERE "usertalks"."user_id" = $1[0m  [["user_id", 1]]
+  [1m[35mUsertalk Load (0.8ms)[0m  SELECT "usertalks".* FROM "usertalks" WHERE "usertalks"."talk_id" = $1  [["talk_id", 1]]
+  [1m[36mTalk Load (0.9ms)[0m  [1mSELECT "talks".* FROM "talks" WHERE "talks"."id" = $1 ORDER BY "talks"."id" ASC LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.9ms)[0m  SELECT "users".* FROM "users" WHERE "users"."id" = $1 ORDER BY "users"."id" ASC LIMIT 1  [["id", 1]]
+  [1m[36mTalk Load (1.2ms)[0m  [1mSELECT "talks".* FROM "talks" ORDER BY "talks"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (1.1ms)[0m  SELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mUsertalk Load (0.4ms)[0m  [1mSELECT "usertalks".* FROM "usertalks" ORDER BY "usertalks"."id" ASC LIMIT 1[0m
+  [1m[35mTalk Load (2.7ms)[0m  SELECT "talks".* FROM "talks" INNER JOIN "usertalks" ON "talks"."id" = "usertalks"."talk_id" WHERE "usertalks"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (1.2ms)[0m  [1mSELECT "users".* FROM "users" INNER JOIN "usertalks" ON "users"."id" = "usertalks"."user_id" WHERE "usertalks"."talk_id" = $1[0m  [["talk_id", 1]]
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-12 14:10:18 +0800
+
+PG::ConnectionBad (could not connect to server: No such file or directory
+	Is the server running locally and accepting
+	connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+):
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `initialize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `new'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:831:in `connect'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:548:in `initialize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `new'
+  activerecord (4.0.2) lib/active_record/connection_adapters/postgresql_adapter.rb:41:in `postgresql_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:440:in `new_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:450:in `checkout_new_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:421:in `acquire_connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:356:in `block in checkout'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:355:in `checkout'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:265:in `block in connection'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/monitor.rb:211:in `mon_synchronize'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:264:in `connection'
+  activerecord (4.0.2) lib/active_record/connection_adapters/abstract/connection_pool.rb:546:in `retrieve_connection'
+  activerecord (4.0.2) lib/active_record/connection_handling.rb:79:in `retrieve_connection'
+  activerecord (4.0.2) lib/active_record/connection_handling.rb:53:in `connection'
+  activerecord (4.0.2) lib/active_record/migration.rb:792:in `current_version'
+  activerecord (4.0.2) lib/active_record/migration.rb:800:in `needs_migration?'
+  activerecord (4.0.2) lib/active_record/migration.rb:379:in `check_pending!'
+  activerecord (4.0.2) lib/active_record/migration.rb:366:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:29:in `block in call'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:373:in `_run__3592630702056098592__call__callbacks'
+  activesupport (4.0.2) lib/active_support/callbacks.rb:80:in `run_callbacks'
+  actionpack (4.0.2) lib/action_dispatch/middleware/callbacks.rb:27:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/reloader.rb:64:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/remote_ip.rb:76:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.0.2) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `block in tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:25:in `tagged'
+  activesupport (4.0.2) lib/active_support/tagged_logging.rb:67:in `tagged'
+  railties (4.0.2) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'
+  rack (1.5.2) lib/rack/runtime.rb:17:in `call'
+  activesupport (4.0.2) lib/active_support/cache/strategy/local_cache.rb:83:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  actionpack (4.0.2) lib/action_dispatch/middleware/static.rb:64:in `call'
+  rack (1.5.2) lib/rack/sendfile.rb:112:in `call'
+  railties (4.0.2) lib/rails/engine.rb:511:in `call'
+  railties (4.0.2) lib/rails/application.rb:97:in `call'
+  rack (1.5.2) lib/rack/lock.rb:17:in `call'
+  rack (1.5.2) lib/rack/content_length.rb:14:in `call'
+  rack (1.5.2) lib/rack/handler/webrick.rb:60:in `service'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:138:in `service'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/httpserver.rb:94:in `run'
+  /Users/apple/.rvm/rubies/ruby-2.1.0/lib/ruby/2.1.0/webrick/server.rb:295:in `block in start_thread'
+
+
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_source.erb (0.6ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_trace.erb (1.5ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/_request_and_response.erb (1.7ms)
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/actionpack-4.0.2/lib/action_dispatch/middleware/templates/rescues/diagnostics.erb within rescues/layout (22.6ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-12 14:10:30 +0800
+  [1m[36mActiveRecord::SchemaMigration Load (3.1ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (0.8ms)
+Completed 200 OK in 23ms (Views: 3.2ms | ActiveRecord: 0.0ms)
+
+
+Started GET "/" for 127.0.0.1 at 2014-02-12 14:11:38 +0800
+Processing by Rails::WelcomeController#index as HTML
+  Rendered /Users/apple/.rvm/gems/ruby-2.1.0/gems/railties-4.0.2/lib/rails/templates/rails/welcome/index.html.erb (0.1ms)
+Completed 200 OK in 2ms (Views: 1.9ms | ActiveRecord: 0.0ms)
