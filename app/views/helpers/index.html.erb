@@ -1,0 +1,6 @@
+<%  @talks.each do |t| %>
+<%= t.title %>
+<%= image_tag t.photography.url(:medium)  %>
+<% end %>
+
+<%= link_to "new", new_helper_path %>

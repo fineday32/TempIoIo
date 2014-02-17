@@ -11,10 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140212082155) do
-
-  # These are extensions that must be enabled in order to support this database
-
+ActiveRecord::Schema.define(version: 20140213072209) do
 
   create_table "acadamic_histories", force: true do |t|
     t.integer  "user_id"
@@ -25,15 +22,6 @@ ActiveRecord::Schema.define(version: 20140212082155) do
     t.string   "nation"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "comments", force: true do |t|
-    t.text     "content"
-    t.string   "type"
-    t.string   "importance"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "talk_id"
   end
 
   create_table "process_lists", force: true do |t|
@@ -50,6 +38,8 @@ ActiveRecord::Schema.define(version: 20140212082155) do
     t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "eng_name"
+    t.string   "chi_name"
   end
 
   create_table "talk_process_lists", force: true do |t|
@@ -79,6 +69,18 @@ ActiveRecord::Schema.define(version: 20140212082155) do
     t.datetime "signup"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "photography_file_name"
+    t.string   "photography_content_type"
+    t.integer  "photography_file_size"
+    t.datetime "photography_updated_at"
+    t.integer  "speaker_profile_id"
+  end
+
+  create_table "user_talks", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "user_id"
+    t.integer  "talk_id"
   end
 
   create_table "usercomments", force: true do |t|
@@ -105,14 +107,7 @@ ActiveRecord::Schema.define(version: 20140212082155) do
     t.string   "name"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
-
-  create_table "usertalks", force: true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "user_id"
-    t.integer  "talk_id"
-  end
+  add_index "users", ["email"], name: "index_users_on_email", unique: true
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
 
 end
