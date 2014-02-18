@@ -77,4 +77,14 @@ IOHBack::Application.configure do
 
   # Use default logging formatter so that PID and timestamp are not suppressed.
   config.log_formatter = ::Logger::Formatter.new
+  
+  config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_credentials => {
+          :bucket => 'iohtest',
+          :access_key_id => 'AKIAIZEWYGALY7GVJUWA',
+          :secret_access_key => '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'
+      }
+}
+  
 end

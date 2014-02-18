@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
-  has_many :usertalks
-  has_many :talks , :through => :usertalks
+  has_many :user_talks
+  has_many :talks , :through => :user_talks
   has_many :usercomments
   has_many :comments , :through => :usercomments
   # Include default devise modules. Others available are:
