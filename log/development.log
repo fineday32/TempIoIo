@@ -469,4 +469,3 @@ Migrating to AddTalkIdToComment (20140212082155)
   [1m[35m (0.3ms)[0m  COMMIT
   [1m[36mUser Load (1.5ms)[0m  [1mSELECT "users".* FROM "users" ORDER BY "users"."id" ASC LIMIT 1[0m
   [1m[35mUsercomment Load (0.7ms)[0m  SELECT "usercomments".* FROM "usercomments" ORDER BY "usercomments"."id" ASC LIMIT 1
-  [1m[36mComment Load (3.0ms)[0m  [1mSELECT "comments".* FROM "comments" INNER JOIN "usercomments" ON "comments"."id" = "usercomments"."comment_id" WHERE "usercomments"."user_id" = $1[0m  [["user_id", 1]]
