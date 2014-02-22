@@ -1,10 +1,207 @@
 <p style="color: green"><%= flash[:notice] %></p>
 
-<%= form_for :talk_content , :url => helpers_path do|f| %>
-<%= f.label "Bio" %>
-<%= f.text_field :bio %>
-<%= f.label "Title" %>
-<%=	f.text_field :title %>
-<%= f.file_field :photography %>
-<%= f.submit "upload" %>
-<% end %>
+<%= simple_form_for :talk_content , :url => helpers_path do|f| %>
+
+<div class="container">
+	<div class="row">
+<div class="col-md-12"><%= f.input :school1 , label:"school1", label: false %></div>
+	</div>
+	<div class="row">
+	  <div class="col-md-6">
+		  	<div class="row">
+			  		<div class="col-md-6">EXISTING SPEAKER</div>
+			  		<div class="col-md-6">
+			  			<%=f.collection_select :existing, SpeakerProfile.all, :id, :eng_name%>
+			  		</div>
+		  	</div>
+		  	<div class="row">
+					<div class="col-md-4">NEW SPEAKER</div>
+					<div class="col-md-4"> <%= f.input :eng_name , label:"Eng_name" %>	</div>
+					<div class="col-md-4"> <%= f.input :chi_name , label:"chi_name" %>  </div>
+		  	</div>
+		  	<div class="row">
+	  			<div class="col-md-1"></div>
+	  			<div class="col-md-2">School</div>
+	  			<div class="col-md-2">Department</div>
+	  			<div class="col-md-1">Year</div>
+	  			<div class="col-md-3">Degree</div>
+	  			<div class="col-md-1">Nation</div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-md-1"><%= f.input :check_acadamic1, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false %></div>
+	  			<div class="col-md-2"><%= f.input :school1 , label:"school1", label: false %></div>
+	  			<div class="col-md-2"><%= f.input :department1 , label:"department1" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :year1 , label:"year1" , label: false%></div>
+	  			<div class="col-md-3"><%= f.input :degree1 , label:"degree1" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :nation1 , label:"nation1" , label: false%></div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-md-1"><%= f.input :check_acadamic2, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div>
+	  			<div class="col-md-2"><%= f.input :school2 , label:"school2", label: false %></div>
+	  			<div class="col-md-2"><%= f.input :department2 , label:"department2" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :year2 , label:"year2" , label: false%></div>
+	  			<div class="col-md-3"><%= f.input :degree2 , label:"degree2" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :nation2 , label:"nation2" , label: false%></div>
+	  		</div>
+	  		<div class="row">
+	  			<div class="col-md-1"><%= f.input :check_acadamic3, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div>
+	  			<div class="col-md-2"><%= f.input :school3 , label:"school3", label: false %></div>
+	  			<div class="col-md-2"><%= f.input :department3 , label:"department3" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :year3 , label:"year3" , label: false%></div>
+	  			<div class="col-md-3"><%= f.input :degree3 , label:"degree3" , label: false%></div>
+	  			<div class="col-md-1"><%= f.input :nation3 , label:"nation3" , label: false%></div>
+	  		</div>			  			 	
+		 </div>	
+	 </div>
+<ul class="nav nav-tabs">
+  <li class="active"><a href="#record" data-toggle="tab">Record</a></li>
+  <li><a href="#live" data-toggle="tab">Live Talk</a></li>
+  <li><a href="#article" data-toggle="tab">Article</a></li>
+  </a></li>
+</ul>
+<div class="tab-content">
+  <div class="tab-pane active" id="record">
+  		<%  @process_lists.where(:process_type=>"record").each do |t| %>
+  		<%= f.input_field :process, label:t.title,:remote => true, inline_label: true, as: :boolean, checked_value: true, unchecked_value: false, :include_hidden => false %>
+  		 <%= f.input :process , :input_html => { :class => "datetimepicker"} , label: false%>
+		<% end %> 
+  </div>
+  <div class="tab-pane" id="live">
+    		<%  @process_lists.where(:process_type=>"live").each do |t| %>
+  		<%= f.input_field :process_lists, label:t.title, inline_label: true, as: :boolean, checked_value: true, unchecked_value: false %>
+  		<%= f.input :process_lists , :input_html => { :class => "datetimepicker"} , label: false%>
+		<% end %> 
+  </div>
+  <div class="tab-pane" id="article">
+  		<%  @process_lists.where(:process_type=>"article").each do |t| %>
+  		<%= f.input_field.input:process_lists, label:t.title, inline_label: true, as: :boolean, checked_value: true, unchecked_value: false %>
+  		<%= f.input :process_lists , :input_html => { :class => "datetimepicker"} , label: false%>
+  		<% end%>
+  </div>
+  
+</div>
+<div class="row">
+<%= f.label :intro%>
+<%= f.input_field :intro%>
+</div>
+
+<div class="row">
+<%= f.label :poster %>
+<%= f.input_field :poster%>
+</div>
+<div class="row">
+<%= f.label :slide1 %>
+<%= f.input_field :slide1%>
+</div>
+<div class="row">
+<%= f.label :slide2 %>
+<%= f.input_field :slide2%>
+</div>
+<div class="row">
+<%= f.label :slide3 %>
+<%= f.input_field :slide3%>
+</div>
+<div class="row">
+<%= f.label :videourl1%>
+<%= f.input_field :videourl1%>
+</div>
+<div class="row">
+<%= f.label :videourl2 %>
+<%= f.input_field :videourl2%>
+</div>
+<div class="row">
+<%= f.label :videourl3%>
+<%= f.input_field :videourl3%>
+</div>
+<div class="row">
+<%= f.label :videocomment1 %>
+<%= f.input_field :videocomment1 %>
+</div>
+<div class="row">
+<%= f.label :videocomment2%>
+<%= f.input_field :videocomment2%>
+</div>
+<div class="row">
+<%= f.label :videocomment3%>
+<%= f.input_field :videocomment3%>
+</div>
+<div class="row">
+<%= f.label :feedback1%>
+<%= f.input_field :feedback1%>
+</div>
+<div class="row">
+<%= f.label :feedback2%>
+<%= f.input_field :feedback2%>
+</div>
+<div class="row">
+<%= f.label :feedback3%>
+<%= f.input_field :feedback3%>
+</div>
+<div class="row">
+<%= f.file_field :bg%>
+<%= f.file_field :photography%>
+</div>
+<%= f.input :date_array, :as => :hidden %>				
+<%= f.input :check_array, :as => :hidden  %>	
+<%= f.input :name_array, :as => :hidden  %>	
+<%= f.submit "Create" %>
+
+<% end %>			
+	
+			
+
+</div>
+
+        <script type="text/javascript">
+            $(function () {            
+                $('.datetimepicker').datepicker({
+                    language: 'en',
+                    format: 'mm/dd/yyyy',
+         			autoclose:true,
+         			pickTime: false
+          	      });
+          	  });
+				$(".datetimepicker").change(function() {
+				     
+				    });
+				$(".boolean.optional").change(function() {
+				    
+				    });
+				$(".nav.nav-tabs").change(function()
+					{
+						alert("hihi");
+					});
+				  $('.simple_form.talk_content').submit(function()
+					{
+	    				try{
+	    					var tab_active = $(".tab-pane.active");
+					      	var all_dates = tab_active.find(".datetimepicker").map(function() {
+	    					return this.value;
+							}).get();
+					     	 document.getElementById("talk_content_date_array").value = all_dates;
+					    
+					     	var all_checks = tab_active.find(".boolean.optional").map(function() {
+	    					return this.checked;
+							}).get();
+					     	 document.getElementById("talk_content_check_array").value = all_checks;
+					    	
+					    	var all_checks_process_names = tab_active.find(".checkbox").map(function() {
+	    					return this.textContent;
+							}).get();
+					     	 document.getElementById("talk_content_name_array").value = all_checks_process_names;
+					    	}						
+					    catch (error)
+					    	{}
+					});
+        </script>
+ 
+
+
+
+
+
+
+<!-- Nav tabs -->
+
+
+<!-- Tab panes -->

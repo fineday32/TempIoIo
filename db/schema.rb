@@ -11,10 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140213072209) do
+ActiveRecord::Schema.define(version: 20140221085256) do
 
   create_table "acadamic_histories", force: true do |t|
-    t.integer  "user_id"
+    t.integer  "speaker_profile_id"
     t.string   "school"
     t.string   "department"
     t.string   "year"
@@ -26,7 +26,7 @@ ActiveRecord::Schema.define(version: 20140213072209) do
 
   create_table "process_lists", force: true do |t|
     t.string   "title"
-    t.string   "type"
+    t.string   "process_type"
     t.integer  "sequence"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -35,7 +35,6 @@ ActiveRecord::Schema.define(version: 20140213072209) do
   create_table "speaker_profiles", force: true do |t|
     t.integer  "user_id"
     t.text     "bio"
-    t.string   "photo"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "eng_name"
@@ -44,9 +43,12 @@ ActiveRecord::Schema.define(version: 20140213072209) do
 
   create_table "talk_process_lists", force: true do |t|
     t.integer  "talk_id"
-    t.integer  "process_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.boolean  "finished"
+    t.date     "finished_date"
+    t.integer  "sequence"
+    t.string   "process_name"
   end
 
   create_table "talks", force: true do |t|
@@ -74,6 +76,12 @@ ActiveRecord::Schema.define(version: 20140213072209) do
     t.integer  "photography_file_size"
     t.datetime "photography_updated_at"
     t.integer  "speaker_profile_id"
+    t.string   "photo"
+    t.string   "bg_file_name"
+    t.string   "bg_content_type"
+    t.integer  "bg_file_size"
+    t.datetime "bg_updated_at"
+    t.integer  "degree_id"
   end
 
   create_table "user_talks", force: true do |t|

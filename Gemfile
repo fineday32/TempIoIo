@@ -45,7 +45,8 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
-gem 'simple_form'
+gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'paperclip'
 gem 'aws-sdk'
 gem 'sqlite3'
+gem 'momentjs-rails', '~> 2.5.0'
