@@ -23,7 +23,8 @@ IOHBack::Application.configure do
 
   config.action_dispatch.best_standards_support = :builtin
   # Raise an error on page load if there are pending migrations
-  config.active_record.migration_error = :page_load
+  #config.active_record.migration_error = :page_load
+  config.active_record.migration_error = :app_start
 
 
 config.paperclip_defaults = {
