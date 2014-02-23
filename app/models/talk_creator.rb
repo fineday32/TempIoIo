@@ -3,7 +3,8 @@ class TalkCreator
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :user_id, :bio, :eng_name, :chi_name, :existing,
+  attr_accessor :user_id, 
+                :bio, :eng_name, :chi_name, :existing,
                 :school1 , :department1,:year1,:degree1,:nation1,:school2,:department2,:year2,:degree2,:nation2,:school3,:department3,:year3,:degree3,:nation3, :chosen_degree,
                 :check_acadamic1, :check_acadamic2, :check_acadamic3, 
                 :photo, :title, :photography, 
