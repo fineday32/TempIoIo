@@ -53,10 +53,21 @@
 	  		<div class="col-md-2"><%= f.input :nation3 , label:"nation3" , label: false,:input_html => { :class => "form-control"}%></div>
 	  	</div>			  			 	
 		<div class="row">
-			<div class="col-md-9" id="helpers">
+			<div class="col-md-9" id="helpers_list">
 				HELPERS
 				<%= f.label :user_id, label: current_user.name %>
-				<%= f.input :user_id, :collection => User.all ,:input_html => { :class => "helpers"}%>
+				<div class="show" >
+					<%= f.input :user_id, :collection => User.all ,:input_html => { :class => "helpers"}%>
+				</div>
+				<div class="hidden" >
+					<%= f.input :user_id, :collection => User.all ,:input_html => { :class => "helpers"}%>
+				</div>
+				<div class="hidden" >
+					<%= f.input :user_id, :collection => User.all ,:input_html => { :class => "helpers"}%>
+				</div>
+				<div class="hidden" >
+					<%= f.input :user_id, :collection => User.all ,:input_html => { :class => "helpers"}%>
+				</div>
 			</div>
 			<div class="col-md-3">
 				<%= button_tag "add helper" , :id=>"add_helper"%>
@@ -233,8 +244,12 @@ PHOTO<%= f.file_field :photography%>
 					return false;
 
 				});
-				$("#add_helper").click(function(){
+				$(".helpers").change(function(){
 					
+					if(this.value=="")
+						$(this).parent().parent().parent().next('div').removeClass('show').addClass('hidden');
+					else
+						$(this).parent().parent().parent().next('div').removeClass('hidden').addClass('show');
 
 				});
 				$("#add_process").click(function(){
@@ -276,7 +291,7 @@ PHOTO<%= f.file_field :photography%>
 
 
 
-					      	var users = $(".helpers").map(function() {
+					      	var users = $(".helpers_list").map(function() {
 	    					return this.value;
 							}).get();
 					     	 alert(users);
