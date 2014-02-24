@@ -4,6 +4,7 @@ class TalkCreator
   extend ActiveModel::Naming
 
   attr_accessor :user_id, 
+                :comment,
                 :bio, :eng_name, :chi_name, :existing,
                 :school1 , :department1,:year1,:degree1,:nation1,:school2,:department2,:year2,:degree2,:nation2,:school3,:department3,:year3,:degree3,:nation3, :chosen_degree,
                 :check_acadamic1, :check_acadamic2, :check_acadamic3, 
@@ -13,12 +14,15 @@ class TalkCreator
 #helper     
     @user_id
 
+#comement
+    @comment
+
 #speaker profile
     @bio
     @eng_name
     @chi_name
     @existing
-    
+
 #acadamic histories
     @school1
     @department1
@@ -72,7 +76,10 @@ class TalkCreator
   def self.user_id
     @user_id = current_user.user_id
   end
-
+#comment
+  def self.comment
+    @comment
+  end
 #speaker profile
   def self.bio
     @bio
@@ -295,9 +302,10 @@ class TalkCreator
       
       talk.speaker_profile_id= speaker.id
       talk.save!
-   		                 
+   		 
       create_process(@date_array, @check_array, @name_array, talk)
       create_user_talk(user_id, talk)
+      create_comment(@comment, talk)
   end
   def create_acadamic_history(school, department, nation, year, degree, speaker, check)
        acadamic_history = AcadamicHistory.new
@@ -335,6 +343,20 @@ class TalkCreator
         end
         talk_process_list.save!;
         i+=1;
+      end
+  end
+  def create_comment(content, talk)
+      comment = Comment.new
+      comment.content = content
+      comment.talk_id = talk.id
+      comment.type = "comment"
+      comment.save!
+
+      talk.user_talks.each do |ut|
+        user_comment = Usercomment.new  
+        user_comment.user_id = ut.user_id
+        user_comment.comment_id = comment.id
+        user_comment.save!
       end
 
   end
