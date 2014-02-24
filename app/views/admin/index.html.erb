@@ -1,0 +1,42 @@
+<div class="container">
+	<div class="row">
+		<div class="col-md-6">
+			<div class="row">
+				<div class="panel panel-default">
+					<div class="panel-heading">Talks</div>
+  					<div class="panel-body">
+  						<a href="#">Talks <span class="badge"><%= @talks.count %></span></a>
+						<a href="#">Running Talks<span class="badge"><%= @running_talks.count %></span></a>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+					<div class="panel panel-default">
+					<div class="panel-heading">Speakers</div>
+  					<div class="panel-body">
+  						<a href="#">Speakers<span class="badge"><%= @speakers.count %></span></a>
+						<a href="#">Working Speakers<span class="badge"><%= @working_speakers %></span></a>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-md-6">
+				<div class="panel panel-default">
+					<div class="panel-heading">Helpers</div>
+	 	 			<div class="panel-body">
+	  		  			<a href="#">Helpers<span class="badge"><%= @helpers.count %></span></a>
+						<a href="#">Working Helpers<span class="badge"><%= @working_helpers %></span></a>
+				 	 </div>
+				</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="panel panel-default">
+			<div class="panel-heading">Messages</div>
+  			<div class="panel-body">
+  				<a href="#">Messages <span class="badge"><%= @comments.count %></span></a>
+  				<a href="#">Warnings <span class="badge"><%= @warnings.count %></span></a>
+  			</div>
+  		</div>
+	</div>
+</div>

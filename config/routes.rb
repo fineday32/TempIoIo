@@ -1,7 +1,9 @@
 IOHBack::Application.routes.draw do
+  get "admin/index"
     resources :helpers
     resources :first_page
     resources :comments
+    resources :admin
   devise_for :users
   get "helper/talks" => "helper#talks"
   # The priority is based upon order of creation: first created -> highest priority.

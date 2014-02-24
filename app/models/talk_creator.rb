@@ -3,7 +3,7 @@ class TalkCreator
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :user_id, 
+  attr_accessor :users_array, :user_id,
                 :comment,
                 :bio, :eng_name, :chi_name, :existing,
                 :school1 , :department1,:year1,:degree1,:nation1,:school2,:department2,:year2,:degree2,:nation2,:school3,:department3,:year3,:degree3,:nation3, :chosen_degree,
@@ -12,7 +12,7 @@ class TalkCreator
                 :title,:intro,:bg,:poster,:slide1,:slide2,:slide3,:videourl1,:videourl2,:videourl3,:videocomment1,:videocomment2,:videocomment3,:feedback1,:feedback2,:feedback3,:signup,:photography,
                 :process_lists,:process,:date_array, :check_array, :name_array
 #helper     
-    @user_id
+    @users_array
 
 #comement
     @comment
@@ -68,13 +68,12 @@ class TalkCreator
     @check_array
     @name_array
 
-  def initialize(attributes = {}, id)
+  def initialize(attributes = {})
   	attributes.each { |key, value| send "#{key}=", value }
-  	@user_id = id
   end
 #helper
-  def self.user_id
-    @user_id = current_user.user_id
+  def self.users_array
+    @users_array 
   end
 #comment
   def self.comment
@@ -301,10 +300,11 @@ class TalkCreator
 
       
       talk.speaker_profile_id= speaker.id
+      
       talk.save!
    		 
       create_process(@date_array, @check_array, @name_array, talk)
-      create_user_talk(user_id, talk)
+      create_user_talk(@users_array, talk)
       create_comment(@comment, talk)
   end
   def create_acadamic_history(school, department, nation, year, degree, speaker, check)
@@ -316,16 +316,19 @@ class TalkCreator
        acadamic_history.year  = year
        acadamic_history.degree  = degree
        acadamic_history.save!
-  end
-  def create_speaker(bio, user_id)
-      
+  
   end
  
-  def create_user_talk(user_id, talk)
-      usertalk = UserTalk.new
-      usertalk.user_id= user_id
-      usertalk.talk_id = talk.id
-      usertalk.save!
+  def create_user_talk(users_array, talk)
+      users = users_array.split(",");
+      i=0;
+      until i== users.length
+        usertalk = UserTalk.new
+        usertalk.user_id= users[i]
+        usertalk.talk_id = talk.id
+        usertalk.save!
+        i+=1;
+      end
   end
   def create_process(date_array,check_array, name_array, talk)
       name = name_array.split(",");
@@ -349,7 +352,7 @@ class TalkCreator
       comment = Comment.new
       comment.content = content
       comment.talk_id = talk.id
-      comment.type = "comment"
+      comment.comment_type = "comment"
       comment.save!
 
       talk.user_talks.each do |ut|

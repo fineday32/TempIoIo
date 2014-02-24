@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224113628) do
+ActiveRecord::Schema.define(version: 20140224122300) do
 
   create_table "acadamic_histories", force: true do |t|
     t.integer  "speaker_profile_id"
@@ -24,12 +24,25 @@ ActiveRecord::Schema.define(version: 20140224113628) do
     t.datetime "updated_at"
   end
 
+  create_table "alert_rules", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "content"
+    t.string   "rule_type"
+  end
+
+  create_table "comment_rule_fireds", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "comments", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "content"
     t.string   "talk_id"
     t.string   "comment_type"
+    t.integer  "rule_id"
   end
 
   create_table "commments", force: true do |t|
@@ -41,6 +54,11 @@ ActiveRecord::Schema.define(version: 20140224113628) do
     t.string   "title"
     t.string   "process_type"
     t.integer  "sequence"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rules_fireds", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -95,6 +113,7 @@ ActiveRecord::Schema.define(version: 20140224113628) do
     t.integer  "bg_file_size"
     t.datetime "bg_updated_at"
     t.integer  "degree_id"
+    t.boolean  "finished"
   end
 
   create_table "user_talks", force: true do |t|
