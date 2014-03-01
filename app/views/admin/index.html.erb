@@ -5,8 +5,15 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Talks</div>
   					<div class="panel-body">
-  						<a href="#">Talks <span class="badge"><%= @talks.count %></span></a>
-						<a href="#">Running Talks<span class="badge"><%= @running_talks.count %></span></a>
+  						<div class="col-md-4">
+  							<a  href="/talks:all"><i data-notifications=<%= @talks.count  %>></i><i class="fa fa-align-justify fa-5x"></i><h4>All</h4></a>
+  						</div>
+  						<div class="col-md-4">
+  							<a  href="/talks:working"><i data-notifications=<%= @running_talks.count  %>></i><i class="fa fa-tasks fa-5x"></i><h4>Ongoing</h4></a>
+						</div>
+						<div class="col-md-4">
+							<a  href="#"><i data-notifications=<%= @running_talks.count  %>></i><i class="fa fa-plus-square fa-5x"></i><h4>New</h4></a>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -14,8 +21,12 @@
 					<div class="panel panel-default">
 					<div class="panel-heading">Speakers</div>
   					<div class="panel-body">
-  						<a href="#">Speakers<span class="badge"><%= @speakers.count %></span></a>
-						<a href="#">Working Speakers<span class="badge"><%= @working_speakers %></span></a>
+  						<div class="col-md-4">
+  							<a  href="#"><i data-notifications=<%= @speakers.count  %> > </i> <i class="fa fa-users fa-5x"> </i><h4>All</h4></a>
+						</div>
+						<div class="col-md-4"%>
+							<a  href="#"><i data-notifications=<%= @speakers_working.count%> ></i><i class="fa fa-user fa-5x"></i><i class="fa fa-comment-o fa-2x"></i><h4>Working</h4></a>	
+						</div>
 					</div>
 				</div>
 			</div>
@@ -24,8 +35,24 @@
 				<div class="panel panel-default">
 					<div class="panel-heading">Helpers</div>
 	 	 			<div class="panel-body">
-	  		  			<a href="#">Helpers<span class="badge"><%= @helpers.count %></span></a>
-						<a href="#">Working Helpers<span class="badge"><%= @working_helpers %></span></a>
+	 	 				<div class="row">
+		 	 				<div class="col-md-4" >
+	  							<a  href="#"><i data-notifications=<%= @helpers.count  %>></i><i class="fa fa-users fa-5x"></i><i class="fa fa-h-square fa-2x" ></i><h4>All</h4></a>
+	  						</div>
+							<div class="col-md-4"  >
+	  							<a href="#"><i data-notifications=<%= @working_helpers.count  %>></i><i class="fa fa-user fa-5x"></i><i class="fa fa-h-square fa-2x" ></i><h4>Working</h4></a>
+							</div>		  		  		
+						</div>
+		  		  		<div class="row"><br><br><br><br></div>
+		  		  		<div class="row">
+		  		  			<div class="col-md-4" >
+	  							<a  href="#"> <i data-notifications=<%= @helpers_too_less_work.count  %>></i><i class="fa fa-user fa-5x"></i><i class="fa fa-smile-o fa-2x"></i><h4>No work</h4></a>
+
+							</div>
+							<div class="col-md-4">
+	  							<a  href="#"><i data-notifications></i><i class="fa fa-user fa-5x"></i><i class="fa fa-meh-o fa-2x" ></i><h4>Lots of work</h4></a>
+							</div>
+						</div>
 				 	 </div>
 				</div>
 		</div>
@@ -34,8 +61,21 @@
 		<div class="panel panel-default">
 			<div class="panel-heading">Messages</div>
   			<div class="panel-body">
-  				<a href="#">Messages <span class="badge"><%= @comments.count %></span></a>
-  				<a href="#">Warnings <span class="badge"><%= @warnings.count %></span></a>
+  				<div class="col-md-2 col-md-offset-1">
+	  				<a  href="#"><i data-notifications=<%= @comments.count  %>></i><i class="fa fa-comments-o fa-5x"></i><h4>Messages</h4></a>
+				</div>
+				<div class="col-md-2">
+					<a  href="#"><i data-notifications=<%= @warnings.count  %>></i><i class="fa fa-exclamation-circle fa-5x"></i><h4>Warning</h4></a>
+				</div>
+				<div class="col-md-2">
+					<a  href="#"><i data-notifications=<%= @warnings.count  %>></i><i class="fa fa-user fa-5x"></i><i class="fa fa-comment-o fa-2x"></i><i class="fa fa-question fa-4x"></i><h4>Speaker Missing</h4></a>
+				</div>
+				<div class="col-md-2">
+					<a  href="#"><i data-notifications=<%= @warnings.count  %>></i><i class="fa fa-user fa-5x"></i><i class="fa fa-h-square fa-2x"></i><i class="fa fa-question fa-4x"></i><h4>Helper Missing</h4></a>
+				</div>
+				<div class="col-md-2">
+					<a  href="#"><i class="fa fa-pencil fa-5x"></i><h4>Wrtie Message</h4></a>
+				</div>  				
   			</div>
   		</div>
 	</div>

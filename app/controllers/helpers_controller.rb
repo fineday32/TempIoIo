@@ -15,8 +15,8 @@ class HelpersController < ApplicationController
 
   end
   def create
-      @talk_creator = TalkCreator.new(params.permit![:talk_content])
-      @talk_creator.insert
+      @talk_creator = TalkCreator.new
+      @talk_creator.insert(params.permit![:talk_content])
       #flash[:notice] = @talk_creator.process_lists
       
       redirect_to new_helper_path

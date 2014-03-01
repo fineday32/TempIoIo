@@ -3,16 +3,18 @@ class TalkCreator
   include ActiveModel::Conversion
   extend ActiveModel::Naming
 
-  attr_accessor :users_array, :user_id,
+  attr_accessor :users_array, :user_id, :users,
                 :comment,
                 :bio, :eng_name, :chi_name, :existing,
                 :school1 , :department1,:year1,:degree1,:nation1,:school2,:department2,:year2,:degree2,:nation2,:school3,:department3,:year3,:degree3,:nation3, :chosen_degree,
                 :check_acadamic1, :check_acadamic2, :check_acadamic3, 
                 :photo, :title, :photography, 
-                :title,:intro,:bg,:poster,:slide1,:slide2,:slide3,:videourl1,:videourl2,:videourl3,:videocomment1,:videocomment2,:videocomment3,:feedback1,:feedback2,:feedback3,:signup,:photography,
-                :process_lists,:process,:date_array, :check_array, :name_array
-#helper     
+                :title,:intro,:bg,:poster,:slide1,:slide2,:slide3,:videourl1,:videourl2,:videourl3,:videocomment1,:videocomment2,:videocomment3,:feedback1,:feedback2,:feedback3,:signup,:photography, :finished,
+                :process_lists,:process,:date_array, :check_array, :name_array,
+                :main
+#helper         
     @users_array
+    @users
 
 #comement
     @comment
@@ -22,6 +24,7 @@ class TalkCreator
     @eng_name
     @chi_name
     @existing
+    @main
 
 #acadamic histories
     @school1
@@ -68,8 +71,8 @@ class TalkCreator
     @check_array
     @name_array
 
-  def initialize(attributes = {})
-  	attributes.each { |key, value| send "#{key}=", value }
+  def initialize
+  	
   end
 #helper
   def self.users_array
@@ -213,7 +216,13 @@ class TalkCreator
   def self.check_acadamic3
     @check_acadamic3
   end
-  def insert
+  def self.main
+    @main
+  end
+  def insert(attributes = {})
+
+    attributes.each { |key, value| send "#{key}=", value }
+  
     #speaker
     speaker = SpeakerProfile.new
    	if(@bio)
@@ -229,18 +238,22 @@ class TalkCreator
     talk = Talk.new
     #acadamic histories
      if(@school1.length>0 && @department1.length>0 && @nation1.length>0 && @year1.length>0 && @degree1.length>0)
+       acadamicHistory = create_acadamic_history(@school1, @department1, @nation1, @year1, @degree1, speaker)
        if (check_acadamic1=="true")
-        talk.degree_id = "1";
+          talk.degree_id =acadamicHistory.id
+        
       end
      end
      if(@school2.length>0 && @department2.length>0 && @nation2.length>0 && @year2.length>0 && @degree2.length>0)
+       acadamicHistory= create_acadamic_history(@school2, @department2, @nation2, @year2, @degree2, speaker)      
        if(check_acadamic2=="true")
-          talk.degree_id = "2";
-      end
+         talk.degree_id = acadamicHistory.id
+       end
      end
       if(@school3.length>0 && @department3.length>0 && @nation3.length>0 && @year3.length>0 && @degree3.length>0)
+       acadamicHistory = create_acadamic_history(@school3, @department3, @nation3, @year3, @degree3, speaker)
        if(check_acadamic3=="true")
-          talk.degree_id = "3";
+          talk.degree_id = acadamicHistory.id
       end
      end
       
@@ -307,7 +320,7 @@ class TalkCreator
       create_user_talk(@users_array, talk)
       create_comment(@comment, talk)
   end
-  def create_acadamic_history(school, department, nation, year, degree, speaker, check)
+  def create_acadamic_history(school, department, nation, year, degree, speaker)
        acadamic_history = AcadamicHistory.new
        acadamic_history.speaker_profile_id = speaker.id
        acadamic_history.school  = school
@@ -316,6 +329,7 @@ class TalkCreator
        acadamic_history.year  = year
        acadamic_history.degree  = degree
        acadamic_history.save!
+       acadamic_history
   
   end
  
@@ -362,5 +376,103 @@ class TalkCreator
         user_comment.save!
       end
 
+  end
+  def talk_load(talks)
+    tc_list = Array.new
+    talks.each do |t|
+      tc = TalkCreator.new
+      tc.bio = t.speaker_profile.bio
+      tc.eng_name = t.speaker_profile.eng_name
+      tc.chi_name = t.speaker_profile.chi_name
+      
+      tc.school1 = t.speaker_profile.acadamic_histories[0].school
+      tc.department1 = t.speaker_profile.acadamic_histories[0].department
+      tc.year1 = t.speaker_profile.acadamic_histories[0].year
+      tc.degree1 = t.speaker_profile.acadamic_histories[0].degree
+      tc.nation1 = t.speaker_profile.acadamic_histories[0].nation
+      if (t.speaker_profile.acadamic_histories.count>1)
+        tc.school2 = t.speaker_profile.acadamic_histories[1].school
+        tc.department2 = t.speaker_profile.acadamic_histories[1].department
+        tc.year2 = t.speaker_profile.acadamic_histories[1].year
+        tc.degree2 = t.speaker_profile.acadamic_histories[1].degree
+        tc.nation2 = t.speaker_profile.acadamic_histories[1].nation
+      end
+      if (t.speaker_profile.acadamic_histories.count>2)
+        tc.school3 = t.speaker_profile.acadamic_histories[2].school
+        tc.department3 = t.speaker_profile.acadamic_histories[2].department
+        tc.year3 = t.speaker_profile.acadamic_histories[2].year
+        tc.degree3 = t.speaker_profile.acadamic_histories[2].degree
+        tc.nation3 = t.speaker_profile.acadamic_histories[2].nation
+      end
+
+      tc.main = t.speaker_profile.acadamic_histories.find(t.degree_id)
+
+      tc.intro = t.intro
+      tc.bg = t.bg
+      tc.poster = t.poster
+      tc.slide1 = t.slide1
+      tc.slide2 = t.slide2
+      tc.slide3 = t.slide3
+      tc.videourl1 = t.videourl1
+      tc.videourl2 = t.videourl2
+      tc.videourl3 = t.videourl3
+      tc.videocomment1 = t.videocomment1
+      tc.videocomment2 = t.videocomment2
+      tc.videocomment3 = t.videocomment3
+      tc.feedback1 = t.feedback1
+      tc.feedback2 = t.feedback2
+      tc.feedback3 = t.feedback3
+      tc.photography = t.photography
+      tc.process = t.talk_process_lists
+      tc.users = t.users[0].name
+      tc.finished = t.finished
+      tc_list << tc
+
+    end
+    tc_list
+  end
+  
+  def sign_up_date
+     begin
+        @process.order("sequence").first.finished_date
+      rescue
+        puts "-"
+      end
+  end
+
+  def last_activity_date
+      begin 
+        @process.where.not(:finished => nil).order("sequence").last.finished_date
+      rescue
+        puts "-"
+      end
+  end
+
+  def days_since_sign_up
+      begin
+        (Date.current - @process.order("sequence").first.finished_date).to_i 
+      rescue
+        puts "-"
+      end
+  end
+
+  def days_since_last_activity
+      begin
+        (Date.today - @process.where.not(:finished => nil).order("sequence").last.finished_date).to_i
+      rescue
+        puts "-"
+      end
+  end
+
+  def helpers
+      @users.name
+  end
+
+  def status
+    begin
+      @content = process.where(:finished=>nil).order("sequence").first.process_name
+    rescue
+      @content =  "Finished"
+    end
   end
 end

@@ -1,0 +1,120 @@
+<div class="container" >
+<table style="border:2px solid rgb(0,0,0); " rules="all" align=right>
+	<col span="2" style="background-color: rgb(68,147,18)" width=1000px>
+	<tbody  text="#FFFFFF">
+		<tr>
+			<td align=center width=150><font color="white"><%= link_to "NEW TALK", new_helper_path %> </td>
+			<td align=center width=150><font color="white">New Speaker</td>
+		
+
+			
+		</tr>
+	</tbody>
+</table>
+
+<p style="color: green"><%= flash[:notice] %></p>
+<ul class="nav nav-pills">
+			  <li class="active"><a href="/talks:all" >All</a></li>
+			  <li><a href="#schedule" data-toggle="tab">By Schedule</a></li>
+			  <li><a href="#warning" data-toggle="tab">By Warning</a></li>
+			  <li><a href="#school" data-toggle="tab">By School</a></li>
+			  <li><a href="#department" data-toggle="tab">By Deparment</a></li>
+			  <li><a href="#nation" data-toggle="tab">By Nation</a></li>
+			</ul>
+<div class="tab-content">
+		  <div class="tab-pane active" id="all"></div>
+		  <div class="tab-pane " id="schedule">
+		  		<ul class="nav nav-pills green">
+		  		<li><%= link_to "Signed Up" , "/talks:all" ,  :class=>"category", :remote=>true%></li>
+				<li><%= link_to "Posters Ready" , "/talks:working" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Slide Ready" , "/talks:slides" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Video 1 Uploaded" , "/talks:v1" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Video 2 Uploaded" , "/talks:v2" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Video 3 Uploaded" , "/talks:v3" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Waiting to upload" , "/talks:upload" ,  :class=>"category", :remote=>true%></li>
+  				<li><%= link_to "Finished" , "/talks:finished" ,  :class=>"category", :remote=>true%></li>
+
+  				</ul>
+ </div>
+		  <div class="tab-pane " id="warning">
+		  	<ul class="nav nav-pills">
+				<li><%= link_to "Signed Up" , "/talks:working" ,  :class=>"category", :remote=>true%></li>
+  				</ul>
+		  </div>
+		  <div class="tab-pane " id="school"></div>
+		  <div class="tab-pane " id="department"></div>
+		  <div class="tab-pane " id="nation"></div>
+</div>
+<div id="content">
+
+	
+
+	
+
+</td>
+</table>
+<p>
+<table class="table table-hover">
+  		<thead>
+	  		<tr>
+	  			<td>School(Nation)</td>
+	  			<td>Major</td>
+	  			<td>Degree</td>
+	  			<td>Name</td>
+	  			<td>Talk Status</td>
+	  			<td>Helper</td>
+	  			<td>Sign-up Date</td>
+	  			<td>Days</td>
+	  			<td>Last Activity</td>
+	  			<td>Days</td>
+	  			<td>TAGS</td>
+	  		</tr>
+  		</thead>
+  		<tbody>
+  			<% @tc_list.each do |tc| %>
+  			<% if tc.finished%>
+  				<tr class="success" href=''>
+  			<% else%>
+  				<tr class="" href=''>
+  			<% end %>
+  				<td><%= tc.main.school %></td>
+  				<td><%= tc.main.department %></td>
+  				<td><%= tc.main.degree %></td>
+  				<td><%= tc.eng_name + " " + tc.chi_name %></td>
+  				<td class=" example" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%  tc.process.each do |p| %>
+  						<%=   p.process_name%> <%=   p.finished_date%><% end	%>">
+  						
+  					<%= tc.status %>
+				</td>
+  				<td><%= tc.users %></td>
+  				<td><%= tc.sign_up_date %></td>
+  				<td><%= tc.days_since_sign_up %></td>
+  				<td><%= tc.last_activity_date %></td>
+  				<td><%= tc.days_since_last_activity %></td>
+  				<td><%= %></td>
+  			</tr>
+  			<% end %> 
+  		</tbody>
+	</table>
+	<td align=left>Messages</td>
+</table>
+</div>
+</div>	
+<script type="text/javascript">
+$('.example').popover();
+$(".category").click(function(){
+	
+	$("#schedule").find(".active").removeClass('active');
+	$(this).parent().addClass('active');
+});
+
+</script>
+
+
+
+
+
+
+
+
+

@@ -3575,6 +3575,13 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #fff;
   background-color: #428bca;
 }
+.nav-pills.green > li.active > a.category,
+.nav-pills.green > li.active > a.category:hover,
+.nav-pills.green > li.active > a.category:focus {
+  color: #fff;
+  background-color: green;
+}
+
 .nav-stacked > li {
   float: none;
 }
@@ -4021,8 +4028,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #333;
 }
 .navbar-inverse {
-  background-color: #222;
-  border-color: #080808;
+  
 }
 .navbar-inverse .navbar-brand {
   color: #999;
@@ -4335,9 +4341,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
   color: #fff;
   text-align: center;
   white-space: nowrap;
-  vertical-align: baseline;
+  vertical-align: top;
   background-color: #999;
   border-radius: 10px;
+
 }
 .badge:empty {
   display: none;
@@ -5306,6 +5313,7 @@ button.close {
   background-clip: padding-box;
   border: 1px solid #ccc;
   border: 1px solid rgba(0, 0, 0, .2);
+  white-space: pre-line;
   border-radius: 6px;
   -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
           box-shadow: 0 5px 10px rgba(0, 0, 0, .2);

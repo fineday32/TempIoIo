@@ -232,9 +232,9 @@ PHOTO<%= f.file_field :photography%>
           	      });
           	  });
 				//$(".row.draggable").draggable({revert: "invalid"});
-				$(".row.draggable").droppable()
-				 $( ".tab-pane" ).sortable();
-    			$( ".tab-pane" ).disableSelection();
+				$(".row.draggable").droppable();
+				$(".tab-pane" ).sortable();
+    			$(".tab-pane" ).disableSelection();
 				$(".boolean.optional").change(function() {
 				     if(this.checked)
 				    	 $(this).parent().parent().find('.hidden').removeClass('hidden').addClass('show');

@@ -12,6 +12,33 @@ class Talk < ActiveRecord::Base
     validates_attachment_content_type :bg, :content_type => %w(image/jpeg image/jpg image/png)
     #validates_attachment_content_type :photogaphy, :content_type => /\Aimage\/.*\Z/
 
-    #attr_accessor :title
+    scope :not_finished 
     
+    def self.not_finished
+        @not_finished_list = Array.new
+        Talk.all.each do |t|
+           if( t.talk_process_lists.where(:finished=>nil).count >0)
+                @not_finished_list << t
+            end
+        end
+        @not_finished_list        
     end
+
+    def self.not_finished
+        @not_finished_list = Array.new
+        Talk.all.each do |t|
+           if( t.talk_process_lists.where(:finished=>nil).count >0)
+                @not_finished_list << t
+            end
+        end
+        @not_finished_list        
+    end
+
+    def self.get_type(content)
+        if (content == "sign_up")
+
+        end
+    end
+end
+
+   

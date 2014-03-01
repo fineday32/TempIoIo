@@ -1,0 +1,58 @@
+<table class="table table-hover">
+  		<thead>
+	  		<tr>
+	  			<td>School(Nation)</td>
+	  			<td>Major</td>
+	  			<td>Degree</td>
+	  			<td>Name</td>
+	  			<td>Talk Status</td>
+	  			<td>Helper</td>
+	  			<td>Sign-up Date</td>
+	  			<td>Days</td>
+	  			<td>Last Activity</td>
+	  			<td>Days</td>
+	  			<td>TAGS</td>
+	  		</tr>
+  		</thead>
+  		<tbody>
+  			<% @tc_list.each do |tc| %>
+  			<% if tc.finished%>
+  				<tr class="success" href=''>
+  			<% else%>
+  				<tr class="" href=''>
+  			<% end %>
+  				<td><%= tc.main.school %></td>
+  				<td><%= tc.main.department %></td>
+  				<td><%= tc.main.degree %></td>
+  				<td><%= tc.eng_name + " " + tc.chi_name %></td>
+  				<td class=" example" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%  tc.process.each do |p| %>
+  						<%=   p.process_name%> <%=   p.finished_date%><% end	%>">
+  						
+  					<%= tc.status %>
+				</td>
+  				<td><%= tc.users %></td>
+  				<td><%= tc.sign_up_date %></td>
+  				<td><%= tc.days_since_sign_up %></td>
+  				<td><%= tc.last_activity_date %></td>
+  				<td><%= tc.days_since_last_activity %></td>
+  				<td><%= %></td>
+  			</tr>
+  			<% end %> 
+  		</tbody>
+	</table>
+	<td align=left>Messages</td>
+</table>
+
+<script type="text/javascript">
+$('.example').popover();
+$(".nav.nav-tabs").change();
+</script>
+
+
+
+
+
+
+
+
+

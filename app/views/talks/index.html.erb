@@ -1,0 +1,111 @@
+
+<p style="color: green"><%= flash[:notice] %></p>
+<div class="container">
+
+	
+	
+	
+	
+</div>
+<table width=100%>
+<tr>
+	<td rowspan=2>
+	<%= image_tag("ioh_logo.png") %>
+	</td>
+	<td align=right width=200px><h2> Hi Helper!! </h2></td>
+	<td align=right width=80px><%= image_tag("asterisk.png", :size => "15x15") %><font color="#1C86EE"> <u>Hi Jeff </u></td>
+	<td align=right width=80px><font color="#1C86EE"><u> Log out </u></td>
+</tr>
+<tr>
+	<td></td>
+	<td align=center colspan=2> Search </td>
+</tr>
+</table>
+
+
+<table width=100%>
+<td>
+
+<table style="border:2px solid rgb(0,0,0); " rules="all" width=100%>
+	<col span="1" style="background-color: rgb(71,162,249);">
+	<tbody>
+		<tr>
+			<td align=center width=300px>Talks</td>
+			<td align=center width=500px>Speakers</td>
+			
+
+			
+		</tr>
+	</tbody>
+</table>
+
+</td>
+<td></td>
+<td>
+
+<table style="border:2px solid rgb(0,0,0); " rules="all" align=right>
+	<col span="2" style="background-color: rgb(68,147,18)" width=1000px>
+	<tbody  text="#FFFFFF">
+		<tr>
+			<td align=center width=150><font color="white"><%= link_to "new", new_helper_path %> </td>
+			<td align=center width=150><font color="white">New Speaker</td>
+		
+
+			
+		</tr>
+	</tbody>
+</table>
+
+</td>
+</table>
+<p>
+<table class="table table-hover">
+  		<thead>
+	  		<tr>
+	  			<td>School(Nation)</td>
+	  			<td>Major</td>
+	  			<td>Degree</td>
+	  			<td>Name</td>
+	  			<td>Talk Status</td>
+	  			<td>Helper</td>
+	  			<td>Sign-up Date</td>
+	  			<td>Days</td>
+	  			<td>Last Activity</td>
+	  			<td>Days</td>
+	  			<td>TAGS</td>
+	  		</tr>
+  		</thead>
+  		<tbody>
+  			<% @tc_list.each do |tc| %>
+  			<tr>
+  				<td><%= tc.main.school %></td>
+  				<td><%= tc.main.department %></td>
+  				<td><%= tc.main.degree %></td>
+  				<td><%= tc.eng_name + " " + tc.chi_name %></td>
+  				
+  				<td><%= tc.helpers %></td>
+  				<td><%= tc.sign_up_date %></td>
+  				<td><%= tc.days_since_sign_up %></td>
+  				<td><%= tc.last_activity_date %></td>
+  				<td><%= tc.days_since_last_activity %></td>
+  				<td><%= %></td>
+  			</tr>
+  			<% end %> 
+  		</tbody>
+	</table>
+	 
+
+<table style="border:2px solid rgb(0,0,0);" width=100%>
+
+	<td align=left>Messages</td>
+</table>
+
+
+
+
+
+
+
+
+
+
