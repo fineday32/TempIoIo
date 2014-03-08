@@ -20,30 +20,27 @@
 			  <li><a href="#school" data-toggle="tab">By School</a></li>
 			  <li><a href="#department" data-toggle="tab">By Deparment</a></li>
 			  <li><a href="#nation" data-toggle="tab">By Nation</a></li>
+
 			</ul>
 <div class="tab-content">
-		  <div class="tab-pane active" id="all"></div>
-		  <div class="tab-pane " id="schedule">
+		  <div class="tab-pane fade in active" id="all"></div>
+		  <div class="tab-pane fade" id="schedule">
 		  		<ul class="nav nav-pills green">
-		  		<li><%= link_to "Signed Up" , "/talks:all" ,  :class=>"category", :remote=>true%></li>
-				<li><%= link_to "Posters Ready" , "/talks:working" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Slide Ready" , "/talks:slides" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Video 1 Uploaded" , "/talks:v1" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Video 2 Uploaded" , "/talks:v2" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Video 3 Uploaded" , "/talks:v3" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Waiting to upload" , "/talks:upload" ,  :class=>"category", :remote=>true%></li>
-  				<li><%= link_to "Finished" , "/talks:finished" ,  :class=>"category", :remote=>true%></li>
-
+		  			<% @process_list.each do |p| %>
+		  			<%	@p_new =  p.gsub(/ /, "_") %>
+		  				<li> <%= link_to p, "/talks:"+ @p_new,  :class=>"category", :remote=>true%></li>
+		  			<% end %>
+		  			  <li><%= link_to "Finished" , "/talks:finished" ,  :class=>"category", :remote=>true%></li>
   				</ul>
  </div>
-		  <div class="tab-pane " id="warning">
+		  <div class="tab-pane fade" id="warning">
 		  	<ul class="nav nav-pills">
 				<li><%= link_to "Signed Up" , "/talks:working" ,  :class=>"category", :remote=>true%></li>
   				</ul>
 		  </div>
-		  <div class="tab-pane " id="school"></div>
-		  <div class="tab-pane " id="department"></div>
-		  <div class="tab-pane " id="nation"></div>
+		  <div class="tab-pane fade" id="school"></div>
+		  <div class="tab-pane fade" id="department"></div>
+		  <div class="tab-pane fade" id="nation"></div>
 </div>
 <div id="content">
 
@@ -68,6 +65,7 @@
 	  			<td>Last Activity</td>
 	  			<td>Days</td>
 	  			<td>TAGS</td>
+	  			<td>link</td>
 	  		</tr>
   		</thead>
   		<tbody>
@@ -92,6 +90,7 @@
   				<td><%= tc.last_activity_date %></td>
   				<td><%= tc.days_since_last_activity %></td>
   				<td><%= %></td>
+  				<td><%= link_to "link",edit_talk_path(tc.talk_id) %></td>
   			</tr>
   			<% end %> 
   		</tbody>

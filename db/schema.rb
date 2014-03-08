@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140224122300) do
+ActiveRecord::Schema.define(version: 20140305101049) do
 
   create_table "acadamic_histories", force: true do |t|
     t.integer  "speaker_profile_id"
@@ -128,6 +128,8 @@ ActiveRecord::Schema.define(version: 20140224122300) do
     t.integer  "comment_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "role"
+    t.string   "status"
   end
 
   create_table "users", force: true do |t|

@@ -80,10 +80,12 @@ IOHBack::Application.configure do
   
   config.paperclip_defaults = {
       :storage => :s3,
+      
       :s3_credentials => {
-          :bucket => 'iohtest',
-          :access_key_id => 'AKIAIZEWYGALY7GVJUWA',
-          :secret_access_key => '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'
+          :bucket => ENV['iohtest'],
+          :access_key_id => ENV['AKIAJZCSUJDVYCNLJYKA'],
+          :secret_access_key => ENV['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']
+          
       }
 }
   

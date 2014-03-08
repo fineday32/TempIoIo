@@ -1,428 +1,348 @@
 <style>
-
- </style> 
+  .thumb {
+    height: 300px;
+    border: 1px solid #000;
+    margin: 10px 5px 0 0;
+  }
+</style>
 <!-- this is comment -->
-
+<div class="container">
 <p style="color: green"><%= flash[:notice] %></p>
 
+
+
 <%= simple_form_for :talk_content ,:role=> "form", :url => helpers_path do|f| %>
-
+<h3><%= f.input_field :comment , :as=>:text , :class => "form-control" ,:placeholder=>"notes"%></h3>
 <div class="row">
-<div class="col-md-11">
-	<div class="col-md-8">
-		<input type="text" class="form-control" placeholde="haha">
-	</div>
-	<div class="col-md-4">
-		<div class="col-md-1"><%= f.input :check_acadamic1, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false %></div>
-		<div class="col-md-2"> Important</div>
-		<div class="col-md-1"><%= button_tag "Add" , :id=>"Add"%></div>
-	</div>
-	
-</div>
-</div>
+	<div class= "col-md-6">
+		<div class="row">
+			<div class="panel panel-primary">
+				 <div class="panel-heading">
+					<h2 class="panel-title">Speaker</h2>
+						<%= f.input :speaker_id, :as => :hidden %>
+						<%= f.input :talk_id, :id=>"talk_id" ,:as => :hidden %>					
+					</div>
+				<div class="panel-body">
+					<div class="row">
+						<div class="col-md-5">Existing Speaker </div>
+						<div class="col-md-7">
+							<%=f.collection_select :existing, SpeakerProfile.all, :id, :eng_name%>
+						</div>
+					</div>
 
-<div class="col-md-2" width=2>
-	<h2>Speaker</h2>
-</div>
-	
-<div class="row">
-	<div class="col-md-7">
-		<div class="col-md-2">
-			Existing Speaker
-		</div>
-		<div class="col-md-2">
-			<%=f.collection_select :existing, SpeakerProfile.all, :id, :eng_name%>
-		</div>
-		<p>
-	</div>
-</div>
-
-<div class="row">
-<div class="col-md-7 col-md-offset-2">
-		<div class="col-md-2">
-			New Speaker
-		</div>
-		<div class="col-md-2">
-			<%= f.input :eng_name , :input_html => { :class => "form-control"}, placeholder:"Eng_name" , label: false%>	
-		</div>
-		<div class="col-md-2">
-		<%= f.input :chi_name ,  placeholder:"Chi_name" , label: false, :input_html => { :class => "form-control"}%> 
-		</div>
-		<p>
-	</div>
-</div>
-<p>
-
-
-<div class="container">
-	<!--
-	<div class="row">
-		<div class="col-cs-4">
-			<%= f.input :comment, label: "comment" %>
-		</div>
-	</div>
-	-->
-	<div class="row">
-	  <div class="col-md-6">
-	  	<!--
-	  	<div class="row">
-		  	  <div class="col-md-6">EXISTING SPEAKER</div>
-			  <div class="col-md-6">
-			  			<%=f.collection_select :existing, SpeakerProfile.all, :id, :eng_name%>
-			  </div>
+					<div class="row">
+						<div class="col-md-4">
+								New Speaker
+							</div>
+							<div class="col-md-4">
+								<%= f.input :eng_name , :input_html => { :class => "form-control"}, placeholder:"Eng_name" , label: false%>	
+							</div>
+							<div class="col-md-4">
+							<%= f.input :chi_name ,  placeholder:"Chi_name" , label: false, :input_html => { :class => "form-control"}%> 
+							</div>
+					</div>
+					<div class="row">
+					  		<div class="row">
+						  		<div class="col-md-1"></div>
+						  		<div class="col-md-2">School</div>
+						  		<div class="col-md-3">Department</div>
+						  		<div class="col-md-2">Year</div>
+						  		<div class="col-md-2">Degree</div>
+						  		<div class="col-md-2">Nation</div>
+						  	</div>
+						  	<div class="row">
+						  		<h4><div class="col-md-1"><%= f.input :check_acadamic1, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false %></div></h4>
+						  		<div class="col-md-2"><%= f.input :school1 , label:"school1", label: false ,placeholder:"School", :input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-3"><%= f.input :department1 , label:"department1" , label: false, :input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :year1 , label:"year1" , label: false, :input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :degree1 , label:"degree1" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :nation1 , label:"nation1" , label: false,:input_html => { :class => "form-control"}%></div>
+						  	</div>
+						  	<div class="row">
+						  		<h4><div class="col-md-1"><%= f.input :check_acadamic2, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div></h4>
+						  		<div class="col-md-2"><%= f.input :school2 , label:"school2", label: false,:input_html => { :class => "form-control"} %></div>
+						  		<div class="col-md-3"><%= f.input :department2 , label:"department2" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :year2 , label:"year2" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :degree2 , label:"degree2" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :nation2 , label:"nation2" , label: false,:input_html => { :class => "form-control"}%></div>
+						  	</div>
+						  	<div class="row">
+						  		<h4><div class="col-md-1"><%= f.input :check_acadamic3, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div></h4>
+						  		<div class="col-md-2"><%= f.input :school3 , label:"school3", label: false ,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-3"><%= f.input :department3 , label:"department3" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :year3 , label:"year3" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :degree3 , label:"degree3" , label: false,:input_html => { :class => "form-control"}%></div>
+						  		<div class="col-md-2"><%= f.input :nation3 , label:"nation3" , label: false,:input_html => { :class => "form-control"}%></div>
+						  	</div>				  			 	
+						</div>
+				</div>
+			</div>
 		</div>
 		<div class="row">
-			<div class="col-md-3">NEW SPEAKER</div>
-			<div class="col-md-2"> 
-				<%= f.input :eng_name , :input_html => { :class => "form-control"}, placeholder:"Eng_name" , label: false%>	
-			</div>
-			<div class="col-md-2"> 
-				<%= f.input :chi_name ,  placeholder:"Chi_name" , label: false, :input_html => { :class => "form-control"}%> 
-			</div>
-		</div>
-		-->
-		<div class="row">
-	  		<h4><div class="col-md-1"></div></h4>
-	  		<h4><div class="col-md-2">School</div></h4>
-	  		<h4><div class="col-md-3">Department</div></h4>
-	  		<h4><div class="col-md-2">Year</div></h4>
-	  		<h4><div class="col-md-2">Degree</div></h4>
-	  		<h4><div class="col-md-2">Nation</div></h4>
+			<div class="panel panel-primary">
+				<div class="panel-heading">
+					<h2 class="panel-title">Helpers</h2>
+				</div>
+				<div class="panel-body">
+					<div id="helpers_list">
+						<div class="row">
+							<div class="col-md-4 show">
+								<h3><%= current_user.name %></h3>
+								<%= f.label :user_id, label: current_user.id, :class=>"helpers", :id=>"current_helper_id", required: false, :as => :hidden%>
+							</div>
+							<div class="col-md-4 show" >
+								<h3><%= f.input_field :user_id, :collection => User.all , :class => "helpers"%></h3>
+							</div>
+							<div class="col-md-4 hidden" >
+								<h3><%= f.input_field :user_id, :collection => User.all , :class => "helpers"%></h3>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div> 
 	  	</div>
-	  	<p>
-	  	<div class="row">
-	  		<h4><div class="col-md-1"><%= f.input :check_acadamic1, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false %></div></h4>
-	  		<div class="col-md-2"><%= f.input :school1 , label:"school1", label: false ,placeholder:"School", :input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-3"><%= f.input :department1 , label:"department1" , label: false, :input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :year1 , label:"year1" , label: false, :input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :degree1 , label:"degree1" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :nation1 , label:"nation1" , label: false,:input_html => { :class => "form-control"}%></div>
-	  	</div>
-	  	<div class="row">
-	  		<h4><div class="col-md-1"><%= f.input :check_acadamic2, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false,:input_html => { :class => "form-control"}%></div></h4>
-	  		<div class="col-md-2"><%= f.input :school2 , label:"school2", label: false,:input_html => { :class => "form-control"} %></div>
-	  		<div class="col-md-3"><%= f.input :department2 , label:"department2" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :year2 , label:"year2" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :degree2 , label:"degree2" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :nation2 , label:"nation2" , label: false,:input_html => { :class => "form-control"}%></div>
-	  	</div>
-	  	<div class="row">
-	  		<h4><div class="col-md-1"><%= f.input :check_acadamic3, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false,:input_html => { :class => "form-control "}%></div></h4>
-	  		<div class="col-md-2"><%= f.input :school3 , label:"school3", label: false ,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-3"><%= f.input :department3 , label:"department3" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :year3 , label:"year3" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :degree3 , label:"degree3" , label: false,:input_html => { :class => "form-control"}%></div>
-	  		<div class="col-md-2"><%= f.input :nation3 , label:"nation3" , label: false,:input_html => { :class => "form-control"}%></div>
-	  	</div>			  			 	
-		<div class="row">
-			<div class="col-md-9" id="helpers_list">
-				HELPERS
-				<div class="show">
-					<%=  current_user.name %>
-					<%= f.label :user_id, label: current_user.id, :class=>"helpers", :id=>"current_helper_id", required: false%>
-				</div>
-				<div class="show" >
-					<%= f.input_field :user_id, :collection => User.all , :class => "helpers"%>
-				</div>
-				<div class="hidden" >
-					<%= f.input_field :user_id, :collection => User.all , :class => "helpers"%>
-				</div>
-				<div class="hidden" >
-					<%= f.input_field :user_id, :collection => User.all , :class => "helpers"%>
-				</div>
-				<div class="hidden" >
-					<%= f.input_field :user_id, :collection => User.all , :class => "helpers"%>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<%= button_tag "add helper" , :id=>"add_helper"%>
-			</div>
-		</div>
 	</div>
 	<div class="col-md-6">
-			<ul class="nav nav-tabs">
-			  <li class="active"><a href="#record" data-toggle="tab">Record</a></li>
-			  <li><a href="#live" data-toggle="tab">Live Talk</a></li>
-			  <li><a href="#article" data-toggle="tab">Article</a></li>
-			  </a></li>
-			</ul>
-			<div class="tab-content">
-			  <div class="tab-pane active" id="record">
-				 <%  @process_lists.where(:process_type=>"record").each do |t| %>
-			  		 <div class="row draggable">
-				  		<div class="col-md-6">
-					  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
-					  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
-				  		</div>
-			  			<div class="col-md-2">
-			  				 <%= button_tag "remove" , :class=>"remove_process" %>
-			  			</div>
-			  			<div class="col-md-4">
-			  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker"} , label: false%>
-			  				</div>
-			  		 
-						</div>
-					</div>
-				<% end %> 
-			  </div>
-			  <div class="tab-pane" id="live">
-			    	 <%  @process_lists.where(:process_type=>"live").each do |t| %>
-			  		 <div class="row ">
-				  		<div class="col-md-6">
-					  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
-					  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
-				  		</div>
-			  			<div class="col-md-2">
-			  				 <%= button_tag "remove" , :class=>"remove_process" %>
-			  			</div>
-			  			<div class="col-md-4">
-			  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker"} , label: false%>
-			  				</div>
-			  		 
-						</div>
-					</div>
-				<% end %> 
-			  </div>
-			  <div class="tab-pane" id="article">
-			  		 <%  @process_lists.where(:process_type=>"atricle").each do |t| %>
-			  		 <div class="row">
-				  		<div class="col-md-6">
-					  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
-					  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
-				  		</div>
-			  			<div class="col-md-2">
-			  				 <%= button_tag "remove" , :class=>"remove_process" %>
-			  			</div>
-			  			<div class="col-md-4">
-			  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker"} , label: false%>
-			  				</div>
-			  		 
-						</div>
-					</div>
-				<% end %> 
-			  </div>
+		<div class="panel panel-primary">
+			<div class="panel-heading">
+				<h2 class="panel-title">Process</h2>
 			</div>
-			<%= button_tag "add process" , :id=>"add_process"%>
-		</div>
-	</div>
-
-<div class="row">
-Talk
-</div>	
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Online Meeting</h3>
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control" placeholder="comment+">
-		</div>
-		<div class="col-md-2">
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Poster</h3>
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control" placeholder="comment+">
-		</div>
-		<div class="col-md-1">
-			Upload
-		</div>
-		<div class="col-md-1">
-			 <%= f.file_field :bg%>
-		</div>
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Part 1 Video</h3>
-		</div>
-		<div class="col-md-7">
-			<input type="text" class="form-control" placeholder="Video Link">
-		</div>
-		
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Part 1 Content</h3>
-		</div>
-		<div class="col-md-7">
-			<textarea class="form-control" rows="3"></textarea>
-		</div>
-		
-	</div>
-</div>
-<p>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Part 2 Video</h3>
-		</div>
-		<div class="col-md-7">
-			<input type="text" class="form-control" placeholder="Video Link">
-		</div>
-		
-	</div>
-</div>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Part 2 Content</h3>
-		</div>
-		<div class="col-md-7">
-			<textarea class="form-control" rows="3"></textarea>
-		</div>
-		
-	</div>
-</div>
-<p>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-1">
-			<h3>BIO</h3>
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control" placeholder="comment+">
-		</div>
-		<div class="col-md-7">
-			<textarea class="form-control" rows="3"></textarea>
-		</div>
-	</div>
-</div>	
-<p>
-
-<div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
-			<h3>Photo</h3>
-		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control" placeholder="comment+">
-		</div>
-		<div class="col-md-1">
-			Upload
-		</div>
-		<div class="col-md-1">
-			 <%= f.file_field :bg%>
+			<div class="panel-body">
+				<ul class="nav nav-tabs">
+				  <li class="active"><a href="#record" data-toggle="tab">Record</a></li>
+				  <li><a href="#live" data-toggle="tab">Live Talk</a></li>
+				  <li><a href="#article" data-toggle="tab">Article</a></li>
+				  </a></li>
+				</ul>
+				<div class="tab-content">
+				  <div class="tab-pane active" id="record">
+					 <%  @process_lists.where(:process_type=>"record").each do |t| %>
+				  		 <div class="row draggable">
+					  		<div class="col-md-6">
+						  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+						  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+					  		</div>
+				  			<div class="col-md-2">
+				  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+				  			</div>
+				  			<div class="col-md-3">
+				  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+				  				</div>
+				  		 
+							</div>
+						</div>
+					<% end %> 
+				  </div>
+				  <div class="tab-pane" id="live">
+				    	 <%  @process_lists.where(:process_type=>"live").each do |t| %>
+				  		 <div class="row ">
+					  		<div class="col-md-6">
+						  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+						  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+					  		</div>
+				  			<div class="col-md-2">
+				  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+				  			</div>
+				  			<div class="col-md-3">
+				  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+				  				</div>
+				  		 
+							</div>
+						</div>
+					<% end %> 
+				  </div>
+				  <div class="tab-pane" id="article">
+				  		 <%  @process_lists.where(:process_type=>"atricle").each do |t| %>
+				  		 <div class="row">
+					  		<div class="col-md-6">
+						  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+						  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+					  		</div>
+				  			<div class="col-md-2">
+				  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+				  			</div>
+				  			<div class="col-md-3">
+				  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+				  				</div>
+				  		 
+							</div>
+						</div>
+					<% end %> 
+				  </div>
+				</div>
+			</div>
+			<div class="panel-footer">
+					<%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%>
+				</div>
 		</div>
 	</div>
 </div>
-
 <div class="row">
-	<div class="col-md-10">
-		<div class="col-md-3">
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title">Poster Related</h2>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-2">
+			<h3>POSTER LINK</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :poster , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
 			<h3>Background</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.file_field :bg, :id=>"bg_files"%></h3>
+			<output class="list" id="list"></output>
+			</div>
 		</div>
-		<div class="col-md-2">
-			<input type="text" class="form-control" placeholder="comment+">
-		</div>
-		<div class="col-md-1">
-			Upload
-		</div>
-		<div class="col-md-1">
-			 <%= f.file_field :bg%>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>Photography</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.file_field :photography ,:id=>"photography_files"%></h3>
+			<output class="list"></output>
+			</div>
 		</div>
 	</div>
 </div>
-
-<!--
-<div class="row">
-<%= f.label :intro%>
-<%= f.input_field :intro%>
 </div>
 
 <div class="row">
-<%= f.label :poster %>
-<%= f.input_field :poster%>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title">Talk Related</h2>
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-2">
+			<h3>INTRO</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :intro , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		
+		<div class="row">
+			<div class="col-md-2">
+			<h3>SLIDE1</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :slide1 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>SLIDE2</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :slide2 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-2">
+			<h3>SLIDE3</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :slide3 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>VIDEO URL1</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :videourl1 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>VIDEO URL2</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :videourl2 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>VIDEO URL3</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :videourl3 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>VIDEO COMMENT1</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :videocomment1 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>VIDEO COMMENT2</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :videocomment3 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>Q&A LINK 1</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :feedback1 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>Q&A LINK 2</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :feedback2 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-2">
+			<h3>Q&A LINK 3</h3>
+			</div>
+			<div class="col-md-6">
+			<h3><%= f.input_field :feedback3 , :as=>:text , :class => "form-control"%></h3>
+			</div>
+		</div>
+	</div>	
+	</div>
 </div>
-<div class="row">
-<%= f.label :slide1 %>
-<%= f.input_field :slide1%>
-</div>
-<div class="row">
-<%= f.label :slide2 %>
-<%= f.input_field :slide2%>
-</div>
-<div class="row">
-<%= f.label :slide3 %>
-<%= f.input_field :slide3%>
-</div>
-<div class="row">
-<%= f.label :videourl1%>
-<%= f.input_field :videourl1%>
-</div>
-<div class="row">
-<%= f.label :videourl2 %>
-<%= f.input_field :videourl2%>
-</div>
-<div class="row">
-<%= f.label :videourl3%>
-<%= f.input_field :videourl3%>
-</div>
-<div class="row">
-<%= f.label :videocomment1 %>
-<%= f.input_field :videocomment1 %>
-</div>
-<div class="row">
-<%= f.label :videocomment2%>
-<%= f.input_field :videocomment2%>
-</div>
-<div class="row">
-<%= f.label :videocomment3%>
-<%= f.input_field :videocomment3%>
-</div>
-<div class="row">
-<%= f.label :feedback1%>
-<%= f.input_field :feedback1%>
-</div>
-<div class="row">
-<%= f.label :feedback2%>
-<%= f.input_field :feedback2%>
-</div>
-<div class="row">
-<%= f.label :feedback3%>
-<%= f.input_field :feedback3%>
-</div>
-<div class="row">
-BG<%= f.file_field :bg%>
-PHOTO<%= f.file_field :photography%>
-</div>
--->
-<div class="col-md-12 col-md-offset-9">
+
+<div class="col-md-12 col-md-offset-11">
 <%= f.input :date_array, :as => :hidden %>				
 <%= f.input :check_array, :as => :hidden  %>	
 <%= f.input :name_array, :as => :hidden  %>	
 <%= f.input :users_array, :as => :hidden  %>	
-<%= f.submit "Save" %>
+<%= f.submit "Save", :class=>"btn btn-primary btn-lg"%>
 </div>
 <p>
 
 
 <% end %>			
-	
+
 			
 
 </div>
+
 
         <script type="text/javascript">
             $(function () {            
                 $('.datetimepicker').datepicker({
                     language: 'en',
-                    format: 'mm/dd/yyyy',
+                    format: 'yyyy/mm/dd',
          			autoclose:true,
          			pickTime: false,
          			todayHighlight: true,
@@ -435,17 +355,27 @@ PHOTO<%= f.file_field :photography%>
     			$(".tab-pane" ).disableSelection();
 				$(".boolean.optional").change(function() {
 				     if(this.checked)
-				    	 $(this).parent().parent().find('.hidden').removeClass('hidden').addClass('show');
+				    	{
+				    	$(this).parent().parent().find('.hidden').removeClass('hidden').addClass('show');
+				    	var current = new Date();
+				    	var today = current.getFullYear()+"/"+(current.getMonth()+1)+"/"+current.getDate() ;
+				    	var datetimepicker = $(this).parent().parent().find('.show').find('.datetimepicker');
+				    	if(datetimepicker.val()=="")
+				    		datetimepicker.val(today);
+				    	}
 				 	 else 
-				 	 	$(this).parent().parent().find('.show').removeClass('show').addClass('hidden');
+				 	 	{
+				 	 		$(this).parent().parent().find('.show').removeClass('show').addClass('hidden');
+				 	 		var datetimepicker = $(this).parent().parent().find('.hidden').find('.datetimepicker');
+				 	 			datetimepicker.val("");
+				 	 	}
+
 				    });
-				$(".nav.nav-tabs").change(function()
-					{
-						alert("hihi");
-					});
+				
 
 				$(".remove_process").click(function(){
 					$(this).parent().parent().remove();
+					
 					return false;
 
 				});
@@ -459,22 +389,28 @@ PHOTO<%= f.file_field :photography%>
 				});
 				$("#add_process").click(function(){
 					$('.tab-pane.active').append(
-	     				$('<label/>', {'class': 'checkbox'}).append(
-	     					$('<input/>', {'class': 'checkbox', "type" : "checkbox", "value":"true", "unchecked_value":"false"})).append(
-	     					$("<label/>" , {'placeholder':"new process", "text":"NEW PROCESS", "contentEditable":"true","class":"process_name"})).append(
-	     					$("<input/>", {'class':"datetimepicker"}))
-	     					);
-	     				$(function () {            
-                $('.datetimepicker').datepicker({
-                    language: 'en',
-                    format: 'mm/dd/yyyy',
-         			autoclose:true,
-         			pickTime: false
-          	      });
-          	  });
-	     				return false;
-
-				})
+						$('<div>', {'class' : 'row draggable'}).append(
+							$('<div>', {'class': 'col-md-6'}).append(
+	     						$('<input/>', {'class': 'boolean optional','checked_value':'true', "type" : "checkbox", "value":"true", "unchecked_value":"false"})).append(
+	     						$("<label/>" , { "text":"new process" ,"contentEditable":"true","class":"process_name",  'boolean_style':'inline', 'for':'talk_content_process'}))).append(
+	     					$('<div>', {'class': 'col-md-2'}).append(
+	     						$("<button/>", {"text":"remove", "class":"remove_process btn btn-danger btn-xs"}))).append(
+	     					$('<div>', {'class': 'col-md-3'}).append(
+							$("<input/>", {"text":"", "class":"datetimepicker form-control"})
+	     						)
+					))
+					$(function () {            
+              		  $('.datetimepicker').datepicker({
+	                    language: 'en',
+	                    format: 'mm/dd/yyyy',
+	         			autoclose:true,
+	         			pickTime: false,
+	         			todayHighlight: true,
+	         			todayBtn: "linked"
+	          	      });
+          	 		 });
+					return false;
+				});
 				  $('.simple_form.talk_content').submit(function()
 					{
 	    				try{
@@ -508,6 +444,41 @@ PHOTO<%= f.file_field :photography%>
 					    	{}
 					    	
 					});
+
+function handleFileSelect(evt) {
+    var files = evt.target.files; // FileList object
+
+    // Loop through the FileList and render image files as thumbnails.
+    for (var i = 0, f; f = files[i]; i++) {
+
+      // Only process image files.
+      if (!f.type.match('image.*')) {
+        continue;
+      }
+
+      var reader = new FileReader();
+	  var target = $(evt.target).parent().parent().find(".list");
+      
+      // Closure to capture the file information.
+      reader.onload = (function(theFile) {
+        return function(e) {
+          // Render thumbnail.
+          var span = document.createElement('span');
+          span.innerHTML = ['<img class="thumb" src="', e.target.result,
+                            '" title="', escape(theFile.name), '"/>'].join('');
+          target.empty();
+          target.append(span);
+        };
+      })(f);
+
+      // Read in the image file as a data URL.
+      reader.readAsDataURL(f);
+    }
+  }
+
+  document.getElementById('bg_files').addEventListener('change', handleFileSelect, false);
+  document.getElementById('photography_files').addEventListener('change', handleFileSelect, false);
+  
         </script>
  
 

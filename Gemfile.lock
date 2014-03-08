@@ -41,6 +41,11 @@ GEM
       uuidtools (~> 2.1)
     bcrypt-ruby (3.1.2)
     builder (3.1.4)
+    carrierwave (0.10.0)
+      activemodel (>= 3.2.0)
+      activesupport (>= 3.2.0)
+      json (>= 1.7)
+      mime-types (>= 1.16)
     climate_control (0.0.3)
       activesupport (>= 3.0)
     cocaine (0.5.3)
@@ -125,6 +130,10 @@ GEM
     sdoc (0.4.0)
       json (~> 1.8)
       rdoc (~> 4.0, < 5.0)
+    simple_form_fancy_uploads (0.1.0)
+      carrierwave
+      rails (~> 4.0.0)
+      simple_form (~> 3.0.0)
     sprockets (2.10.1)
       hike (~> 1.2)
       multi_json (~> 1.0)
@@ -170,6 +179,7 @@ DEPENDENCIES
   sass-rails (~> 4.0.0)
   sdoc
   simple_form!
+  simple_form_fancy_uploads
   sqlite3
   turbolinks
   uglifier (>= 1.3.0)

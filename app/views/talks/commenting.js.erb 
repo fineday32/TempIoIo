@@ -1,0 +1,2 @@
+$('#myModalContent').html("<%= escape_javascript(render :partial => 'commenting') %>");
+$('#myModalLabel').html("TITLE");

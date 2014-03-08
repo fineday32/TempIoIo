@@ -1,12 +1,20 @@
 IOHBack::Application.routes.draw do
   get "talks/index"
   get "admin/index"
+    
+        resources :talks
+          get 'talks:type' => 'talks#type'
+          get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
+    
     resources :helpers
+
     resources :first_page
     resources :comments
     resources :admin
     resources :talks
-       get 'talks:type' => 'talks#type'
+       
+       
+       
        
   devise_for :users
   get "helper/talks" => "helper#talks"

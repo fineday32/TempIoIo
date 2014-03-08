@@ -1,0 +1,7 @@
+<%= @talk %>
+<%= category %>
+<%= simple_form_for :comment ,:role=> "form",:remote=>true, :url => comments_path do|f| %>
+<%= f.input :content %>
+<%= f.input :talk_id, :input_html => { :value => @talk } %>
+<%= f.submit %>
+<% end %>

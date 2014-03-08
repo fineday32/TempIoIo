@@ -29,11 +29,13 @@ IOHBack::Application.configure do
 
 config.paperclip_defaults = {
     :storage => :s3,
-    :s3_permissions => :private,
+    :s3_protocol => 'http',
+    
     :s3_credentials => {
         :bucket => 'iohtest',
-        :access_key_id => 'AKIAIZEWYGALY7GVJUWA',
-        :secret_access_key => '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'
+        :access_key_id => 'AKIAJZCSUJDVYCNLJYKA',
+        :secret_access_key => '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'
+
     }
 }
 

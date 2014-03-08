@@ -12,6 +12,7 @@
 	  			<td>Last Activity</td>
 	  			<td>Days</td>
 	  			<td>TAGS</td>
+          <td>Links</td>
 	  		</tr>
   		</thead>
   		<tbody>
@@ -36,6 +37,7 @@
   				<td><%= tc.last_activity_date %></td>
   				<td><%= tc.days_since_last_activity %></td>
   				<td><%= %></td>
+          <td><%= link_to "link",edit_talk_path(tc.talk_id) %></td>
   			</tr>
   			<% end %> 
   		</tbody>
