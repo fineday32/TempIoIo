@@ -1,19 +1,21 @@
 IOHBack::Application.routes.draw do
+  get "speaker/index"
+  get "speaker/new"
   get "talks/index"
   get "admin/index"
     
-        resources :talks
-          get 'talks:type' => 'talks#type'
-          get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
-    
+        
     resources :helpers
-
+    resources :speakers
     resources :first_page
     resources :comments
     resources :admin
     resources :talks
-       
-       
+    resources :talks
+          get 'talks:type' => 'talks#type'
+          get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
+           
+      
        
        
   devise_for :users

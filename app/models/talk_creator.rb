@@ -1,4 +1,5 @@
 class TalkCreator 
+class TalkCreator 
 	include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming

@@ -35,7 +35,7 @@ class TalksController < ApplicationController
   def update
   	@t = TalkCreator.new
   	@talk_content = @t.update(params.permit![:talk_content])
-
+    
   	redirect_to "/talks:all"
 
   end
