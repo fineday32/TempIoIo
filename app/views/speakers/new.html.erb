@@ -1,8 +1,471 @@
+
+
 <%= simple_form_for @new_speaker, :role=>"form", :url => speakers_path do|f| %>
+
+<link rel="stylesheet" href="../assets/speakers-new.css.scss">
+  
+<div class="panel panel-primary left-box">
+  <div class="panel-heading"><h4>Basic information</h4></div>
+  <div class="panel-body">
+  	<div class="row">
+		<div class="col-md-5">
+  		<h3>Chinese Name</h3>
+  		</div>
+  		<div class="col-md-6">	
+  		<h3><%= f.input_field :email %></h3>
+  		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>English Name</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :email %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Telephone Number</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :email %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>E-mail</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :email %></h3>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommand Name</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommnd_name %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommand Telephone</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommnd_tel %></h3>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommand <br>E-mail</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommnd_email %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommand Reason</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommend_reason %></h3>
+		</div>
+	</div>
+
+  </div>
+</div>
+
+
+<div class="panel panel-primary right-box">
+  	<div class="panel-heading"><h4>Other Information</h4></div>
+  	
+	<div class="panel-body">
+		
+		
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Operating System (OS)</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :os_using %></h3>
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Giving Life Talk ?</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :live_talk %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Current Work</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :currernt_work %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>OK time for <br> Life Talk</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :ok_time %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Other Command for IOH</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :comments_for_IOH, :as=>:text, :class=>"form-control" %></h3>
+		</div>
+	</div>
+
+
+		</div>
+		</div>
+	</div>
+	
+</div>
+ 
+
+<div class="panel panel-primary left-full-box">
+  	<div class="panel-heading"><h4>Academic experience</h4></div>
+  	<div class="panel-body">
+  		<div class="row">
+  			<div class="col-md-11">
+  			<h4>
+  				Please filled in : Check / Name / School / School Abbreviation / Degree / Department / Year
+  			</h4>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<h3>
+  				<div class="col-md-11">Ex: 
+  				&nbsp&nbsp&nbsp
+  				<input type= "checkbox" checked>
+  				&nbsp&nbsp
+  				<span class="border"> 
+  					Tom </span> &nbsp&nbsp  
+  				<span class="border"> University of California, Berkeley </span> &nbsp&nbsp
+  				<span class="border"> UCB </span> &nbsp&nbsp
+  				<span class="border"> B.S. </span> &nbsp&nbsp
+  				<span class="border"> Computer Science </span> &nbsp&nbsp  
+  				<span class="border"> 2014 </span> &nbsp&nbsp  
+  				</div>
+  			</h3>
+		</div>
+		
+		<br>
+<!-- First Degree Record -->
+
+		<div class="row col-md-11">
+		<h2 style="color:red;"> First Degree Record</h2>
+		<span><%= f.input_field :acadamic_check1 , :as=> :boolean%>
+		</span>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Name: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_name1 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>School: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school1 %>
+				</span>
+
+				
+			</div>
+			</h3>
+		</div>
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<h4>
+				<span>School Abbreviation: </span>
+				</h4>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school_abbreviation1 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Degree : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_degree1 %>
+				</span>
+				
+			</div>
+			</h3>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Department : </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_department1 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Year : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_year1 %>
+				</span>
+			</div>
+			</h3>
+		</div>
+
+<!-- Second Degree Record -->
+
+		<div class="row col-md-11">
+		<h2 style="color:red;"> Second Degree Record</h2>
+		<span><%= f.input_field :acadamic_check2 , :as=> :boolean%>
+		</span>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Name: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_name2 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>School: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school2 %>
+				</span>
+
+				
+			</div>
+			</h3>
+		</div>
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<h4>
+				<span>School Abbreviation: </span>
+				</h4>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school_abbreviation2 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Degree : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_degree2 %>
+				</span>
+				
+			</div>
+			</h3>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Department : </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_department2 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Year : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_year2 %>
+				</span>
+			</div>
+			</h3>
+		</div>
+
+<!-- Third Degree Record -->
+
+		<div class="row col-md-11">
+		<h2 style="color:red;"> Third Degree Record</h2>
+		<span><%= f.input_field :acadamic_check3 , :as=> :boolean%>
+		</span>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Name: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_name3 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>School: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school3 %>
+				</span>
+
+				
+			</div>
+			</h3>
+		</div>
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<h4>
+				<span>School Abbreviation: </span>
+				</h4>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school_abbreviation3 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Degree : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_degree3 %>
+				</span>
+				
+			</div>
+			</h3>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Department : </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_department3 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Year : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_year3 %>
+				</span>
+			</div>
+			</h3>
+		</div>
+
+<!-- Fourth Degree Record -->
+
+		<div class="row col-md-11">
+		<h2 style="color:red;"> Fourth Degree Record</h2>
+		<span><%= f.input_field :acadamic_check4 , :as=> :boolean%>
+		</span>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Name: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_name4 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>School: </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school4 %>
+				</span>
+
+				
+			</div>
+			</h3>
+		</div>
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<h4>
+				<span>School Abbreviation: </span>
+				</h4>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_school_abbreviation4 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Degree : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_degree4 %>
+				</span>
+				
+			</div>
+			</h3>
+		</div>
+
+		<div class="row">
+			<h3>
+			<div class="col-md-2">
+				<span>Department : </span>
+			</div>
+			<div class="col-md-3">		
+				<span><%= f.input_field :acadamic_department4 %>
+				</span>
+			</div>
+			<div class="col-md-2">
+				<span>Year : </span>
+			</div>
+			<div class="col-md-3">		
+				<span>
+				<%= f.input_field :acadamic_year4 %>
+				</span>
+			</div>
+			</h3>
+		</div>
+
+
+
+  	</div>
+</div>
+
+<!-- 
 <%= f.input :chi_name %>
-<%= f.input :eng_name %>
+<%= f.input :eng_name %> 
 <%= f.input :tel %>
 <%= f.input :email %>
+
 <%= f.input :recommnd_name %>
 <%= f.input :recommnd_tel %>
 <%= f.input :recommnd_email %>
@@ -12,6 +475,7 @@
 <%= f.input :currernt_work %>
 <%= f.input :comments_for_IOH %>
 <%= f.input :ok_time %>
+
 <%= f.input :acadamic_check1 %>
 <%= f.input :acadamic_name1 %>
 <%= f.input :acadamic_school1 %>
@@ -40,6 +504,7 @@
 <%= f.input :acadamic_degree4 %>
 <%= f.input :acadamic_department4 %>
 <%= f.input :acadamic_year4 %>
+-->
 
 
 <% end %>

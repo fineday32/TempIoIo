@@ -1,0 +1,38 @@
+// Place all the styles related to the speaker controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.div{
+	/*widows: 100%;*/
+	
+}
+.left-box{
+	/*position: relative;*/
+	width: 40%;
+	margin-left: 5%;
+	float: left;
+	/*margin-right: auto;*/
+}
+
+.left-full-box{
+	width: 90%;
+	margin-left: 5%;
+	float: left;
+}
+
+.right-box{
+	/*position: relative;*/
+	width: 40%;
+	margin-right: 10%;
+	/*margin-left: 50%;*/
+	float: right;
+}
+
+.font-size-1{
+	font-size: 30px;
+}
+
+.border{
+	border: 1px solid gray;
+	border-radius: 5px;
+}
