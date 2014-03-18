@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-  scope :is_helper, where(:role =>"helper")
+  scope :is_helper, where(:admin=>false)
   
 
   def self.has_works_more_or_less_than (input, more_or_less, num )

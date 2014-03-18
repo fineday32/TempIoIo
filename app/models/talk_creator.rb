@@ -1,5 +1,4 @@
 class TalkCreator 
-class TalkCreator 
 	include ActiveModel::Validations
   include ActiveModel::Conversion
   extend ActiveModel::Naming
@@ -17,218 +16,6 @@ class TalkCreator
                 :main, :talk_id
 
   
-
-
-#helper         
-    @users_array
-    @users
-
-#comement
-    @comment
-
-#speaker profile
-    @bio
-    @eng_name
-    @chi_name
-    @existing
-    @main
-
-#acadamic histories
-    @school1
-    @department1
-    @year1
-    @degree1
-    @nation1
-    @school2
-    @department2
-    @year2
-    @degree2
-    @nation2
-    @school3
-    @department3
-    @year3
-    @degree3
-    @nation3
-    @check_acadamic1
-    @check_acadamic2
-    @check_acadamic3
-#talks
-    @title
-    @intro
-    @bg
-    @poster
-    @slide1
-    @slide2
-    @slide3
-    @videourl1
-    @videourl2
-    @videourl3
-    @videocomment1
-    @videocomment2
-    @videocomment3
-    @feedback1
-    @feedback2
-    @feedback3
-    @signup
-    @photography
-    @talk_id
-#process list
-    @process_lists
-    @process
-    @date_array
-    @check_array
-    @name_array
-
-  def initialize
-  	
-  end
-#helper
-  def self.users_array
-    @users_array 
-  end
-#comment
-  def self.comment
-    @comment
-  end
-#speaker profile
-  def self.bio
-    @bio
-  end
-
-  def self.eng_name
-   	@eng_name
-	end
- 	def self.chi_name
-    @chi_name
- 	end
-
-#academic history
- 	def self.school1
- 		@school1
- 	end
-  def self.department1
-    @department1
-  end
-  def self.year1
-    @year1
-  end
-  def self.degree1
-    @degree1
-  end
-  def self.nation1
-    @nation1
-  end
-  def self.school2
-    @school2
-  end
-  def self.department2
-    @department2
-  end
-  def self.year2
-    @year2
-  end
-  def self.degree2
-    @degree2
-  end
-  def self.nation2
-    @nation2
-  end
-    def self.school3
-    @school3
-  end
-  def self.department3
-    @department3
-  end
-  def self.year3
-    @year3
-  end
-  def self.degree3
-    @degree3
-  end
-  def self.nation3
-    @nation3
-  end
-
-  #talk 
-  def self.title
-    @title
-  end
-   def self.intro
-    @intro
-  end
-  def self.bg
-    @bg
-  end
-  def self.poster
-    @poster
-  end
-  def self.slide1
-    @slide1
-  end
-  def self.slide2
-    @slide2
-  end
-  def self.slide3
-    @slide3
-  end
-  def self.videourl1
-    @videourl1
-  end
-  def self.videourl2
-    @videourl2
-  end
-  def self.videourl3
-    @videourl3
-  end
-  def self.videocomment1
-    @videocomment1
-  end
-  def self.videocomment2
-    @videocomment2
-  end
-  def self.videocomment3
-    @videocomment3
-  end
-  def self.feedback1
-    @feedback1
-  end
-  def self.feedback2
-    @feedback2
-  end
-  def self.feedback3
-    @feedback3
-  end
-  def self.signup
-    @signup
-  end
-  def self.photography
-    @photography
-  end
-   #process list
-  def self.process_lists
-    @process_lists 
-  end
-  def self.date_array
-    @date_array 
-  end
-  def self.check_array
-    @check_array
-  end
-  def self.check_acadamic1
-    @check_acadamic1
-  end
-  def self.check_acadamic2
-    @check_acadamic2
-  end
-  def self.check_acadamic3
-    @check_acadamic3
-  end
-  def self.main
-    @main
-  end
-  def self.talk_id
-    @talk_id
-  end
   def insert(attributes = {}, current_user)
 
     attributes.each { |key, value| send "#{key}=", value }
@@ -240,13 +27,13 @@ class TalkCreator
     end
      if(@eng_name)
         speaker.eng_name = @eng_name
-      end
-      if(@chi_name)
+     end
+     if(@chi_name)
         speaker.chi_name = @chi_name
-      end
+     end
       speaker.save!
     talk = Talk.new
-    #acadamic histories
+    
      if(@school1.length>0 && @department1.length>0 && @nation1.length>0 && @year1.length>0 && @degree1.length>0)
        acadamicHistory = create_acadamic_history(@school1, @department1, @nation1, @year1, @degree1, speaker)
        if (check_acadamic1=="true")
@@ -315,13 +102,10 @@ class TalkCreator
         talk.feedback3 = @feedback3
       end
       
-      
       if(@photography)
         talk.photography = @photography
       end
-     
-
-      
+    
       talk.speaker_profile_id= speaker.id
       
       talk.save!
@@ -382,7 +166,6 @@ class TalkCreator
       processes.each do |p| 
        name[p.sequence-1] = p.process_name
         if(p.finished)            
-          
           check[p.sequence-1] = "true"
         end
       end
@@ -410,64 +193,7 @@ class TalkCreator
       end
 
   end
-  def talk_load(talks)
-    tc_list = Array.new
-
-
-    talks.each do |t|
-      tc = TalkCreator.new
-      tc.bio = t.speaker_profile.bio
-      tc.eng_name = t.speaker_profile.eng_name
-      tc.chi_name = t.speaker_profile.chi_name
-      
-      tc.school1 = t.speaker_profile.acadamic_histories[0].school
-      tc.department1 = t.speaker_profile.acadamic_histories[0].department
-      tc.year1 = t.speaker_profile.acadamic_histories[0].year
-      tc.degree1 = t.speaker_profile.acadamic_histories[0].degree
-      tc.nation1 = t.speaker_profile.acadamic_histories[0].nation
-      if (t.speaker_profile.acadamic_histories.count>1)
-        tc.school2 = t.speaker_profile.acadamic_histories[1].school
-        tc.department2 = t.speaker_profile.acadamic_histories[1].department
-        tc.year2 = t.speaker_profile.acadamic_histories[1].year
-        tc.degree2 = t.speaker_profile.acadamic_histories[1].degree
-        tc.nation2 = t.speaker_profile.acadamic_histories[1].nation
-      end
-      if (t.speaker_profile.acadamic_histories.count>2)
-        tc.school3 = t.speaker_profile.acadamic_histories[2].school
-        tc.department3 = t.speaker_profile.acadamic_histories[2].department
-        tc.year3 = t.speaker_profile.acadamic_histories[2].year
-        tc.degree3 = t.speaker_profile.acadamic_histories[2].degree
-        tc.nation3 = t.speaker_profile.acadamic_histories[2].nation
-      end
-
-      tc.main = t.speaker_profile.acadamic_histories.find(t.degree_id)
-
-      tc.intro = t.intro
-      tc.bg = t.bg
-      tc.poster = t.poster
-      tc.slide1 = t.slide1
-      tc.slide2 = t.slide2
-      tc.slide3 = t.slide3
-      tc.videourl1 = t.videourl1
-      tc.videourl2 = t.videourl2
-      tc.videourl3 = t.videourl3
-      tc.videocomment1 = t.videocomment1
-      tc.videocomment2 = t.videocomment2
-      tc.videocomment3 = t.videocomment3
-      tc.feedback1 = t.feedback1
-      tc.feedback2 = t.feedback2
-      tc.feedback3 = t.feedback3
-      tc.photography = t.photography
-      tc.process = t.talk_process_lists
-      tc.users = t.users[0].name
-      tc.finished = t.finished
-      tc.talk_id = t.id
-      tc.load_process(t)
-      tc_list << tc
-
-    end
-    tc_list
-  end
+  
   
   def sign_up_date
      begin
@@ -521,10 +247,7 @@ class TalkCreator
       @content =  "Finished"
     end
   end
-  def check_is_finished(talk)
-      
-      
-  end
+ 
 
 def talk_load_one(t)
       tc = TalkCreator.new
@@ -588,9 +311,18 @@ def talk_load_one(t)
       tc.speaker_id = t.speaker_profile.id
 
       tc
+end
 
-    
-  end
+def talk_load(talks)
+    tc_list = Array.new
+
+    talks.each do |t|
+      tc = TalkCreator.new
+      tc = talk_load_one(t)
+      tc_list << tc
+    end
+    tc_list
+end
 
 def update(attributes = {})
 
@@ -601,109 +333,103 @@ def update(attributes = {})
     if(@bio)
       speaker.bio = self.bio
     end
-     if(@eng_name)
-        speaker.eng_name = @eng_name
-      end
-      if(@chi_name)
-        speaker.chi_name = @chi_name
-      end
-      speaker.save!
+    if(@eng_name)
+      speaker.eng_name = @eng_name
+    end
+    if(@chi_name)
+     speaker.chi_name = @chi_name
+    end
+    speaker.save!
     talk = Talk.find(@talk_id)
     #acadamic histories
-     if(@school1.length>0 && @department1.length>0 && @nation1.length>0 && @year1.length>0 && @degree1.length>0)
+    if(@school1.length>0 && @department1.length>0 && @nation1.length>0 && @year1.length>0 && @degree1.length>0)
        acadamicHistory = create_acadamic_history(@school1, @department1, @nation1, @year1, @degree1, speaker)
-       if (check_acadamic1=="true")
+      if (check_acadamic1=="true")
           talk.degree_id =acadamicHistory.id
-        
       end
-     end
-     if(@school2.length>0 && @department2.length>0 && @nation2.length>0 && @year2.length>0 && @degree2.length>0)
+    end
+    if(@school2.length>0 && @department2.length>0 && @nation2.length>0 && @year2.length>0 && @degree2.length>0)
        acadamicHistory= create_acadamic_history(@school2, @department2, @nation2, @year2, @degree2, speaker)      
        if(check_acadamic2=="true")
          talk.degree_id = acadamicHistory.id
        end
-     end
-      if(@school3.length>0 && @department3.length>0 && @nation3.length>0 && @year3.length>0 && @degree3.length>0)
+    end
+    if(@school3.length>0 && @department3.length>0 && @nation3.length>0 && @year3.length>0 && @degree3.length>0)
        acadamicHistory = create_acadamic_history(@school3, @department3, @nation3, @year3, @degree3, speaker)
-       if(check_acadamic3=="true")
+      if(check_acadamic3=="true")
           talk.degree_id = acadamicHistory.id
       end
-     end
-      
-    #talk
-      
-      if(@intro)
-       talk.intro = @intro
-      end
-      if(@bg != talk.bg)
-        talk.bg = @bg
-      end
-      if(@poster != talk.poster)
-        talk.poster = @poster
-      end
-      if(@slide1)
-        talk.slide1 = @slide1
-      end
-      if(@slide2)
-        talk.slide2 = @slide2
-      end
-      if(@slide3)
-        talk.slide3 = @slide3
-      end
-      if(@videourl1)
-        talk.videourl1 = @videourl1
-      end
-      if(@videourl2)
-        talk.videourl2  = @videourl2
-      end
-      if(@videourl3)
-        talk.videourl3 = @videourl3
-      end
-      if(@videocomment1)
-        talk.videocomment1 = @videocomment1
-      end
-      if(@videocomment2)
-        talk.videocomment2 = @videocomment2
-      end
-      if(@videocomment3)
-        talk.videocomment3 = @videocomment3
-      end
-      if(@feedback1)
-        talk.feedback1 = @feedback1
-      end
-      if(@feedback2)
-        talk.feedback2 = @feedback2
-      end
-      if(@feedback3)
-        talk.feedback3 = @feedback3
-      end
-      
-      
-      if(@photography)
-        talk.photography = @photography
-      end
-     
+    end
+    
+  #talk
+    
+    if(@intro)
+     talk.intro = @intro
+    end
+    if(@bg != talk.bg)
+      talk.bg = @bg
+    end
+    if(@poster != talk.poster)
+      talk.poster = @poster
+    end
+    if(@slide1)
+      talk.slide1 = @slide1
+    end
+    if(@slide2)
+      talk.slide2 = @slide2
+    end
+    if(@slide3)
+      talk.slide3 = @slide3
+    end
+    if(@videourl1)
+      talk.videourl1 = @videourl1
+    end
+    if(@videourl2)
+      talk.videourl2  = @videourl2
+    end
+    if(@videourl3)
+      talk.videourl3 = @videourl3
+    end
+    if(@videocomment1)
+      talk.videocomment1 = @videocomment1
+    end
+    if(@videocomment2)
+      talk.videocomment2 = @videocomment2
+    end
+    if(@videocomment3)
+      talk.videocomment3 = @videocomment3
+    end
+    if(@feedback1)
+      talk.feedback1 = @feedback1
+    end
+    if(@feedback2)
+      talk.feedback2 = @feedback2
+    end
+    if(@feedback3)
+      talk.feedback3 = @feedback3
+    end
+    
+    
+    if(@photography)
+      talk.photography = @photography
+    end
+   
 
-      
-      talk.speaker_profile_id= speaker.id
-      
-      
-      talk.talk_process_lists.delete_all
-      create_process(@date_array, @check_array, @name_array, talk)
-      talk.save!;
-      talk = Talk.find(@talk_id)
-      talk.finished =  
-       (talk.talk_process_lists.count>0 && talk.talk_process_lists.where(:finished=>nil).count==0)
-      talk.save!;
-      #create_user_talk(@users_array, talk)
+    
+    talk.speaker_profile_id= speaker.id
+    
+    
+    talk.talk_process_lists.delete_all
+    create_process(@date_array, @check_array, @name_array, talk)
+    talk.save!;
+    talk = Talk.find(@talk_id)
+    talk.finished =  
+     (talk.talk_process_lists.count>0 && talk.talk_process_lists.where(:finished=>nil).count==0)
+    talk.save!;
+    #create_user_talk(@users_array, talk)
       #create_comment(@comment, talk)
-      
   end
-  def update_photo
-
-  end
-def persisted?
+  def persisted?
     false
   end
-
 end

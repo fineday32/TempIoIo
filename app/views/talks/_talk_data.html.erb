@@ -1,0 +1,143 @@
+<div class="row">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">Poster Related</h2>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-2">
+				<h3>POSTER LINK</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :poster , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>Background</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.file_field :bg, :id=>"bg_files"%></h3>
+				<output class="list" id="list"></output>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>Photography</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.file_field :photography ,:id=>"photography_files"%></h3>
+				<output class="list"></output>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="panel panel-primary">
+		<div class="panel-heading">
+			<h2 class="panel-title">Talk Related</h2>
+		</div>
+		<div class="panel-body">
+			<div class="row">
+				<div class="col-md-2">
+				<h3>INTRO</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :intro , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2">
+				<h3>SLIDE1</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :slide1 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>SLIDE2</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :slide2 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="col-md-2">
+				<h3>SLIDE3</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :slide3 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>VIDEO URL1</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :videourl1 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>VIDEO URL2</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :videourl2 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>VIDEO URL3</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :videourl3 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>VIDEO COMMENT1</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :videocomment1 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>VIDEO COMMENT2</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :videocomment3 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>Q&A LINK 1</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :feedback1 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>Q&A LINK 2</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :feedback2 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-md-2">
+				<h3>Q&A LINK 3</h3>
+				</div>
+				<div class="col-md-6">
+				<h3><%= f.input_field :feedback3 , :as=>:text , :class => "form-control"%></h3>
+				</div>
+			</div>
+		</div>	
+	</div>
+</div>

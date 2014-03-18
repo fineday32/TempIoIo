@@ -1,0 +1,42 @@
+<div class="col-md-12 col-md-offset-11">
+<%= f.input :date_array, :as => :hidden %>				
+<%= f.input :check_array, :as => :hidden  %>	
+<%= f.input :name_array, :as => :hidden  %>	
+<%= f.input :users_array, :as => :hidden  %>	
+<%= f.submit "Save", :class=>"btn btn-primary btn-lg"%>
+</div>
+<script type="text/javascript">
+$('.simple_form.talk_content').submit(function()
+					{
+	    				try{
+	    					var tab_active = $(".tab-pane.active");
+					      	var all_dates = tab_active.find(".datetimepicker").map(function() {
+	    					return this.value;
+							}).get();
+					     	 document.getElementById("talk_content_date_array").value = all_dates;
+					    
+					     	var all_checks = tab_active.find(".boolean.optional").map(function() {
+	    					return this.checked;
+							}).get();
+					     	 document.getElementById("talk_content_check_array").value = all_checks;
+					    	
+					    	var all_checks_process_names = tab_active.find(".process_name").map(function() {
+	    					return this.textContent;
+							}).get();
+					     	 document.getElementById("talk_content_name_array").value = all_checks_process_names;
+
+					     	 
+
+					      	var users = $("#helpers_list").children().find(".helpers").map(function() {
+	    					return this.value;
+							}).get();
+					     	 
+					     	 document.getElementById("talk_content_users_array").value = document.getElementById("current_helper_id").textContent+ "," +users;
+					     	 
+
+					    	}						
+					    catch (error)
+					    	{}
+					    	
+					});
+</script>

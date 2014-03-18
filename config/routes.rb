@@ -11,15 +11,13 @@ IOHBack::Application.routes.draw do
     resources :comments
     resources :admin
     resources :talks
-    resources :talks
-          get 'talks:type' => 'talks#type'
           get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
-           
+          get 'talks:type' => 'talks#type'
       
        
        
   devise_for :users
-  get "helper/talks" => "helper#talks"
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

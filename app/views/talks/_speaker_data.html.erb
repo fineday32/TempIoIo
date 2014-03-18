@@ -1,0 +1,60 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title">Speaker</h2>
+		<%= f.input :speaker_id, :as => :hidden %>
+		<%= f.input :talk_id, :id=>"talk_id" ,:as => :hidden %>					
+	</div>
+	<div class="panel-body">
+		<div class="row">
+			<div class="col-md-5">Existing Speaker </div>
+			<div class="col-md-7">
+				<%=f.collection_select :existing, SpeakerProfile.all, :id, :eng_name%>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-md-4">
+				New Speaker
+			</div>
+			<div class="col-md-4">
+				<%= f.input :eng_name , :input_html => { :class => "form-control"}, placeholder:"Eng_name" , label: false%>	
+			</div>
+			<div class="col-md-4">
+				<%= f.input :chi_name ,  placeholder:"Chi_name" , label: false, :input_html => { :class => "form-control"}%> 
+			</div>
+		</div>
+		<div class="row">
+	  		<div class="row">
+		  		<div class="col-md-1"></div>
+		  		<div class="col-md-2">School</div>
+		  		<div class="col-md-3">Department</div>
+		  		<div class="col-md-2">Year</div>
+		  		<div class="col-md-2">Degree</div>
+		  		<div class="col-md-2">Nation</div>
+	  		</div>
+	  		<div class="row">
+		  		<h4><div class="col-md-1"><%= f.input :check_acadamic1, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false %></div></h4>
+		  		<div class="col-md-2"><%= f.input :school1 , label:"school1", label: false ,placeholder:"School", :input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-3"><%= f.input :department1 , label:"department1" , label: false, :input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :year1 , label:"year1" , label: false, :input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :degree1 , label:"degree1" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :nation1 , label:"nation1" , label: false,:input_html => { :class => "form-control"}%></div>
+		  	</div>
+		  	<div class="row">
+		  		<h4><div class="col-md-1"><%= f.input :check_acadamic2, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div></h4>
+		  		<div class="col-md-2"><%= f.input :school2 , label:"school2", label: false,:input_html => { :class => "form-control"} %></div>
+		  		<div class="col-md-3"><%= f.input :department2 , label:"department2" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :year2 , label:"year2" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :degree2 , label:"degree2" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :nation2 , label:"nation2" , label: false,:input_html => { :class => "form-control"}%></div>
+		  	</div>
+		  	<div class="row">
+		  		<h4><div class="col-md-1"><%= f.input :check_acadamic3, :as => :boolean, label: false , checked_value: true, unchecked_value: false, default: false%></div></h4>
+		  		<div class="col-md-2"><%= f.input :school3 , label:"school3", label: false ,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-3"><%= f.input :department3 , label:"department3" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :year3 , label:"year3" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :degree3 , label:"degree3" , label: false,:input_html => { :class => "form-control"}%></div>
+		  		<div class="col-md-2"><%= f.input :nation3 , label:"nation3" , label: false,:input_html => { :class => "form-control"}%></div>
+		  	</div>		
+		 </div>		  			 	
+	</div>
+</div>

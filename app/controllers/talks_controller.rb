@@ -1,10 +1,20 @@
 class TalksController < ApplicationController
+  before_filter :authenticate_user!
   def index
 
   end
-
+  def new
+      #@talk_creator = TalkCreator.new
+      @process_lists = ProcessList.all 
+      #10.times {@talk.talk_process_lists.build}
+  end
+  def create
+      @talk_creator = TalkCreator.new
+      @talk_creator.insert(params.permit![:talk_content], current_user)
+  end
   def edit
-  	@t = TalkCreator.new
+  	@process_lists = ProcessList.all 
+    @t = TalkCreator.new
   	@talk_content = @t.talk_load_one(Talk.find(params[:id]))
   	@usercomments = Comment.get_by_owner(Talk.find(params[:id]))
     @comment = Comment.new
@@ -19,12 +29,17 @@ class TalksController < ApplicationController
   	@get_type = params[:type].gsub(/_/, " ") 
     @get_type = @get_type.gsub(/:/, "") 
   	@process_list = ProcessList.pluck(:title).uniq
+    if current_user.admin?
+      @Talks= Talk.all
+    else
+      @Talks = current_user.talks
+    end
   	if (@get_type == "all")
-  	@tc_list= @tc.talk_load(Talk.all)
+  	@tc_list= @tc.talk_load(@Talks)
     elsif (@get_type == "working")
-  	@tc_list = @tc.talk_load(Talk.not_finished)
+  	@tc_list = @tc.talk_load(@Talks.not_finished)
   	else
-    @tc_list = @tc.talk_load(Talk.on_process(@get_type))
+    @tc_list = @tc.talk_load(@Talks.on_process(@get_type))
   	end
   	
   	respond_to do |format|

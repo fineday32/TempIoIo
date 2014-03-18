@@ -1,0 +1,105 @@
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title">Process</h2>
+	</div>
+	<div class="panel-body">
+		<ul class="nav nav-tabs">
+		  <li class="active"><a href="#record" data-toggle="tab">Record</a></li>
+		  <li><a href="#live" data-toggle="tab">Live Talk</a></li>
+		  <li><a href="#article" data-toggle="tab">Article</a></li>
+		  </a></li>
+		</ul>
+		<div class="tab-content">
+		  <div class="tab-pane active" id="record">
+			 <% @process_lists.where(:process_type=>"record").each do |t| %>
+	  		 <div class="row draggable">
+		  		<div class="col-md-6">
+			  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+			  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+		  		</div>	
+	  			<div class="col-md-2">
+	  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+	  			</div>
+	  			<div class="col-md-3">
+	  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+	  				</div>
+				</div>
+			</div>
+			<% end %> 
+		  </div>
+		  <div class="tab-pane" id="live">
+	    	 <%  @process_lists.where(:process_type=>"live").each do |t| %>
+	  		 <div class="row ">
+		  		<div class="col-md-6">
+			  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+			  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+		  		</div>
+	  			<div class="col-md-2">
+	  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+	  			</div>
+	  			<div class="col-md-3">
+	  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+	  				</div>
+	  		 
+				</div>
+			</div>
+			<% end %> 
+		  </div>
+		  <div class="tab-pane" id="article">
+	  		 <%  @process_lists.where(:process_type=>"atricle").each do |t| %>
+	  		 <div class="row">
+		  		<div class="col-md-6">
+			  		<%= f.input_field :process,   as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false %>
+			  		<%= f.label :process, t.title, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
+		  		</div>
+	  			<div class="col-md-2">
+	  				  <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>
+	  			</div>
+	  			<div class="col-md-3">
+	  				<div class="hidden"> 	<%= f.input :process_lists , :input_html => { :class => "datetimepicker form-control"} , label: false%>
+	  				</div>
+	  		 
+				</div>
+			</div>
+			<% end %> 
+		  </div>
+		</div>
+	</div>
+	<div class="panel-footer">
+			<%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%>
+	</div>
+</div>
+
+<script type="text/javascript">
+$("#add_process").click(function(){
+					$('.process_list').append(
+						$('<div>', {'class' : 'row draggable'}).append(
+							$('<div>', {'class': 'col-md-6'}).append(
+	     						$('<input/>', {'class': 'boolean optional','checked_value':'true', "type" : "checkbox", "value":"true", "unchecked_value":"false"})).append(
+	     						$("<label/>" , { "text":"new process" ,"contentEditable":"true","class":"process_name",  'boolean_style':'inline', 'for':'talk_content_process'}))).append(
+	     					$('<div>', {'class': 'col-md-2'}).append(
+	     						$("<button/>", {"text":"remove", "class":"remove_process btn btn-danger btn-xs"}))).append(
+	     					$('<div>', {'class': 'col-md-3'}).append(
+							$("<input/>", {"text":"", "class":"datetimepicker form-control"})
+	     						)
+							
+				))
+					$(function () {            
+                $('.datetimepicker').datepicker({
+                    language: 'en',
+                    format: 'mm/dd/yyyy',
+         			autoclose:true,
+         			pickTime: false,
+         			todayHighlight: true,
+         			todayBtn: "linked"
+          	      });
+          	  });
+					$(".remove_process").click(function(){
+					$(this).parent().parent().remove();
+					
+
+				});
+	     				return false;
+
+				});
+</script>
