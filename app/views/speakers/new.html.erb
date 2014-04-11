@@ -3,7 +3,7 @@
 <%= simple_form_for @new_speaker, :role=>"form", :url => speakers_path do|f| %>
 
 <link rel="stylesheet" href="../assets/speakers-new.css.scss">
-  
+
 <div class="panel panel-primary left-box">
   <div class="panel-heading"><h4>Basic information</h4></div>
   <div class="panel-body">
@@ -12,7 +12,7 @@
   		<h3>Chinese Name</h3>
   		</div>
   		<div class="col-md-6">	
-  		<h3><%= f.input_field :email %></h3>
+  		<h3><%= f.input_field :chi_name %></h3>
   		</div>
 	</div>
 	
@@ -21,7 +21,7 @@
 		<h3>English Name</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :email %></h3>
+		<h3><%= f.input_field :eng_name %></h3>
 		</div>
 	</div>
 
@@ -30,7 +30,7 @@
 		<h3>Telephone Number</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :email %></h3>
+		<h3><%= f.input_field :tel %></h3>
 		</div>
 	</div>
 
@@ -101,7 +101,7 @@
 	
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Giving Life Talk ?</h3>
+		<h3>Giving Live Talk ?</h3>
 		</div>
 		<div class="col-md-6">
 		<h3><%= f.input_field :live_talk %></h3>
@@ -119,7 +119,7 @@
 
 	<div class="row">
 		<div class="col-md-5">
-		<h3>OK time for <br> Life Talk</h3>
+		<h3>OK time for <br> Live Talk</h3>
 		</div>
 		<div class="col-md-6">
 		<h3><%= f.input_field :ok_time %></h3>
@@ -128,7 +128,7 @@
 
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Other Command for IOH</h3>
+		<h3>Other recommend for IOH</h3>
 		</div>
 		<div class="col-md-6">
 		<h3><%= f.input_field :comments_for_IOH, :as=>:text, :class=>"form-control" %></h3>
@@ -160,7 +160,7 @@
   				<input type= "checkbox" checked>
   				&nbsp&nbsp
   				<span class="border"> 
-  					Tom </span> &nbsp&nbsp  
+  					Tom  </span> &nbsp&nbsp  
   				<span class="border"> University of California, Berkeley </span> &nbsp&nbsp
   				<span class="border"> UCB </span> &nbsp&nbsp
   				<span class="border"> B.S. </span> &nbsp&nbsp
@@ -175,7 +175,7 @@
 
 		<div class="row col-md-11">
 		<h2 style="color:red;"> First Degree Record</h2>
-		<span><%= f.input_field :acadamic_check1 , :as=> :boolean%>
+		<span><%= f.input_field :acadamic_check1 , :id=>"checkbox1", :as=> :boolean%>
 		</span>
 		</div>
 
@@ -246,7 +246,7 @@
 
 		<div class="row col-md-11">
 		<h2 style="color:red;"> Second Degree Record</h2>
-		<span><%= f.input_field :acadamic_check2 , :as=> :boolean%>
+		<span><%= f.input_field :acadamic_check2 ,:id=>"checkbox2", :as=> :boolean%>
 		</span>
 		</div>
 
@@ -317,7 +317,7 @@
 
 		<div class="row col-md-11">
 		<h2 style="color:red;"> Third Degree Record</h2>
-		<span><%= f.input_field :acadamic_check3 , :as=> :boolean%>
+		<span><%= f.input_field :acadamic_check3 ,:id=>"checkbox3", :as=> :boolean%>
 		</span>
 		</div>
 
@@ -388,7 +388,7 @@
 
 		<div class="row col-md-11">
 		<h2 style="color:red;"> Fourth Degree Record</h2>
-		<span><%= f.input_field :acadamic_check4 , :as=> :boolean%>
+		<span><%= f.input_field :acadamic_check4 ,:id=>"checkbox4", :as=> :boolean%>
 		</span>
 		</div>
 
@@ -456,7 +456,7 @@
 		</div>
 
 
-
+		<div style="float:right;"><%= button_tag "Submit" , :id=>"Submit"%></div>
   	</div>
 </div>
 
@@ -508,3 +508,60 @@
 
 
 <% end %>
+
+<script>
+ function checkbox_changer(evt){
+  var checkbox1 = document.getElementById("checkbox1");
+  var checkbox2 = document.getElementById("checkbox2");
+  var checkbox3 = document.getElementById("checkbox3");
+  var checkbox4 = document.getElementById("checkbox4");
+  
+  checkbox1.checked = false;
+  checkbox2.checked = false;
+  checkbox3.checked = false;
+  checkbox4.checked = false;
+
+  evt.target.checked= true;
+ 
+}
+document.getElementById("checkbox1").addEventListener("change",checkbox_changer,false);
+document.getElementById("checkbox2").addEventListener("change",checkbox_changer,false);
+document.getElementById("checkbox3").addEventListener("change",checkbox_changer,false);
+document.getElementById("checkbox4").addEventListener("change",checkbox_changer,false);
+
+// if (checkbox1.text != "")
+$('.new_speaker_creator').submit(function(){
+	// var  chi_name = document.getElementById("speaker_creator_chi_name");
+	 
+	if (
+		!(document.getElementById("speaker_creator_chi_name").value
+		&& document.getElementById("speaker_creator_eng_name").value
+		&& document.getElementById("speaker_creator_email").value
+		&& document.getElementById("speaker_creator_acadamic_name1").value
+		&& document.getElementById("speaker_creator_acadamic_school_abbreviation1").value
+		&& document.getElementById("speaker_creator_acadamic_department1").value
+		&& document.getElementById("speaker_creator_acadamic_school1").value
+		&& document.getElementById("speaker_creator_acadamic_degree1").value
+		&& document.getElementById("speaker_creator_acadamic_year1").value
+		)
+		&&
+		(document.getElementById("checkbox1").checked == false
+		&& document.getElementById("checkbox2").checked == false
+		&& document.getElementById("checkbox3").checked == false
+		&& document.getElementById("checkbox4").checked == false
+		)
+	   )
+	{
+		alert("no value");
+		return false;
+		//accept 
+	}
+	else
+	{
+		alert("has value");
+		return false;
+		//reject
+	}
+});
+  
+</script>
