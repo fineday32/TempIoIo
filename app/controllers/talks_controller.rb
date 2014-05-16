@@ -16,7 +16,8 @@ class TalksController < ApplicationController
   	@process_lists = ProcessList.all 
     @t = TalkCreator.new
   	@talk_content = @t.talk_load_one(Talk.find(params[:id]))
-  	@usercomments = Comment.get_by_owner(Talk.find(params[:id]))
+  	@allusercomments = Comment.get_by_talk(Talk.find(params[:id]))
+    #@comment_content = Comment.add_new_comment(:comments)
     @comment = Comment.new
 
     respond_to do |format|

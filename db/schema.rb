@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140315043938) do
+ActiveRecord::Schema.define(version: 20140429065945) do
 
   create_table "acadamic_histories", force: true do |t|
     t.integer  "speaker_profile_id"
@@ -39,10 +39,11 @@ ActiveRecord::Schema.define(version: 20140315043938) do
   create_table "comments", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "content"
+    t.string   "comments"
     t.string   "talk_id"
     t.string   "comment_type"
     t.integer  "rule_id"
+    t.integer  "user_id"
   end
 
   create_table "commments", force: true do |t|
@@ -63,10 +64,14 @@ ActiveRecord::Schema.define(version: 20140315043938) do
     t.datetime "updated_at"
   end
 
+  create_table "speaker_creators", force: true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "speaker_profiles", force: true do |t|
     t.integer  "user_id"
-    t.text     "bio"
+    t.text     "bio"  
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "eng_name"

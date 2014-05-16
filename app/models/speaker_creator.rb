@@ -5,7 +5,7 @@ extend ActiveModel::Naming
     
 attr_accessor :chi_name, :eng_name, 
               :tel, :email,
-              :recommnd_name, :recommnd_tel, :recommnd_email, :recommend_reason, 
+              :recommend_name, :recommend_tel, :recommend_email, :recommend_reason, 
               :os_using, 
               :live_talk,
               :currernt_work,

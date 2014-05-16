@@ -14,33 +14,33 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 <ul class="nav nav-pills">
-			  <li class="active"><a href="/talks:all" >All</a></li>
-			  <li><a href="#schedule" data-toggle="tab">By Schedule</a></li>
-			  <li><a href="#warning" data-toggle="tab">By Warning</a></li>
-			  <li><a href="#school" data-toggle="tab">By School</a></li>
-			  <li><a href="#department" data-toggle="tab">By Deparment</a></li>
-			  <li><a href="#nation" data-toggle="tab">By Nation</a></li>
+	<li class="active"><a href="/talks:all" >All</a></li>
+	<li><a href="#schedule" data-toggle="tab">By Schedule</a></li>
+	<li><a href="#warning" data-toggle="tab">By Warning</a></li>
+	<li><a href="#school" data-toggle="tab">By School</a></li>
+	<li><a href="#department" data-toggle="tab">By Deparment</a></li>
+	<li><a href="#nation" data-toggle="tab">By Nation</a></li>
+</ul>
 
-			</ul>
 <div class="tab-content">
-		  <div class="tab-pane fade in active" id="all"></div>
-		  <div class="tab-pane fade" id="schedule">
-		  		<ul class="nav nav-pills green">
-		  			<% @process_list.each do |p| %>
-		  			<%	@p_new =  p.gsub(/ /, "_") %>
-		  				<li> <%= link_to p, "/talks:"+ @p_new,  :class=>"category", :remote=>true%></li>
-		  			<% end %>
-		  			  <li><%= link_to "Finished" , "/talks:finished" ,  :class=>"category", :remote=>true%></li>
-  				</ul>
- </div>
-		  <div class="tab-pane fade" id="warning">
-		  	<ul class="nav nav-pills">
-				<li><%= link_to "Signed Up" , "/talks:working" ,  :class=>"category", :remote=>true%></li>
-  				</ul>
-		  </div>
-		  <div class="tab-pane fade" id="school"></div>
-		  <div class="tab-pane fade" id="department"></div>
-		  <div class="tab-pane fade" id="nation"></div>
+	<div class="tab-pane fade in active" id="all"></div>
+	<div class="tab-pane fade" id="schedule">
+		<ul class="nav nav-pills green">
+		  	<% @process_list.each do |p| %>
+		  		<% @p_new =  p.gsub(/ /, "_") %>
+		  		<li> <%= link_to p, "/talks:"+ @p_new, :class=>"category", :remote=>true %></li>
+		  	<% end %>
+		  	<li><%= link_to "Finished", "/talks:finished", :class=>"category", :remote=>true %></li>
+  		</ul>
+	</div>
+	<div class="tab-pane fade" id="warning">
+		<ul class="nav nav-pills">
+			<li><%= link_to "Signed Up", "/talks:working", :class=>"category", :remote=>true %></li>
+  		</ul>
+	</div>
+	<div class="tab-pane fade" id="school"></div>
+	<div class="tab-pane fade" id="department"></div>
+	<div class="tab-pane fade" id="nation"></div>
 </div>
 <div id="content">
 

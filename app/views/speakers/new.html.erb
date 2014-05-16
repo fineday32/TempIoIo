@@ -30,7 +30,8 @@
 		<h3>Telephone Number</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :tel %></h3>
+		<h3>
+		<!--<#%= f.input_field :tel %></h3> -->
 		</div>
 	</div>
 
@@ -39,43 +40,43 @@
 		<h3>E-mail</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :email %></h3>
+		<!--<#%= f.input_field :email %></h3> -->
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Recommand Name</h3>
+		<h3>Recommend Name</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommnd_name %></h3>
+		<!--<#%= f.input_field :recommend_name %></h3> -->
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Recommand Telephone</h3>
+		<h3>Recommend Telephone</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommnd_tel %></h3>
+		<!--<#%= f.input_field :recommend_tel %></h3> -->
 		</div>
 	</div>
 	
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Recommand <br>E-mail</h3>
+		<h3>Recommend <br>E-mail</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommnd_email %></h3>
+		<!--<#%= f.input_field :recommend_email %></h3> -->
 		</div>
 	</div>
 
 	<div class="row">
 		<div class="col-md-5">
-		<h3>Recommand Reason</h3>
+		<h3>Recommend Reason</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommend_reason %></h3>
+		<!--<#%= f.input_field :recommend_reason %></h3> -->
 		</div>
 	</div>
 
@@ -95,7 +96,7 @@
 		<h3>Operating System (OS)</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :os_using %></h3>
+		<!--<#%= f.input_field :os_using %></h3> -->
 		</div>
 	</div>
 	
@@ -104,7 +105,7 @@
 		<h3>Giving Live Talk ?</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :live_talk %></h3>
+		<!--<#%= f.input_field :live_talk %></h3> -->
 		</div>
 	</div>
 
@@ -113,7 +114,7 @@
 		<h3>Current Work</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :currernt_work %></h3>
+		<!--<#%= f.input_field :currernt_work %></h3> -->
 		</div>
 	</div>
 
@@ -122,7 +123,7 @@
 		<h3>OK time for <br> Live Talk</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :ok_time %></h3>
+		<!--<#%= f.input_field :ok_time %></h3> -->
 		</div>
 	</div>
 
@@ -131,7 +132,7 @@
 		<h3>Other recommend for IOH</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :comments_for_IOH, :as=>:text, :class=>"form-control" %></h3>
+		<!--<#%= f.input_field :comments_for_IOH %></h3> -->
 		</div>
 	</div>
 
@@ -149,361 +150,91 @@
   		<div class="row">
   			<div class="col-md-11">
   			<h4>
-  				Please filled in : Check / Name / School / School Abbreviation / Degree / Department / Year
+  				Please filled in : Country / School / Department / Degree / Graduated Year
   			</h4>
   			</div>
   		</div>
   		<div class="row">
-  			<h3>
-  				<div class="col-md-11">Ex: 
-  				&nbsp&nbsp&nbsp
-  				<input type= "checkbox" checked>
-  				&nbsp&nbsp
-  				<span class="border"> 
-  					Tom  </span> &nbsp&nbsp  
-  				<span class="border"> University of California, Berkeley </span> &nbsp&nbsp
-  				<span class="border"> UCB </span> &nbsp&nbsp
-  				<span class="border"> B.S. </span> &nbsp&nbsp
-  				<span class="border"> Computer Science </span> &nbsp&nbsp  
-  				<span class="border"> 2014 </span> &nbsp&nbsp  
+  			<h5><em>
+  				<div class="col-md-11">Ex:&nbsp
+  				<!-- <input type= "checkbox" checked>&nbsp&nbsp -->
+  				<!-- <span class="border"> Tom </span> &nbsp&nbsp -->
+  				Country: <span class="border"> United States </span> &nbsp&nbsp
+  				School: <span class="border"> University of California, Berkeley </span> &nbsp&nbsp
+  				<!-- <span class="border"> UCB </span> &nbsp&nbsp -->
+  				Department: <span class="border"> Computer Science </span> &nbsp&nbsp
+  				Degree: <span class="border"> BSc </span> &nbsp&nbsp  
+  				Graduated Year: <span class="border"> 2014 </span>
   				</div>
-  			</h3>
+  			</em></h5>
 		</div>
 		
 		<br>
 <!-- First Degree Record -->
+		<%= f.simple_fields_for :acadamic_histories do |builder| %>
+			<div class="form-group">
+				<h5>
+					Country: <%= builder.input_field :nation, collection: Country.all.collect{|a,b| a}.sort , priority_countries: ["United States", "United Kingdom", "Taiwan"] %>&nbsp&nbsp
+					<!-- Country: <#%= builder.input_field :nation %>&nbsp&nbsp -->
+					School: <%= builder.input_field :school %>&nbsp&nbsp
+					Department: <%= builder.input_field :department %>&nbsp&nbsp
+					Degree: 
+					<%= builder.input_field :degree, collection: ["Postdoc","PhD","MSc","BSc"] %>&nbsp&nbsp
+					Graduated Year: <%= builder.input_field :year, collection: (1970..2020).reverse_each.to_a%>  
+				</h5>
+			</div>
+		<% end %>
+		
 
-		<div class="row col-md-11">
-		<h2 style="color:red;"> First Degree Record</h2>
-		<span><%= f.input_field :acadamic_check1 , :id=>"checkbox1", :as=> :boolean%>
-		</span>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Name: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_name1 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>School: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school1 %>
-				</span>
-
-				
-			</div>
-			</h3>
-		</div>
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<h4>
-				<span>School Abbreviation: </span>
-				</h4>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school_abbreviation1 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Degree : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_degree1 %>
-				</span>
-				
-			</div>
-			</h3>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Department : </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_department1 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Year : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_year1 %>
-				</span>
-			</div>
-			</h3>
-		</div>
-
-<!-- Second Degree Record -->
-
-		<div class="row col-md-11">
-		<h2 style="color:red;"> Second Degree Record</h2>
-		<span><%= f.input_field :acadamic_check2 ,:id=>"checkbox2", :as=> :boolean%>
-		</span>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Name: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_name2 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>School: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school2 %>
-				</span>
-
-				
-			</div>
-			</h3>
-		</div>
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<h4>
-				<span>School Abbreviation: </span>
-				</h4>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school_abbreviation2 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Degree : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_degree2 %>
-				</span>
-				
-			</div>
-			</h3>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Department : </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_department2 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Year : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_year2 %>
-				</span>
-			</div>
-			</h3>
-		</div>
-
-<!-- Third Degree Record -->
-
-		<div class="row col-md-11">
-		<h2 style="color:red;"> Third Degree Record</h2>
-		<span><%= f.input_field :acadamic_check3 ,:id=>"checkbox3", :as=> :boolean%>
-		</span>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Name: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_name3 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>School: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school3 %>
-				</span>
-
-				
-			</div>
-			</h3>
-		</div>
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<h4>
-				<span>School Abbreviation: </span>
-				</h4>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school_abbreviation3 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Degree : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_degree3 %>
-				</span>
-				
-			</div>
-			</h3>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Department : </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_department3 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Year : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_year3 %>
-				</span>
-			</div>
-			</h3>
-		</div>
-
-<!-- Fourth Degree Record -->
-
-		<div class="row col-md-11">
-		<h2 style="color:red;"> Fourth Degree Record</h2>
-		<span><%= f.input_field :acadamic_check4 ,:id=>"checkbox4", :as=> :boolean%>
-		</span>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Name: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_name4 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>School: </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school4 %>
-				</span>
-
-				
-			</div>
-			</h3>
-		</div>
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<h4>
-				<span>School Abbreviation: </span>
-				</h4>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_school_abbreviation4 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Degree : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_degree4 %>
-				</span>
-				
-			</div>
-			</h3>
-		</div>
-
-		<div class="row">
-			<h3>
-			<div class="col-md-2">
-				<span>Department : </span>
-			</div>
-			<div class="col-md-3">		
-				<span><%= f.input_field :acadamic_department4 %>
-				</span>
-			</div>
-			<div class="col-md-2">
-				<span>Year : </span>
-			</div>
-			<div class="col-md-3">		
-				<span>
-				<%= f.input_field :acadamic_year4 %>
-				</span>
-			</div>
-			</h3>
-		</div>
-
-
-		<div style="float:right;"><%= button_tag "Submit" , :id=>"Submit"%></div>
+		<%= f.submit "Send", :class=>"btn btn-primary" %>
+		<!-- <div style="float:right;"><#%= button_tag "Submit" , :id=>"Submit"%></div> -->
   	</div>
 </div>
 
 <!-- 
-<%= f.input :chi_name %>
-<%= f.input :eng_name %> 
-<%= f.input :tel %>
-<%= f.input :email %>
+<#%= f.input :chi_name %>
+<#%= f.input :eng_name %> 
+<#%= f.input :tel %>
+<#%= f.input :email %>
 
-<%= f.input :recommnd_name %>
-<%= f.input :recommnd_tel %>
-<%= f.input :recommnd_email %>
-<%= f.input :recommend_reason %>
-<%= f.input :os_using %>
-<%= f.input :live_talk %>
-<%= f.input :currernt_work %>
-<%= f.input :comments_for_IOH %>
-<%= f.input :ok_time %>
+<#%= f.input :recommend_name %>
+<#%= f.input :recommend_tel %>
+<#%= f.input :recommend_email %>
+<#%= f.input :recommend_reason %>
+<#%= f.input :os_using %>
+<#%= f.input :live_talk %>
+<#%= f.input :currernt_work %>
+<#%= f.input :comments_for_IOH %>
+<#%= f.input :ok_time %>
 
-<%= f.input :acadamic_check1 %>
-<%= f.input :acadamic_name1 %>
-<%= f.input :acadamic_school1 %>
-<%= f.input :acadamic_school_abbreviation1 %>
-<%= f.input :acadamic_degree1 %>
-<%= f.input :acadamic_department1 %>
-<%= f.input :acadamic_year1 %>
-<%= f.input :acadamic_check2 %>
-<%= f.input :acadamic_name2 %>
-<%= f.input :acadamic_school2 %>
-<%= f.input :acadamic_school_abbreviation2 %>
-<%= f.input :acadamic_degree2 %>
-<%= f.input :acadamic_department2 %>
-<%= f.input :acadamic_year2 %>
-<%= f.input :acadamic_check3 %>
-<%= f.input :acadamic_name3 %>
-<%= f.input :acadamic_school3 %>
-<%= f.input :acadamic_school_abbreviation3 %>
-<%= f.input :acadamic_degree3 %>
-<%= f.input :acadamic_department3 %>
-<%= f.input :acadamic_year3 %>
-<%= f.input :acadamic_check4%>
-<%= f.input :acadamic_name4 %>
-<%= f.input :acadamic_school4 %>
-<%= f.input :acadamic_school_abbreviation4%>
-<%= f.input :acadamic_degree4 %>
-<%= f.input :acadamic_department4 %>
-<%= f.input :acadamic_year4 %>
+<#%= f.input :acadamic_check1 %>
+<#%= f.input :acadamic_name1 %>
+<#%= f.input :acadamic_school1 %>
+<#%= f.input :acadamic_school_abbreviation1 %>
+<#%= f.input :acadamic_degree1 %>
+<#%= f.input :acadamic_department1 %>
+<#%= f.input :acadamic_year1 %>
+<#%= f.input :acadamic_check2 %>
+<#%= f.input :acadamic_name2 %>
+<#%= f.input :acadamic_school2 %>
+<#%= f.input :acadamic_school_abbreviation2 %>
+<#%= f.input :acadamic_degree2 %>
+<#%= f.input :acadamic_department2 %>
+<#%= f.input :acadamic_year2 %>
+<#%= f.input :acadamic_check3 %>
+<#%= f.input :acadamic_name3 %>
+<#%= f.input :acadamic_school3 %>
+<#%= f.input :acadamic_school_abbreviation3 %>
+<#%= f.input :acadamic_degree3 %>
+<#%= f.input :acadamic_department3 %>
+<#%= f.input :acadamic_year3 %>
+<#%= f.input :acadamic_check4%>
+<#%= f.input :acadamic_name4 %>
+<#%= f.input :acadamic_school4 %>
+<#%= f.input :acadamic_school_abbreviation4%>
+<#%= f.input :acadamic_degree4 %>
+<#%= f.input :acadamic_department4 %>
+<#%= f.input :acadamic_year4 %>
 -->
 
 
@@ -524,10 +255,10 @@
   evt.target.checked= true;
  
 }
-document.getElementById("checkbox1").addEventListener("change",checkbox_changer,false);
-document.getElementById("checkbox2").addEventListener("change",checkbox_changer,false);
-document.getElementById("checkbox3").addEventListener("change",checkbox_changer,false);
-document.getElementById("checkbox4").addEventListener("change",checkbox_changer,false);
+//document.getElementById("checkbox1").addEventListener("change",checkbox_changer,false);
+//document.getElementById("checkbox2").addEventListener("change",checkbox_changer,false);
+//document.getElementById("checkbox3").addEventListener("change",checkbox_changer,false);
+//document.getElementById("checkbox4").addEventListener("change",checkbox_changer,false);
 
 // if (checkbox1.text != "")
 $('.new_speaker_creator').submit(function(){
