@@ -1,6 +1,5 @@
 
-
-<%= simple_form_for @new_speaker, :role=>"form", :url => speakers_path do |f| %>
+<%= simple_form_for @speaker, :role=>"form", :url => speakers_path do |f| %>
 	<%= render :partial =>'speaker' , :locals=>{:f=>f} %>
 <% end %>
 

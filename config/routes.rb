@@ -13,7 +13,7 @@ IOHBack::Application.routes.draw do
     resources :talks
           get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
           get 'talks:type' => 'talks#type'
-      
+          get 'talks/new/:id' => 'talks#new'
        
        
   devise_for :users

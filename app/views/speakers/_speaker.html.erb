@@ -1,0 +1,206 @@
+
+<link rel="stylesheet" href="../assets/speakers-new.css.scss">
+
+<div class="panel panel-primary left-box">
+  <div class="panel-heading"><h4>Basic information</h4></div>
+  <div class="panel-body">
+  	<div class="row">
+		<div class="col-md-5">
+  		<h3>Chinese Name</h3>
+  		</div>
+  		<div class="col-md-6">	
+  		<h3><%= f.input_field :chi_name %></h3>
+  		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>English Name</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :eng_name %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Telephone Number</h3>
+		</div>
+		<div class="col-md-6">
+		<h3>
+		<h3><%= f.input_field :phone %></h3>
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>E-mail</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :email %></h3> 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommend Name</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommend_name %></h3> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommend Telephone</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommend_phone %></h3> 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommend <br>E-mail</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommend_email %></h3> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Recommend Reason</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :recommend_reason %></h3> 
+		</div>
+	</div>
+
+  </div>
+</div>
+
+
+<div class="panel panel-primary right-box">
+  	<div class="panel-heading"><h4>Other Information</h4></div>
+  	
+	<div class="panel-body">
+		
+		
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Operating System (OS)</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :OS %></h3> 
+		</div>
+	</div>
+	
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Giving Live Talk ?</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :give_live_talk %></h3> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Current Work</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :current_work %></h3> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>OK time for <br> Live Talk</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :time_for_talk %></h3> 
+		</div>
+	</div>
+
+	<div class="row">
+		<div class="col-md-5">
+		<h3>Other recommend for IOH</h3>
+		</div>
+		<div class="col-md-6">
+		<h3><%= f.input_field :other_recommend %></h3> 
+		</div>
+	</div>
+
+
+		</div>
+		</div>
+	</div>
+	
+</div>
+ 
+
+<div class="panel panel-primary left-full-box">
+  	<div class="panel-heading"><h4>Academic experience</h4></div>
+  	<div class="panel-body">
+  		<div class="row">
+  			<div class="col-md-11">
+  			<h4>
+  				Please filled in : Country / School / Department / Degree / Graduated Year
+  			</h4>
+  			</div>
+  		</div>
+  		<div class="row">
+  			<h5><em>
+  				<div class="col-md-11">Ex:&nbsp
+  				<!-- <input type= "checkbox" checked>&nbsp&nbsp -->
+  				<!-- <span class="border"> Tom </span> &nbsp&nbsp -->
+  				Country: <span class="border"> United States </span> &nbsp&nbsp
+  				University/School: <span class="border"> University of California, Berkeley </span> &nbsp&nbsp
+				College: <span class="border"> Engineering </span> &nbsp&nbsp
+  				Department: <span class="border"> Computer Science </span> &nbsp&nbsp
+  				Degree: <span class="border"> BSc </span> &nbsp&nbsp  
+  				Graduated Year: <span class="border"> 2014 </span>
+  				</div>
+  			</em></h5>
+		</div>
+		
+		<br>
+<!-- First Degree Record -->
+		<table class="table">
+			<thead>
+				<tr>
+					<th>#</th>
+					<th>Country</th>
+		  			<th>University/School</th>
+		  			<th>College</th>
+			  		<th>Department</th>
+		  			<th>Degree</th>
+			  		<th>Year</th>
+				</tr>
+			</thead>
+			<% n = 1 %>
+			<tbody>
+				<%= f.simple_fields_for :acadamic_histories do |builder| %>
+				
+				<!-- <h5> -->
+					<tr>
+						<th><%= n %></th>
+						<th><%= builder.input_field :nation, collection: Country.all.collect{|a,b| a}.sort , priority_countries: ["United States", "United Kingdom", "Taiwan"] %></th>
+					<!-- Country: <#%= builder.input_field :nation %>&nbsp&nbsp -->
+						<th><%= builder.input_field :school %></th>
+						<th><%= builder.input_field :college, collection: ["Arts & Design","Business & Management", "Communication", "Education", "Engineering", "Humanities & Social Science", "Law", "MBA/EMBA", "Medical & Public Health", "Science", "Other"] %></th>
+						<th><%= builder.input_field :department %></th>
+						<th><%= builder.input_field :degree, collection: ["Postdoc","PhD","MSc","BSc"] %></th>
+						<th><%= builder.input_field :year, collection: (1970..2020).reverse_each.to_a%></th>
+					</tr>
+					<% n += 1%> 
+					<!-- </h5> -->
+				<% end %>
+			</tbody>
+		</table>
+		<%= f.submit "Send", :class=>"btn btn-primary" %>
+		<!-- <div style="float:right;"><#%= button_tag "Submit" , :id=>"Submit"%></div> -->
+  	</div>
+</div>

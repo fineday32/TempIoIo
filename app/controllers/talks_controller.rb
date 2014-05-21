@@ -5,7 +5,8 @@ class TalksController < ApplicationController
   end
   def new
       #@talk_creator = TalkCreator.new
-      @process_lists = ProcessList.all 
+      @process_lists = ProcessList.all
+      @acadamic_histories = AcadamicHistory.find(params[:id]) 
       #10.times {@talk.talk_process_lists.build}
   end
   def create
@@ -19,7 +20,8 @@ class TalksController < ApplicationController
   	@allusercomments = Comment.get_by_talk(Talk.find(params[:id]))
     #@comment_content = Comment.add_new_comment(:comments)
     @comment = Comment.new
-
+    @acadamic_histories = AcadamicHistory.find(params[:id]) 
+    
     respond_to do |format|
       format.html
       format.js

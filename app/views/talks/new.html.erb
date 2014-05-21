@@ -11,12 +11,12 @@
 
 
 
-<%= simple_form_for :talk_content ,:role=> "form", :url => helpers_path do|f| %>
+<%= simple_form_for :talk_content ,:role=> "form", :url => talk_path, :method=>:put do |f| %>
 <h3><%= f.input_field :comment , :as=>:text , :class => "form-control" ,:placeholder=>"notes"%></h3>
 <div class="row">
 	<div class= "col-md-6">
 		<div class="row">
-		<%= render :partial => 'speaker_data', :locals => { :f => f } %>	
+		<%= render :partial => 'speaker_data', :locals => { :f => f, :a => @acadamic_histories } %>	
 		</div>
 		<div class="row">
 			<div class="panel panel-primary">

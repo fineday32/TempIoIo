@@ -5,75 +5,60 @@
 
 <!-- !!!!!!!!!!! TEXT !!!!!!!!!!!!!!!! -->
 
-<div class = "container">
-<p>
-<table class="table table-hover">
-  		<thead>
-	  		<tr>
-	  			<td>English Name</td>
-	  			<td>Chinese Name</td>
-	  			<td>Country</td>
-	  			<td>School</td>
-	  			<td>Department</td>
-	  			<td>Degree</td>
-	  			<td>Graduated Year</td>
-	  			<td>Edit link</td>
-	  		</tr>
-  		</thead>
-  		<tbody>
+<!-- <div class = "container">
+  <table class="table table-hover"> -->
+<% n = 0 %>
+<% @speakerlist.each do |s| %>
+  <% n += 1%>
+  <div class="panel-group" id="speakerList">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <h4 class="panel-title">
+          <a data-toggle="collapse" data-parent="#accordion" href = #<%=s.id%>>
+            <%= n %>. <%= s.eng_name %> (<%= s.chi_name %>)&nbsp&nbsp&nbsp<%= link_to "edit","/speakers/"+ s.id.to_s+"/edit/", {:style => "color:#2B65EC"} %>
+          </a>
+        </h4>
+      </div>
+      <div id= <%=s.id%> class="panel-collapse collapse">
+        <div class="panel-body">
+          <table class="table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Nation</th>
+                <th>University/School</th>
+                <th>College</th>
+                <th>Department</th>
+                <th>Degree</th>
+                <th>Year</th>
+                <th>New Talk</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% m = 0 %>
+              <% s.acadamic_histories.each do |t| %>
+                <% if t.nation || t.school %>
+                  <% m += 1%>
+                  <tr>
+                    <th><%= m %></th>
+                    <th><%= t.nation %></th>
+                    <th><%= t.school %></th>
+                    <th><%= t.college %></th>
+                    <th><%= t.department %></th>
+                    <th><%= t.degree %></th>
+                    <th><%= t.year %></th>
+                    <th><%= link_to "link", "/talks/new/"+ t.id.to_s %></th>
+                  </tr>
+                <% end %>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>
 
-        <% @speakerlist.each do |s| %>
-          <div class="panel-group" id="speakerList">
-            <div class="panel panel-default">
-              <div class="panel-heading">
-                <h4 class="panel-title">
-                  <a data-toggle="collapse" data-parent="#accordion" href = #<%=s.id%>>
-                    <%= s.eng_name %> (<%= s.chi_name %>)
-                  </a>
-                </h4>
-              </div>
-              <div id= <%=s.id%> class="panel-collapse collapse in">
-                <div class="panel-body">
-                  <p><%= link_to "edit",edit_speaker_path(s.id) %></p>
-                  <% s.acadamic_histories.each do |t| %>
-                    <% if t.nation || t.school %>
-                      <p><%= t.nation %>, <%= t.school %>, <%= t.department %>, <%= t.degree %>, <%= t.year %></p>
-                    <% end %>
-                  <% end %>
-                </div>
-              </div>
-            </div>
-          </div>
-        <% end %>
-
-
-
-
-
-<!--   			<#% @speakerlist.each do |s| %>
-          <#% if s.eng_name || s.chi_name %>
-            <td><#%= s.eng_name %></td>
-            <td><#%= s.chi_name %></td>
-    			  <#% s.acadamic_histories.each do |t| %>
-
-              <#% if t.nation || t.school %>
-                <td><#%= t.nation %></td>
-      				  <td><#%= t.school %></td>
-  	   			    <td><#%= t.department %></td>
-  		  		    <td><#%= t.degree %></td>
-  			   	    <td><#%= t.year %></td>
-              <#% end %>
-              <#% if t == s.acadamic_histories.first %>
-                <td><#%= link_to "edit",edit_speaker_path(s.id) %></td>
-              <#% end %>
-              <#% if t != s.acadamic_histories.last %>
-                </tr><td></td><td></td>
-              <#% else %>
-                </tr>
-              <#% end %>
-            <#% end %>
-          <#% end %>
-  			<#% end %> 
- -->  		</tbody>
-	</table>
+<!-- 	</table>
 </div>
+ -->

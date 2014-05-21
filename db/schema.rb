@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140429065945) do
+ActiveRecord::Schema.define(version: 20140521080141) do
 
   create_table "acadamic_histories", force: true do |t|
     t.integer  "speaker_profile_id"
@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20140429065945) do
     t.string   "nation"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "college"
   end
 
   create_table "alert_rules", force: true do |t|
@@ -71,11 +72,22 @@ ActiveRecord::Schema.define(version: 20140429065945) do
 
   create_table "speaker_profiles", force: true do |t|
     t.integer  "user_id"
-    t.text     "bio"  
+    t.text     "bio"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "eng_name"
     t.string   "chi_name"
+    t.string   "phone"
+    t.string   "email"
+    t.string   "recommend_name"
+    t.string   "recommend_phone"
+    t.string   "recommend_email"
+    t.string   "recommend_reason"
+    t.string   "OS"
+    t.string   "give_live_talk"
+    t.string   "current_work"
+    t.string   "time_for_talk"
+    t.string   "other_recommend"
   end
 
   create_table "talk_process_lists", force: true do |t|

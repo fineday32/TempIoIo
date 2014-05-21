@@ -21,7 +21,17 @@ class SpeakersController < ApplicationController
   end
 
   def edit
-    
+    @speaker = SpeakerProfile.find(params[:id])
+    i = @speaker.acadamic_histories.count
+    if i < 4
+      (3-i).times do
+        acadamic_histories = @speaker.acadamic_histories.build
+      end
+    end
+  end
+
+  def update
+  
   end
 
 end
