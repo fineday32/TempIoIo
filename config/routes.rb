@@ -1,4 +1,5 @@
 IOHBack::Application.routes.draw do
+  get "home/index"
   get "speaker/index"
   get "speaker/new"
   get "talks/index"
@@ -9,6 +10,8 @@ IOHBack::Application.routes.draw do
     resources :speakers
     resources :first_page
     resources :comments
+    resources :process
+    resources :home
     resources :admin
     resources :talks
           get 'talks/:id/edit#:category' => 'talks#edit' , :as =>"commenting"
