@@ -79,8 +79,8 @@
   				<td><%= tc.main.department %></td>
   				<td><%= tc.main.degree %></td>
   				<td><%= tc.eng_name + " " + tc.chi_name %></td>
-  				<td class=" example" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%  tc.process.each do |p| %>
-  						<%=   p.process_name%> <%=   p.finished_date%><% end	%>">
+  				<td class="example" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="<%  tc.process.each do |p| %>
+  						<%=   p.process_name%> <%=   p.finished_date%><% end %>">
   						
   					<%= tc.status %>
 				</td>
@@ -108,12 +108,3 @@ $(".category").click(function(){
 });
 
 </script>
-
-
-
-
-
-
-
-
-

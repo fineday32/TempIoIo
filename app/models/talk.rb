@@ -1,5 +1,6 @@
 class Talk < ActiveRecord::Base
 	belongs_to :speaker_profile
+    belongs_to :acadamic_history
     has_many :user_talks
 	has_many :users , :through => :user_talks
 	has_many :talk_process_lists
