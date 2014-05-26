@@ -51,9 +51,11 @@
 						  		<%= f.input_field :process, :checked =>p.finished,  as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false,:disabled=> p.finished %>
 					  			<%= f.label :process, p.process_name, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
 			  				</div>
+			  				<!-- 
 	  						<div class="col-md-2">
-		  						<%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>	
+		  						<#%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>	
 			  				</div>
+			  			-->
 			  				<div class="col-md-3">
 			  					<div class=<% if !p.finished %> 
   									<%= "hidden" %>
@@ -66,9 +68,10 @@
 						</div>
 					<% end %>
 				</div>
+				<!--
 			 	<div class="panel-footer">
-					<%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%>
-				</div>
+					<#%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%>
+				</div> -->
 			</div>
 		</div>
 	</div>
