@@ -1,8 +1,6 @@
 <div class="panel panel-primary">
 	<div class="panel-heading">
 		<h2 class="panel-title">Speaker</h2>
-		<%= f.input :speaker_id, :as => :hidden %>
-		<%= f.input :talk_id, :id=>"talk_id" ,:as => :hidden %>					
 	</div>
 	<div class="panel-body">
 		<div class="row">
@@ -51,3 +49,4 @@
 		 </table>		  			 	
 	</div>
 </div>
+<%= f.input :acadamic_history_id, :as=>:hidden, :input_html=> {"value"=>a.id}%>

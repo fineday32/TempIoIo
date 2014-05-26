@@ -1,17 +1,19 @@
 class Talk < ActiveRecord::Base
-	belongs_to :speaker_profile
+	belongs_to :acadamic_history
     has_many :user_talks
 	has_many :users , :through => :user_talks
 	has_many :talk_process_lists
 	has_many :processes , :through => :talk_process_lists
 	has_many :comments
+    accepts_nested_attributes_for :talk_process_lists, :reject_if => lambda { |a| a[:process].blank? }, :allow_destroy => true
+    accepts_nested_attributes_for :user_talks, :reject_if => lambda { |a| a[:process].blank? }, :allow_destroy => true
     has_attached_file :photography, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/blank.jpg"
     has_attached_file :bg, :styles => { :medium => "300x300>", :thumb => "100x100>" }, :default_url => "/assets/images.jpg"
     
     validates_attachment_content_type :photography, :content_type => %w(image/jpeg image/jpg image/png)
     validates_attachment_content_type :bg, :content_type => %w(image/jpeg image/jpg image/png)
     #validates_attachment_content_type :photogaphy, :content_type => /\Aimage\/.*\Z/
-
+    attr_accessor :process_types, :helper
     scope :not_finished 
     
     
