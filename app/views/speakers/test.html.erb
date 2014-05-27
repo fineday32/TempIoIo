@@ -1,0 +1,12 @@
+
+
+<%= simple_form_for @new_speaker, :role=>"form", :url=> speakers_path do |f| %>
+
+<%= f.input :bio %>
+		
+			<%= f.simple_fields_for  :acadamic_histories do |builder| %>
+				<%= render "acadamic_history", :f=>builder %>
+			<% end %>
+		
+<%= button_tag "Submit" , :id=>"Submit"%>
+<% end%>

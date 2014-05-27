@@ -1,13 +1,6 @@
-<h1>Speaker#index</h1>
-<p>Find me in app/views/speaker/index.html.erb</p>
 
-<!-- <#% @speakers_working.each do |e| %> -->
+<div class="container" >
 
-<!-- !!!!!!!!!!! TEXT !!!!!!!!!!!!!!!! -->
-
-<!-- <div class = "container">
-  <table class="table table-hover"> -->
-<div class="container">
 <% n = 0 %>
 <% @speakerlist.each do |s| %>
   <% n += 1%>
@@ -16,19 +9,7 @@
       <div class="panel-heading">
         <h4 class="panel-title">
           <a data-toggle="collapse" data-parent="#accordion" href = #<%=s.id%>>
-            <%= n %>. <%= s.eng_name %> (<%= s.chi_name %>)&nbsp&nbsp
-            <% r = s.acadamic_histories.first %>
-            <% if r %>
-              <font size=1><em>
-              <%= r.nation %>,&nbsp
-              <%= r.school %>,&nbsp
-              <%= r.college %>,&nbsp
-              <%= r.department %>,&nbsp
-              <%= r.degree %>,&nbsp
-              <%= r.year %>&nbsp&nbsp
-              </em></font>
-            <% end %>
-            <%= link_to "edit","/speakers/"+ s.id.to_s+"/edit/", {:style => "color:#2B65EC"} %>
+            <%= n %>. <%= s.eng_name %> (<%= s.chi_name %>)&nbsp&nbsp&nbsp<%= link_to "edit","/speakers/"+ s.id.to_s+"/edit/", {:style => "color:#2B65EC"} %>
           </a>
         </h4>
       </div>
@@ -44,7 +25,7 @@
                 <th>Department</th>
                 <th>Degree</th>
                 <th>Year</th>
-                <th>Create/Edit Talk</th>
+                <th>New Talk</th>
               </tr>
             </thead>
             <tbody>
@@ -60,11 +41,7 @@
                     <th><%= t.department %></th>
                     <th><%= t.degree %></th>
                     <th><%= t.year %></th>
-                    <% if t.talk_id %>
-                      <th><%= link_to "Edit Talk", "/talks/" + t.talk_id.to_s + "edit" %></th>
-                    <% else %>
-                      <th><%= link_to "Create Talk", "/talks/new/" + t.id.to_s %></th>
-                    <% end %>
+                    <th><%= link_to "link", "/talks/new/"+ t.id.to_s %></th>
                   </tr>
                 <% end %>
               <% end %>
@@ -76,6 +53,4 @@
   </div>
 <% end %>
 </div>
-<!-- 	</table>
-</div>
- -->
+<!-- 	</table> -->

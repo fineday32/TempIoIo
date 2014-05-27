@@ -4,14 +4,25 @@ class TalksController < ApplicationController
 
   end
   def new
-      #@talk_creator = TalkCreator.new
       @process_lists = ProcessList.all
       @acadamic_histories = AcadamicHistory.find(params[:id]) 
-      #10.times {@talk.talk_process_lists.build}
+      @talk = Talk.new
+      user_talks = @talk.user_talks.build
+       
   end
   def create
-      @talk_creator = TalkCreator.new
-      @talk_creator.insert(params.permit![:talk_content], current_user)
+      @talk = Talk.new(params.permit![:talk])
+      @talk.save!
+      ProcessType.where(:title=>params[:talk][:process_types])[0].all_processes.each do |p|
+        TalkProcessList.create(:talk_id => @talk.id, :all_process_id => p.id)
+      end
+      if(params[:talk][:helper])
+        UserTalk.create(:talk_id => @talk.id, :user_id =>  params[:talk][:helper])
+      end
+      #redirect_to talk_path
+      redirect_to talks_path
+      #@talk_creator = TalkCreator.new
+      #@talk_creator.insert(params.permit![:talk_content], current_user)
   end
   def edit
   	@process_lists = ProcessList.all 

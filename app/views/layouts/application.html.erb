@@ -14,15 +14,29 @@
       <div class="navbar-header">
         <%= link_to image_tag("ioh-logo.png", size: "245x150" ),  "/talks:all" %> 
       </div>
-       <div class="navbar-collapse collapse">
+      <div class="navbar-collapse collapse">
         <div class="navbar-form navbar-right">
-          <% if current_user %>
-            <%= link_to('登出', destroy_user_session_path, :method => :delete) %> 
-              <%= link_to('修改密碼', edit_registration_path(:user)) %> 
-          <% else %>
-            <%= link_to('註冊', new_registration_path(:user)) %> 
-            <%= link_to('登入', new_session_path(:user)) %> 
-          <% end %>
+          <!-- <table style="border:1px solid rgb(0,0,0); " rules="all" align=right> -->
+          <table align=right>
+            <col span="2" style="background-color: white" width=1000px>
+            <tbody text="#FFFFFF">
+              <tr>
+                <td align=center width=80><font color="white"><%= link_to "Talk List", talks_path%></td>
+                <td align=center width=80><font color="white"><%= link_to "New Talk", new_helper_path %> </td>
+                <td align=center width=100><font color="white"><%= link_to "New Speaker", new_speaker_path %></td>
+                <td align=center width=100><font color="white"><%= link_to "Speaker List", speakers_path%></td>
+                
+                <% if current_user %>
+                  <td align=center width=80><font color="white"><%= link_to('修改密碼', edit_registration_path(:user)) %> </td>
+                  <td align=center width=40><font color="white"><%= link_to('登出', destroy_user_session_path, :method => :delete) %> </td>
+                <% else %>
+                  <td align=center width=60><font color="white"><%= link_to('註冊', new_registration_path(:user)) %> </td>
+                  <td align=center width=40><font color="white"><%= link_to('登入', new_session_path(:user)) %></td>
+                <% end %>
+              </tr>
+            </tbody>
+          </table>
+
         </div>
       </div>
    

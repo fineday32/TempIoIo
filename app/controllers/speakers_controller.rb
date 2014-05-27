@@ -31,7 +31,11 @@ class SpeakersController < ApplicationController
   end
 
   def update
-  
+    @speaker = SpeakerProfile.find(params[:id])
+    @speaker.update_attributes(params.permit![:speaker_profile])
+    redirect_to speakers_path
+  end
+  def show
   end
 
 end

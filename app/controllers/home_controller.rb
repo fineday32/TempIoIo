@@ -10,5 +10,6 @@ class HomeController < ApplicationController
   		format.js
   	end
   end
-
+  def talk
+  end
 end

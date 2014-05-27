@@ -1,0 +1,125 @@
+<%= simple_form_for :process_form, html:{method: :put  } do |f|%>
+<div class="all_processes" >
+<h1> ALL Processes Lists </h1>
+<ul class=" processes">
+<% @processes.each_with_index do |p, index| %>
+    	<li class="process"> <input type="text" value="<%= p.title %>"> <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %></li> 
+<% end %>
+</ul>
+</div>
+<%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%> 
+
+
+
+
+ <%  @process_types.each  do |t|%>
+<div class="panel panel-primary">
+	<div class="panel-heading">
+		<h2 class="panel-title"><%= t.title %></h2>
+	</div>
+	<div class="panel-body">
+		<div class="tab-content">
+		
+		  <div class="tab-pane active" id="record">			
+	  		  <ul class="droppable"> 
+	  		   <% t.process_lists.each do |l| %>
+		  			  <li ><%= l.all_process.title %> <%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %></li>
+		  			<% end %>
+			</ul>
+		 </div>
+	  			   
+				  </div>
+			  
+			
+			
+		  
+	</div>
+	
+	<!-- <div class="panel-footer">
+			<#%= button_tag "add process" , :id=>"add_process", :class=>" btn btn-primary"%> 
+	</div>-->
+</div>	
+
+
+<% end %> 
+<%= f.input :processes  %>
+<%= f.input :process_list  %>
+<%= f.submit "Submit" %>
+<% end%>
+
+
+<script type="text/javascript">
+$("#add_process").click(function(){
+	                $("<li class=process><input type='text' value='new process'><button class='remove_process btn btn-danger btn-xs' name='button' type='submit'>remove</button></li>").appendTo($('.processes'));
+					
+				
+					$(".remove_process").click(function(){
+					$(this).parent().remove();
+					return false;
+
+				});
+	     			$(".process").draggable({ containment: "document",
+      helper: "clone",
+      cursor: "move"
+
+	     				});	
+	     				return false;
+
+				});
+
+  $(".process").draggable({containment: "document",
+      helper: "clone",
+      cursor: "move" });
+  $(".process_lists").draggable();
+  $( ".droppable" ).droppable({ 
+  	  accept: ".process",
+  	  drop: function( event, ui ) {
+  	  	var target =$(event.target).find("input");
+        $( "<li class='process_lists'>"+ target[1] +" <button class='remove_process btn btn-danger btn-xs' name='button' type='submit'>remove</button></li>" ).appendTo( this );
+        $(".remove_process").click(function(){
+					$(this).parent().remove();
+					return false;
+
+				});
+     }
+      }).sortable();
+
+    $(".remove_process").click(function(){
+					$(this).parent().remove();
+					return false;
+    });
+
+$('.simple_form.process_form').submit(function()
+					{
+	    				try{
+	    					var tab_active = $(".tab-pane.active");
+					      	var all_dates = tab_active.find(".datetimepicker").map(function() {
+	    					return this.value;
+							}).get();
+					     	 document.getElementById("talk_content_date_array").value = all_dates;
+					    
+					     	var all_checks = tab_active.find(".boolean.optional").map(function() {
+	    					return this.checked;
+							}).get();
+					     	 document.getElementById("talk_content_check_array").value = all_checks;
+					    	
+					    	var all_checks_process_names = tab_active.find(".process_name").map(function() {
+	    					return this.textContent;
+							}).get();
+					     	 document.getElementById("talk_content_name_array").value = all_checks_process_names;
+
+					     	 
+
+					      	var users = $("#helpers_list").children().find(".helpers").map(function() {
+	    					return this.value;
+							}).get();
+					     	 
+					     	 document.getElementById("talk_content_users_array").value = document.getElementById("current_helper_id").textContent+ "," +users;
+					     	 
+return false;
+					    	}						
+					    catch (error)
+					    	{}
+					    	
+					});
+</script>

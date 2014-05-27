@@ -1,7 +1,7 @@
 class Comment < ActiveRecord::Base
 	belongs_to :talk
 	#has_many :userc, :useromments
-	belongs_to :user ,# :through => :usercomment
+	belongs_to :user # :through => :usercomment
 
 	
 	def self.get_by_talk(talk)

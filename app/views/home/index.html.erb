@@ -149,29 +149,33 @@
       </span>
     </div>
 
-    <div id="rectangle" >
-      <% i = 0 %><p>
+    <div id="rectangle">
+      
+      <% i = 0 %>
+      <p>
       <% @tc_list.each do |tc| %>
+          
+            <% s = tc.acadamic_history.speaker_profile %>
 
-          <% s = SpeakerProfile.find(tc.speaker_profile_id) %>
-          <% sac = s.acadamic_histories %>
-          <button type="button" class="btn btn-default" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= s.eng_name %>, <%= s.chi_name %>">
-            <!-- <img data-src="holder.js/140x140" class="img-rounded" alt="140x140" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+" style="width: 140px; height: 140px;"> -->
+            <button type="button" class="btn btn-default" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="top" data-content="<%= s.eng_name %>, <%= s.chi_name %>">
             
-            <%= link_to image_tag("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"),edit_talk_path(tc.id) %>
-          </button>
+              <!-- <#%= link_to image_tag("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"),edit_talk_path(tc.id) %> -->
 
-          <% if i < 8 %>
-            <% i += 1 %>
-          <% else %>
-            </p><p>
-            <% i = 0 %>
-          <% end %>
+              <%= link_to image_tag("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxNDAiIGhlaWdodD0iMTQwIj48cmVjdCB3aWR0aD0iMTQwIiBoZWlnaHQ9IjE0MCIgZmlsbD0iI2VlZSIvPjx0ZXh0IHRleHQtYW5jaG9yPSJtaWRkbGUiIHg9IjcwIiB5PSI3MCIgc3R5bGU9ImZpbGw6I2FhYTtmb250LXdlaWdodDpib2xkO2ZvbnQtc2l6ZToxMnB4O2ZvbnQtZmFtaWx5OkFyaWFsLEhlbHZldGljYSxzYW5zLXNlcmlmO2RvbWluYW50LWJhc2VsaW5lOmNlbnRyYWwiPjE0MHgxNDA8L3RleHQ+PC9zdmc+"),home_talk_path %>              
+            </button>
+
+            <% if i < 8 %>
+              <% i += 1 %>
+            <% else %>
+              </p><p>
+              <% i = 0 %>
+            <% end %>
+          
         <% end %> 
       </p>
         <!-- <canvas id="circleDo" class="bigCircle" width="2000" height="115" style="position:relative; top:8px; left:-10px;">
       Your browser does not support the HTML5 canvas tag.</canvas>
- -->  
+ -->
     </div>
 
     <div style="background:black; padding:12px;">
@@ -220,10 +224,7 @@ circleDo.ready(function(){
 	}
 	
 });
-// 
-$('.btn-default').popover();
 
-// 
 function drawCircle(size, x, y){
 	var radius;
 	if (size === 1)
@@ -275,6 +276,8 @@ rect.ready(function(){
 	
 	
 });
+
+$('.btn-default').popover();
 
 function drawRect(x, y, color){
 	var c=document.getElementById("rectDraw");

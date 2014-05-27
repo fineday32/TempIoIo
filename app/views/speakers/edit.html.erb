@@ -1,61 +1,148 @@
 
-<%= simple_form_for @speaker, :role=>"form", :url => speakers_path do |f| %>
+<%= simple_form_for @speaker, :role=>"form", :url => speaker_path do |f| %>
 	<%= render :partial =>'speaker' , :locals=>{:f=>f} %>
 <% end %>
 
-<script>
- function checkbox_changer(evt){
-  var checkbox1 = document.getElementById("checkbox1");
-  var checkbox2 = document.getElementById("checkbox2");
-  var checkbox3 = document.getElementById("checkbox3");
-  var checkbox4 = document.getElementById("checkbox4");
+<!-- <script>
+//  function checkbox_changer(evt){
+//   var checkbox1 = document.getElementById("checkbox1");
+//   var checkbox2 = document.getElementById("checkbox2");
+//   var checkbox3 = document.getElementById("checkbox3");
+//   var checkbox4 = document.getElementById("checkbox4");
   
-  checkbox1.checked = false;
-  checkbox2.checked = false;
-  checkbox3.checked = false;
-  checkbox4.checked = false;
+//   checkbox1.checked = false;
+//   checkbox2.checked = false;
+//   checkbox3.checked = false;
+//   checkbox4.checked = false;
 
-  evt.target.checked= true;
+//   evt.target.checked= true;
  
-}
-//document.getElementById("checkbox1").addEventListener("change",checkbox_changer,false);
-//document.getElementById("checkbox2").addEventListener("change",checkbox_changer,false);
-//document.getElementById("checkbox3").addEventListener("change",checkbox_changer,false);
-//document.getElementById("checkbox4").addEventListener("change",checkbox_changer,false);
+// }
+// //document.getElementById("checkbox1").addEventListener("change",checkbox_changer,false);
+// //document.getElementById("checkbox2").addEventListener("change",checkbox_changer,false);
+// //document.getElementById("checkbox3").addEventListener("change",checkbox_changer,false);
+// //document.getElementById("checkbox4").addEventListener("change",checkbox_changer,false);
 
-// if (checkbox1.text != "")
-$('.new_speaker_creator').submit(function(){
-	// var  chi_name = document.getElementById("speaker_creator_chi_name");
+// // if (checkbox1.text != "")
+// $('.new_speaker_creator').submit(function(){
+// 	// var  chi_name = document.getElementById("speaker_creator_chi_name");
 	 
-	if (
-		!(document.getElementById("speaker_creator_chi_name").value
-		&& document.getElementById("speaker_creator_eng_name").value
-		&& document.getElementById("speaker_creator_email").value
-		&& document.getElementById("speaker_creator_acadamic_name1").value
-		&& document.getElementById("speaker_creator_acadamic_school_abbreviation1").value
-		&& document.getElementById("speaker_creator_acadamic_department1").value
-		&& document.getElementById("speaker_creator_acadamic_school1").value
-		&& document.getElementById("speaker_creator_acadamic_degree1").value
-		&& document.getElementById("speaker_creator_acadamic_year1").value
+// 	if (
+// 		!(document.getElementById("speaker_creator_chi_name").value
+// 		&& document.getElementById("speaker_creator_eng_name").value
+// 		&& document.getElementById("speaker_creator_email").value
+// 		&& document.getElementById("speaker_creator_acadamic_name1").value
+// 		&& document.getElementById("speaker_creator_acadamic_school_abbreviation1").value
+// 		&& document.getElementById("speaker_creator_acadamic_department1").value
+// 		&& document.getElementById("speaker_creator_acadamic_school1").value
+// 		&& document.getElementById("speaker_creator_acadamic_degree1").value
+// 		&& document.getElementById("speaker_creator_acadamic_year1").value
+// 		)
+// 		&&
+// 		(document.getElementById("checkbox1").checked == false
+// 		&& document.getElementById("checkbox2").checked == false
+// 		&& document.getElementById("checkbox3").checked == false
+// 		&& document.getElementById("checkbox4").checked == false
+// 		)
+// 	   )
+// 	{
+// 		alert("no value");
+// 		return false;
+// 		//accept 
+// 	}
+// 	else
+// 	{
+// 		alert("has value");
+// 		return false;
+// 		//reject
+// 	}
+// });
+  
+</script> -->
+
+<script>
+$('#speaker_profile').submit(function(){
+	// var  chi_name = document.getElementById("speaker_creator_chi_name");
+	// alert("no value"); 
+	// return false;
+	if (document.getElementById("speaker_profile_chi_name").value &&
+		document.getElementById("speaker_profile_eng_name").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_nation").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_school").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_college").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_department").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_degree").value &&
+		document.getElementById("speaker_profile_acadamic_histories_attributes_0_year").value
 		)
-		&&
-		(document.getElementById("checkbox1").checked == false
-		&& document.getElementById("checkbox2").checked == false
-		&& document.getElementById("checkbox3").checked == false
-		&& document.getElementById("checkbox4").checked == false
-		)
-	   )
+	   
 	{
-		alert("no value");
-		return false;
+		alert("Complete!!");
+		return true;
 		//accept 
 	}
 	else
 	{
-		alert("has value");
+		var info_alert = "Enter the below value:\n";
+		if (!document.getElementById("speaker_profile_chi_name").value){
+			info_alert += "Chinese Name;\n";
+			document.getElementById("speaker_profile_chi_name").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_chi_name").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_eng_name").value) {
+			info_alert += "English Name;\n";
+			document.getElementById("speaker_profile_eng_name").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_eng_name").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_nation").value){
+			info_alert += "Country;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_nation").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_nation").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_school").value){
+			info_alert += "University/School;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_school").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_school").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_college").value){
+			info_alert += "College;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_college").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_college").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_department").value){
+			info_alert += "Department;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_department").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_department").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_degree").value){
+			info_alert += "Degree;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_degree").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_degree").style.borderColor="initial";
+
+		if (!document.getElementById("speaker_profile_acadamic_histories_attributes_0_year").value){
+			info_alert += "Year;\n";
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_year").style.borderColor="red";
+		}
+		else
+			document.getElementById("speaker_profile_acadamic_histories_attributes_0_year").style.borderColor="initial";
+		alert(info_alert);
 		return false;
 		//reject
 	}
+	// return false;
 });
   
 </script>
