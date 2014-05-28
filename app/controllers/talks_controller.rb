@@ -10,6 +10,7 @@ class TalksController < ApplicationController
       user_talks = @talk.user_talks.build
        
   end
+
   def create
       @talk = Talk.new(params.permit![:talk])
       @talk.save!
@@ -19,41 +20,40 @@ class TalksController < ApplicationController
       if(params[:talk][:helper])
         UserTalk.create(:talk_id => @talk.id, :user_id =>  params[:talk][:helper])
       end
-      #redirect_to talk_path
       redirect_to talks_path
-      #@talk_creator = TalkCreator.new
-      #@talk_creator.insert(params.permit![:talk_content], current_user)
   end
+
   def edit
   	@process_lists = ProcessList.all 
-    @t = TalkCreator.new
-  	@talk_content = @t.talk_load_one(Talk.find(params[:id]))
+    @talk = Talk.find(params[:id])
   	@allusercomments = Comment.get_by_talk(Talk.find(params[:id]))
     #@comment_content = Comment.add_new_comment(:comments)
     @comment = Comment.new
-    @acadamic_histories = AcadamicHistory.find(params[:id]) 
+    
     
     respond_to do |format|
       format.html
       format.js
     end
   end
+
   def type
   	@tc = TalkCreator.new
   	@get_type = params[:type].gsub(/_/, " ") 
     @get_type = @get_type.gsub(/:/, "") 
-  	@process_list = ProcessList.pluck(:title).uniq
+  	@process_list = AllProcess.all.pluck(:title)
     if current_user.admin?
       @Talks= Talk.all
     else
       @Talks = current_user.talks
     end
   	if (@get_type == "all")
-  	@tc_list= @tc.talk_load(@Talks)
-    elsif (@get_type == "working")
-  	@tc_list = @tc.talk_load(@Talks.not_finished)
-  	else
-    @tc_list = @tc.talk_load(@Talks.on_process(@get_type))
+  	@tc_list= Talk.all
+
+   #  elsif (@get_type == "working")
+  	# @tc_list = @tc.talk_load(@Talks.not_finished)
+  	# else
+   #  @tc_list = @tc.talk_load(@Talks.on_process(@get_type))
   	end
   	
   	respond_to do |format|
@@ -62,8 +62,11 @@ class TalksController < ApplicationController
   	end
   end
   def update
-  	@t = TalkCreator.new
-  	@talk_content = @t.update(params.permit![:talk_content])
+  	@talk = Talk.find(params[:id])
+    @talk.update_attributes(params.permit![:talk])
+    @talk.save!
+    @talk.update_process(params[:talk][:processes])
+  	@talk.update_user(params[:talk][:id])
     
   	redirect_to "/talks:all"
 

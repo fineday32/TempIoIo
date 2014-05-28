@@ -55,107 +55,58 @@
       </a>
     </div>
 
-     <div style="background-color:rgb(146, 2, 23); text-align:center; padding-bottom:5px; position:relative; top:20px;" id="menuID">
+     <div style="background-color:rgb(146, 2, 23); text-align:center;  position:relative;" id="menuID">
+      <div class="row">
         <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;"><font size='3'><big>發現講座</big></font></a>
         &nbsp;&nbsp;&nbsp;&nbsp;
         <font size='4' color="white"><big>|</big></font>
         &nbsp;&nbsp;&nbsp;
         <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;"><font size='3'><big>搜尋講座</big></font></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <input type="text" id="inputKeyWords" name="firstname" placeholder="輸入關鍵字" style="height:20px; width:120px; text-align:center;">
-    </div>
-    
-    <div style="background-color:rgb(146, 2, 23); position:relative; top:30px; height:115px;">
+      </div>
+     <di class="row">
         
-      <canvas id="circleDo" class="bigCircle" width="2000" height="115" style="position:relative; top:8px; left:-10px;">
-      Your browser does not support the HTML5 canvas tag.</canvas>
+     
 
-    </div>
-
-    <div>
-      <span style="position:relative; top:-55px; left:45px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font size='5'><big><big><big>方向</big></big></big></font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:95px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>求學</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:143px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>工作</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:191px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>創業</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:239px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>ALL</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-55px; left:295px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font size='5'><big><big><big>地區</big></big></big></font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:345px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>亞洲</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:393px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>美洲</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:441px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>歐洲</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:489px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>其他</font>
-        </a>
-      </span>
-           <span style="position:relative; top:-55px; left:539px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font size='5'><big><big><big>領域</big></big></big></font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:589px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>設計</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:637px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>商管</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:685px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>科技</font>
-        </a>
-      </span>
-      <span style="position:relative; top:-65px; left:733px;">
-        <a href="http://www.ntu.edu.tw" style="text-decoration:none;color:white;">
-          <font>人文</font>
-        </a>
-      </span>
-    </div>
-
-    <div id="rectangle">
+<div class="btn-toolbar filters" role="toolbar">
+  <div class="row" >
+      <button type="button" class="btn btn-default btn-circle btn-xl ">方向</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">求學</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">工作</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">創業</button>
+    
+    
+    
+      <button type="button" class="btn btn-default btn-circle btn-xl">地區</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">亞洲</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">美洲</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">歐洲</button>
+      <button type="button" class="btn btn-default btn-circle btn-lg">其他</button>
       
+      <button type="button" class="btn btn-default btn-circle btn-xl"  data-filter="*">領域</button>
+      <% @fields.each do |f| %>
+         <button type="button" class="btn btn-default btn-circle btn-lg" data-filter=".<%= f[0].tr("&","").tr(" ","")%>"><%= f[1]%></button>
+      <% end %>
 
-        <!-- <canvas id="circleDo" class="bigCircle" width="2000" height="115" style="position:relative; top:8px; left:-10px;">
-      Your browser does not support the HTML5 canvas tag.</canvas>
- -->
+  </div>
+</div>
+  </div> 
+</div>
+</div>
+
+   
+
+
+<div class="isotope">
+  <% Talk.all.each do |t| %>
+    <div class="element-item   <%=t.acadamic_history.college.tr("&","").tr(" ","")%> metal " data-category="<%=t.acadamic_history.college%>">
+    
+    <h3 class="name">     <%= t.acadamic_history.speaker_profile.eng_name%> </h3>
+    <p class="school">    <%= t.acadamic_history.school %>  </p>
+    <p class="department"><%= t.acadamic_history.department %> </p>
     </div>
+  <% end%>
+</div>
 
     <div style="background:black; padding:12px;">
       <span style="position:relative; left:60px;">
@@ -175,97 +126,64 @@
     </div>
 
  <script type="text/javascript">
-var circleDo = $('#circleDo');
-var rect = $('#rectangle');
+$( function() {
+  // init Isotope
+  var $container = $('.isotope').isotope({
+    itemSelector: '.element-item',
+    layoutMode: 'fitRows',
+    getSortData: {
+      name: '.name',
+      school: '.school',
+      department: '.department',
+      number: '.number parseInt',
+      category: '[data-category]',
+      weight: function( itemElem ) {
+        var weight = $( itemElem ).find('.weight').text();
+        return parseFloat( weight.replace( /[\(\)]/g, '') );
+      }
+    }
+  });
 
-circleDo.ready(function(){
-	// console.log('haha');
-	
-	// if ($('canvas[id=circleDo]').hasClass('bigCircle'))
-	// 	console.log('bigCircle');
-	// if ($('canvas[id=circleDo]').hasClass('smallCircle'))
-	// 	console.log('smallCircle');
-	var x=95, y=50;
-	for (i=1; i<=15; i++)
-	{	
-		if (i%5===1)
-		{
-			drawCircle(1, x, y);
-			circleOption();
-		}
-		else
-			drawCircle(0, x, y);
+  // filter functions
+  var filterFns = {
+    // show if number is greater than 50
+    numberGreaterThan50: function() {
+      var number = $(this).find('.number').text();
+      return parseInt( number, 10 ) > 50;
+    },
+    // show if name ends with -ium
+    ium: function() {
+      var name = $(this).find('.name').text();
+      return name.match( /ium$/ );
+    }
+  };
 
-		if (i%5===1 || i%5===0)
-			x+=110;
-		else
-			x+=80;
-	}
-	
+  // bind filter button click
+  $('.filters').on( 'click', 'button', function() {
+    var filterValue = $( this ).attr('data-filter');
+    
+    // use filterFn if matches value
+    filterValue = filterFns[ filterValue ] || filterValue;
+    
+    $container.isotope({ filter: filterValue });
+  });
+
+  // bind sort button click
+  $('#sorts').on( 'click', 'btn', function() {
+    var sortByValue = $(this).attr('data-sort-by');
+    $container.isotope({ sortBy: sortByValue });
+  });
+  
+  // change is-checked class on buttons
+  $('.button-group').each( function( i, buttonGroup ) {
+    var $buttonGroup = $( buttonGroup );
+    $buttonGroup.on( 'click', 'button', function() {
+      $buttonGroup.find('.is-checked').removeClass('is-checked');
+      $( this ).addClass('is-checked');
+    });
+  });
+  
 });
 
-function drawCircle(size, x, y){
-	var radius;
-	if (size === 1)
-		// console.log('big');
-		radius = 50;
-	else 
-		// console.log('small');
-		radius = 30
-	var c = document.getElementById("circleDo");
-	var ctx = c.getContext("2d");
-	ctx.beginPath();
-	ctx.arc(x,y,radius,0,2*Math.PI);
-	var dashList = [3, 3];  // Create 3x3 dots and spaces
-	ctx.setLineDash(dashList);
-	// set line color
-    ctx.strokeStyle = '#ffffff';
-	ctx.stroke();
-}
 
-function circleOption(){
-	console.log('circleOption');
-}
-
-rect.ready(function(){
-	console.log('in rectangle');
-	var redCount=30, allCount=170;
-	var x=35, y=5;
-	for (i=1; i<=allCount; i++)
-	{
-		
-		if (i<=redCount)	
-		{
-			// red is rgb(202, 0, 13)
-			drawRect(x, y, "rgb(202, 0, 13)");
-			x+=60;
-		}
-		else
-		{
-			// gray is rgb(143, 146, 142)
-			drawRect(x, y, "rgb(143, 146, 142)");
-			x+=60;
-		}
-		if (i%23===0)
-		{
-			x=35;
-			y+=60;
-		}
-	}
-	
-	
-});
-
-function drawRect(x, y, color){
-	var c=document.getElementById("rectDraw");
-	var ctx=c.getContext("2d");
-	ctx.beginPath();
-	ctx.lineWidth="1";
-	// rgb(202, 0, 13)
-	ctx.strokeStyle=color;
-	ctx.rect(x,y,50,50); 
-	ctx.fillStyle=color;
-	ctx.fill();
-	ctx.stroke();
-}
 </script>

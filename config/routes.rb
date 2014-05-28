@@ -1,4 +1,5 @@
 IOHBack::Application.routes.draw do
+  root "home#index"
   get "home/index"
   get "speaker/index"
   get "speaker/new"
