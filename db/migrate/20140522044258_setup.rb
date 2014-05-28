@@ -34,7 +34,7 @@ class Setup < ActiveRecord::Migration
 	    t.datetime "created_at"
 	    t.datetime "updated_at"
 	    t.string   "comments"
-	    t.string   "talk_id"
+	    t.integer  "talk_id"
 	    t.string   "comment_type"
 	    t.integer  "rule_id"
 	    t.integer  "user_id"

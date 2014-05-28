@@ -98,8 +98,14 @@
 
 
 <div class="isotope">
+  
   <% Talk.all.each do |t| %>
-    <div class="element-item   <%=t.acadamic_history.college.tr("&","").tr(" ","")%> metal " data-category="<%=t.acadamic_history.college%>">
+
+    <div class="element-item   <%=t.acadamic_history.college.tr("&","").tr(" ","")%> metal " data-toggle="modal" data-category="<%=t.acadamic_history.college%>" data-container="body" data-trigger="hover" data-toggle="popover" data-placement="right" data-content="
+      <div>
+        <%= t.acadamic_history.college %>
+          </div>">
+
     
     <h3 class="name">     <%= t.acadamic_history.speaker_profile.eng_name%> </h3>
     <p class="school">    <%= t.acadamic_history.school %>  </p>
@@ -107,6 +113,8 @@
     </div>
   <% end%>
 </div>
+
+
 
     <div style="background:black; padding:12px;">
       <span style="position:relative; left:60px;">
@@ -126,6 +134,8 @@
     </div>
 
  <script type="text/javascript">
+ $('.element-item').popover({ html : true});
+
 $( function() {
   // init Isotope
   var $container = $('.isotope').isotope({

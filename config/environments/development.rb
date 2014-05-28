@@ -26,18 +26,15 @@ IOHBack::Application.configure do
   #config.active_record.migration_error = :page_load
   config.active_record.migration_error = :app_start
 
-
-config.paperclip_defaults = {
-    :storage => :s3,
-    :s3_protocol => 'http',
-    
-    :s3_credentials => {
-        :bucket => 'iohtest',
-        :access_key_id => 'AKIAJZCSUJDVYCNLJYKA',
-        :secret_access_key => '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'
-
+ config.paperclip_defaults = {
+      :storage => :s3,
+      :s3_protocol => 'http',
+      :s3_credentials => {
+          :bucket => 'iohdb',
+          :access_key_id => 'AKIAJH6TVE3AEQOFCEAQ',
+          :secret_access_key => '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'
+      }
     }
-}
 
 
  config.assets.compress = false
