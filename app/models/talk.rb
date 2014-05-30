@@ -13,7 +13,7 @@ class Talk < ActiveRecord::Base
     validates_attachment_content_type :photography, :content_type => %w(image/jpeg image/jpg image/png)
     validates_attachment_content_type :bg, :content_type => %w(image/jpeg image/jpg image/png)
     #validates_attachment_content_type :photogaphy, :content_type => /\Aimage\/.*\Z/
-    attr_accessor :process_types, :helper
+    attr_accessor :process_types, :helper, :processes
     scope :not_finished 
     
     
@@ -46,6 +46,31 @@ class Talk < ActiveRecord::Base
             end
         end
         @on_process_list
+    end
+
+    def update_process(processes_array)
+        processes_temp = processes_array.split(",")
+        processes = []
+        processes_temp.each do |p|
+          processes << p.split("/")
+        end
+        processes.each do |p|
+            if p[1]
+                process = self.talk_process_lists.where(:talk_id=>self.id,:all_process_id=>p[0]).first
+                process.finished_date = p[1]
+                process.finished=true
+                process.save!
+            end
+        end
+    end
+    def update_user(id)
+        if (self.user_talks.find_by_id(id))
+          #
+        elsif
+           self.user_talks.destroy_all
+           u = UserTalk.create(:talk_id=>self.id, :user_id=>id)
+        end
+            
     end
 end
 

@@ -15,9 +15,9 @@
 # gem 'pg'
 #
 development:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
-  database: db/development.sqlite3
+  database: IOH
   pool: 5
 
 
@@ -43,17 +43,17 @@ development:
 # re-generated from your development database when you run "rake".
 # Do not set this db to the same as development or production.
 test:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
   database: IOH-back_test
   pool: 5
-  username: IOH-back
+  username: ioh
   password:
 
 production:
-  adapter: sqlite3
+  adapter: postgresql
   encoding: unicode
   database: IOH-back_production
   pool: 5
-  username: IOH-back
+  username: ioh
   password:

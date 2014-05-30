@@ -3,7 +3,7 @@
 
 <p style="color: green"><%= flash[:notice] %></p>
 <ul class="nav nav-pills">
-	<li class="active"><a href="/talks:all" >All</a></li>
+	<li class="active"><a href="/talks" >All</a></li>
 	<li><a href="#schedule" data-toggle="tab">By Schedule</a></li>
 	<li><a href="#warning" data-toggle="tab">By Warning</a></li>
 	<li><a href="#school" data-toggle="tab">By School</a></li>
@@ -42,7 +42,8 @@
 <table class="table table-hover">
   		<thead>
 	  		<tr>
-	  			<td>School(Nation)</td>
+	  			<td>Nation</td>
+	  			<td>School</td>
 	  			<td>Major</td>
 	  			<td>Degree</td>
 	  			<td>Name</td>
@@ -64,6 +65,7 @@
   				<tr class="" href=''>
   			<% end %>
   				<% if tc.acadamic_history %>
+  					<td><%= tc.acadamic_history.nation %></td>
 	  				<td><%= tc.acadamic_history.school %></td>
   					<td><%= tc.acadamic_history.department %></td>
   					<td><%= tc.acadamic_history.degree %></td>
@@ -86,7 +88,12 @@
   				<td><#%= tc.last_activity_date %></td>
   				<td><#%= tc.days_since_last_activity %></td> -->
   				<td><%= %></td>
-  				<td><%= link_to "link",edit_talk_path(tc.id) %></td>
+  				<td><%= %></td>
+  				<td><%= %></td>
+  				<td><%= %></td>
+  				<td><%= %></td>
+  				<td><%= %></td>
+  				<td><%= link_to "edit",edit_talk_path(tc.id) %></td>
   			</tr>
   			<% end %> 
   		</tbody>

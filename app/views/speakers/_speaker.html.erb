@@ -9,7 +9,7 @@
   		<h3>Chinese Name <font color="red">*</font></h3>
   		</div>
   		<div class="col-md-6">	
-  		<h3><%= f.input_field :chi_name %></h3>
+  		<h3><%= f.input_field :chi_name, :style => "width:300px;" %></h3>
   		</div>
 	</div>
 	
@@ -18,7 +18,7 @@
 		<h3>English Name <font color="red">*</font></h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :eng_name %></h3>
+		<h3><%= f.input_field :eng_name, :style => "width:300px;" %></h3>
 		</div>
 	</div>
 
@@ -28,7 +28,7 @@
 		</div>
 		<div class="col-md-6">
 		<h3>
-		<h3><%= f.input_field :phone %></h3>
+		<h3><%= f.input_field :phone, :style => "width:300px;" %></h3>
 		</div>
 	</div>
 
@@ -37,7 +37,7 @@
 		<h3>E-mail</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :email %></h3> 
+		<h3><%= f.input_field :email, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 	
@@ -46,7 +46,7 @@
 		<h3>Recommend Name</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommend_name %></h3> 
+		<h3><%= f.input_field :recommend_name, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -55,7 +55,7 @@
 		<h3>Recommend Telephone</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommend_phone %></h3> 
+		<h3><%= f.input_field :recommend_phone, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 	
@@ -64,7 +64,7 @@
 		<h3>Recommend <br>E-mail</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommend_email %></h3> 
+		<h3><%= f.input_field :recommend_email, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -73,7 +73,7 @@
 		<h3>Recommend Reason</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :recommend_reason %></h3> 
+		<h3><%= f.input_field :recommend_reason, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -93,7 +93,7 @@
 		<h3>Operating System (OS)</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :OS %></h3> 
+		<h3><%= f.input_field :OS, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 	
@@ -102,7 +102,7 @@
 		<h3>Giving Live Talk ?</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :give_live_talk %></h3> 
+		<h3><%= f.input_field :give_live_talk, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -111,7 +111,7 @@
 		<h3>Current Work</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :current_work %></h3> 
+		<h3><%= f.input_field :current_work, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -120,7 +120,7 @@
 		<h3>OK time for <br> Live Talk</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :time_for_talk %></h3> 
+		<h3><%= f.input_field :time_for_talk, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -129,7 +129,7 @@
 		<h3>Other recommend for IOH</h3>
 		</div>
 		<div class="col-md-6">
-		<h3><%= f.input_field :other_recommend %></h3> 
+		<h3><%= f.input_field :other_recommend, :style => "width:300px;" %></h3> 
 		</div>
 	</div>
 
@@ -172,6 +172,7 @@
 			<thead>
 				<tr>
 					<th>#</th>
+					<!-- <th>Region</th> -->
 					<th>Country</th>
 		  			<th>University/School</th>
 		  			<th>College</th>
@@ -189,13 +190,15 @@
 						<th><%= n %>
 							<% if n==1 %><font color="red">*</font><% end %>
 						</th>
-						<th><%= builder.input_field :nation, collection: Country.all.collect{|a,b| a}.sort , priority_countries: ["United States", "United Kingdom", "Taiwan"] %></th>
+						<!-- <th><#%= builder.input_field :region, collection: @area.sort, :style => "width:90px;"%></th> -->
+						<!-- <th><#%= @region %></th> -->
+						<th><%= builder.input_field :nation, collection: Country.all.collect{|a,b| a}.sort , priority_countries: ["United States", "United Kingdom", "Taiwan"], :style => "width:150px;" %></th>
 					<!-- Country: <#%= builder.input_field :nation %>&nbsp&nbsp -->
-						<th><%= builder.input_field :school %></th>
-						<th><%= builder.input_field :college, collection: ["Arts & Design","Business & Management", "Communication", "Education", "Engineering", "Humanities & Social Science", "Law", "MBA/EMBA", "Medical & Public Health", "Science", "Other"] %></th>
-						<th><%= builder.input_field :department %></th>
-						<th><%= builder.input_field :degree, collection: ["Postdoc","PhD","MSc","BSc"] %></th>
-						<th><%= builder.input_field :year, collection: (1970..2020).reverse_each.to_a%></th>
+						<th><%= builder.input_field :school, :style => "width:160px;" %></th>
+						<th><%= builder.input_field :college, collection: @studies, :style => "width:100px;" %></th>
+						<th><%= builder.input_field :department, :style => "width:150px;" %></th>
+						<th><%= builder.input_field :degree, collection: @achievement, :style => "width:70px;" %></th>
+						<th><%= builder.input_field :year, collection: (1970..2020).reverse_each.to_a, :style => "width:60px;" %></th>
 					</tr>
 					<% n += 1%> 
 					<!-- </h5> -->

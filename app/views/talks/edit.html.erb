@@ -15,12 +15,14 @@
 			<div class="row">
 			<%#= render :partial => 'commenting', :locals => { :f => f } %>
 				<h3> <span class="label label-success"><%= uc[0] %>:</span>
-	 			<span class="label label-primary"><%= uc[1] %> <font size=1>[<em><%= uc[2] %></em>]</font></span>
+	 			<span class="label label-primary">
+	 				<%= uc[1] %> <font size=1>[<em><%= uc[2] %></em>]</font>
+	 			</span>
 			</div>
 		<% end %>
 		<div class="row">
 		<%= simple_form_for :comment_content, :url => { :controller => 'comments', :action => 'create' } do |f| %>
-			<%= f.input :talk_id, :as => :hidden, :input_html=> {"value"=>@talk_content.talk_id}%>
+			<%= f.input :id, :as => :hidden, :input_html=> {"value"=>@talk.id}%>
 			<%= f.input :comments %>
 			<%= f.submit "Send", :class=>"btn btn-primary" %>
 		<% end %>
@@ -28,45 +30,34 @@
 	</div>
 
 
-	<%= simple_form_for :talk_content, :role=> "form", :url => talk_path(@talk_content.talk_id),
-	 	:method=>:put do |f| %>
-	<%= f.input :speaker_id, :as => :hidden %>
-	<%= f.input :talk_id, :id=>"talk_id" ,:as => :hidden %>					
+	<%= simple_form_for :talk, :role=> "form", :url => talk_path(@talk.id), :method=>:put do |f| %>
+	
+	<%= f.input :id, :id=>"id" ,:as => :hidden %>					
 	<div class="row">
-		<div class= "col-md-6">
+		<div class= "col-md-8">
 			<div class="row">
-				<%= render :partial => 'speaker_data', :locals => { :f => f, :a => @acadamic_histories } %>	
+				<%= render :partial => 'speaker_data', :locals => { :f => f, :a => @talk.acadamic_history } %>	
+				<%= render :partial => 'helper_data', :locals => { :f => f, :t=>@talk } %>	
 			</div>	
-			<%= render :partial => 'helper_data', :locals => { :f => f } %>	
   		</div>
-  		<div class="col-md-6 ">
+  		<div class="col-md-4">
 			<div class="panel panel-primary">
   				<div class="panel-heading">
    		 			<h3 class="panel-title">Process List</h3>
   				</div>
 				<div class="panel-body process_list">
-					<% @talk_content.process.each  do |p| %>
-						<div class="row draggable">
-			  				<div class="col-md-6">
-						  		<%= f.input_field :process, :checked =>p.finished,  as: :boolean, boolean_style: :inline, checked_value: true, unchecked_value: false, :include_hidden => false,:disabled=> p.finished %>
-					  			<%= f.label :process, p.process_name, :class=>"process_name" , boolean_style: :inline,:contentEditable =>"true"%>
-			  				</div>
-			  				<!-- 
-	  						<div class="col-md-2">
-		  						<#%= button_tag "remove" , :class=>"remove_process btn btn-danger btn-xs" %>	
-			  				</div>
-			  			-->
-			  				<div class="col-md-3">
-			  					<div class=<% if !p.finished %> 
-  									<%= "hidden" %>
-	  							<% else %>
-	  								<%= "show" %> 
-	  							<% end %>>
-	  							<%= f.input :process_lists , :input_html => { :value=>p.finished_date, :class => "datetimepicker form-control"} , label: false%>
-			  					</div>
-							</div>
+					
+						<div class="row">
+			  				<!-- <div class="col-md-6"> -->
+			  					<ul>
+			  					<% @talk.talk_process_lists.each  do |p| %>
+			  						<li ><label><input type="checkbox" <%= p.finished ? 'checked' : '' %> class="process_checkbox"  <%= p.finished ? 'disabled' : '' %> > <%=p.all_process.title%><input type="hidden" class="id"  value="<%= p.all_process.id %>"></label> <input type="text" class="datetimepicker  <%= p.finished ? 'show' : 'hide' %>"  <%= p.finished ? 'disabled' : '' %>  value= "<%= p.finished_date%>"  >	</li>
+									<% end %>
+			  				    </ul>
+			  				<!-- </div> -->
+			  				
 						</div>
-					<% end %>
+					
 				</div>
 				<!--
 			 	<div class="panel-footer">
@@ -84,10 +75,12 @@
 
 
 
-  
-
 <script type="text/javascript">
-           
+
+
+
+
+          
 $('.mymodal').click(function(){
 	var type = $(this).data('id');
 	document.getElementById("comment_comment_type").value = type;
@@ -99,6 +92,23 @@ $("#save_comment").click(function(){
 	return false;
 });
 
+$('.datetimepicker').datepicker({
+                    language: 'en',
+                    format: 'yyyy-mm-dd',
+         			autoclose:true,
+         			pickTime: false,
+         			todayHighlight: true,
+         			todayBtn: "linked"
+          	      });
+          	  
+$('.process_checkbox').click(function(){
+    
+   if($(this).get(0).checked)
+   	  $($(this).parent().parent().find(".datetimepicker")).removeClass("hide").addClass("show");
+   else
+   	  $(this).parent().parent().find(".datetimepicker").removeClass("show").addClass("hide");
+
+});
 
 </script>
  
@@ -112,7 +122,7 @@ $("#save_comment").click(function(){
 				<div id="myModalContent"> 
         			<%= f.input :comments , :label =>false, :input_html=>{:class=>"form-control", :placeholder=>"Leave a comment"}%>
 		    		<%= f.input :comment_type, :as=>:hidden %>
-    				<%= f.input :talk_id, :as=>:hidden,  :input_html=>{:value=>@talk_content.talk_id}%>
+    				<%= f.input :id, :as=>:hidden,  :input_html=>{:value=>@talk.id}%>
     			</div>
 			</div>
 			<div class="modal-footer">

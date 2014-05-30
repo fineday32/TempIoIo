@@ -1,15 +1,6 @@
 class HomeController < ApplicationController
-	before_filter :authenticate_user!
   def index
-    
-    @tc_list= Talk.all
+  	@fields = [["Arts & Design","設計"],["Business & Management","商管"], ["Communication","傳播"], ["Education","教育"], ["Engineering","工程"], ["Humanities & Social Science","人文"], ["Law","法律"], ["MBA/EMBA","MBA"],  ["Medical & Public Health","衛生"], ["Science","科學"]]
 
- 	
-  	respond_to do |format|
-  		format.html
-  		format.js
-  	end
-  end
-  def talk
   end
 end
