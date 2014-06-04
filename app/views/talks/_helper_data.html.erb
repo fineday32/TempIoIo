@@ -7,7 +7,8 @@
 					<div id="helpers_list">
 						<div class="row">
 							<div class="col-md-4 show" >
-								<h3><%= f.input :helper, collection: User.all, :label_method => :name, :value_method=>:id , :selected => Talk.first.user_talks.first.nil? ? '': t.user_talks.first.user.id   %></h3>
+								<!-- <h3><#%= f.input :helper, collection: User.all, :label_method => :name, :value_method=>:id , :selected => Talk.first.user_talks.first.nil? ? '': t.user_talks.first.user.id   %></h3> -->
+								<h3><%= f.input :helper, collection: User.all, :label_method => :name, :value_method=>:id %></h3>
 							</div>
 						</div>
 					</div>

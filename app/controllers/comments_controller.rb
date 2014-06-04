@@ -6,7 +6,8 @@ class CommentsController < ApplicationController
 	def new
 		@talk_id = Talk.find(params[:id])
 		@comment = Comment.new
-		
+		# @comment.talk_id = Talk.find(params[:id])
+
 		respond_to do |format|
   		format.html
   		format.js
@@ -16,7 +17,7 @@ class CommentsController < ApplicationController
 	def create
 		@comment = Comment.new
 		@comment.comments = params.permit![:comment_content][:comments]
-		@comment.talk_id = params.permit![:comment_content][:talk_id]
+		@comment.talk_id = params.permit![:comment_content][:id]
 		@comment.user_id = current_user.id
     	
     	@comment.save!

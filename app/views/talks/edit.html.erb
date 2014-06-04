@@ -11,18 +11,24 @@
 	<p style="color: green"><%= flash[:notice] %></p>
 
 	<div class="well well-lg">		<!-- comments -->
-		<% @allusercomments.each do |uc| %>
+		<!-- <#% @allUserComments.each do |uc| %> -->
+		<% Comment.where(talk_id: @talk.id.to_s).each do |uc| %>
 			<div class="row">
 			<%#= render :partial => 'commenting', :locals => { :f => f } %>
-				<h3> <span class="label label-success"><%= uc[0] %>:</span>
+				<!-- <h3> <span class="label label-success"><#%= uc[0] %>:</span> -->
+	 			<!-- <span class="label label-primary"> -->
+	 				<!-- <#%= uc[1] %> <font size=1>[<em><#%= uc[2] %></em>]</font> -->
+	 			<!-- </span> -->
+	 			<h3> <span class="label label-success"><%= User.find(uc.user_id).name %>:</span>
 	 			<span class="label label-primary">
-	 				<%= uc[1] %> <font size=1>[<em><%= uc[2] %></em>]</font>
+	 				<%= uc.comments %> <font size=1>[<em><%= uc.updated_at %></em>]</font>
 	 			</span>
 			</div>
 		<% end %>
 		<div class="row">
 		<%= simple_form_for :comment_content, :url => { :controller => 'comments', :action => 'create' } do |f| %>
-			<%= f.input :id, :as => :hidden, :input_html=> {"value"=>@talk.id}%>
+			<!-- <#%= f.input :id, :as => :hidden, :input_html=> {"value"=>@talk.id}%> -->
+			<%= f.input :id, :input_html=> {"value"=>@talk.id}%>
 			<%= f.input :comments %>
 			<%= f.submit "Send", :class=>"btn btn-primary" %>
 		<% end %>

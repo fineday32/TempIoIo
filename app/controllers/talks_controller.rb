@@ -26,10 +26,13 @@ class TalksController < ApplicationController
   def edit
   	@process_lists = ProcessList.all 
     @talk = Talk.find(params[:id])
-  	@allusercomments = Comment.where(:talk_id=>params[:id])
+  	@allUserComments = Comment.where(:talk_id=>params[:id])
+    @userComments = Comment.where(talk_id: params[:id])
+    # @userComments.name = User.find(f.user_id).name
     #@comment_content = Comment.add_new_comment(:comments)
     @comment = Comment.new
-    
+    # @comment.talk_id = params.permit![:id]
+    # @comment.save!
     
     respond_to do |format|
       format.html
