@@ -27,8 +27,7 @@
 		<% end %>
 		<div class="row">
 		<%= simple_form_for :comment_content, :url => { :controller => 'comments', :action => 'create' } do |f| %>
-			<!-- <#%= f.input :id, :as => :hidden, :input_html=> {"value"=>@talk.id}%> -->
-			<%= f.input :id, :input_html=> {"value"=>@talk.id}%>
+			<%= f.input :id, :as => :hidden, :input_html=> {"value"=>@talk.id}%>
 			<%= f.input :comments %>
 			<%= f.submit "Send", :class=>"btn btn-primary" %>
 		<% end %>
